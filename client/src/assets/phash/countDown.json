@@ -1,0 +1,43 @@
+{
+  "data": [
+    {
+      "fileName": "start_end_slate.mp4",
+      "total_duration": "02:44.6",
+      "video_url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/countdown_and_colourbars/start_end_slate.mp4?authuser=3",
+      "time_code_location": [
+        {
+          "start": "0:00:00.0",
+          "end": "0:00:04.134"
+        },
+        {
+          "start": "0:00:04.137",
+          "end": "0:00:05.151"
+        },
+        {
+          "start": "0:02:38.4749",
+          "end": "0:02:38.4751"
+        },
+        {
+          "start": "0:02:38.4754",
+          "end": "0:02:39.4796"
+        },
+        {
+          "start": "0:02:39.4799",
+          "end": "0:02:40.4808"
+        },
+        {
+          "start": "0:02:40.4811",
+          "end": "0:02:43.4898"
+        },
+        {
+          "start": "0:02:43.4901",
+          "end": "0:02:43.4902"
+        },
+        {
+          "start": "0:02:43.4905",
+          "end": "0:02:43.4907"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-6 ">
+
+      <div class="d-flex my-2 mx-3 st-right-banner-title">
+        <p class="m-0">{{ assets.title }}</p>
+      </div>
+
+      <div class="mx-3">
+        <ng-container *ngFor="let _ of assets.statements">
+          <p>{{_}}</p>
+        </ng-container>
+      </div>
+
+      <div class="d-flex"
+           *ngIf="!!assets.buttons">
+        <button mat-stroked-button
+                class="m-2">{{ assets.buttons.text }}</button>
+      </div>
+
+    </div>
+
+    <div class="col-lg-6">
+      <img class="img-fluid my-2 justify-content-center"
+           [src]="assets.image.src"
+           [alt]="assets.image.alt">
+    </div>
+
+  </div>
+</div>

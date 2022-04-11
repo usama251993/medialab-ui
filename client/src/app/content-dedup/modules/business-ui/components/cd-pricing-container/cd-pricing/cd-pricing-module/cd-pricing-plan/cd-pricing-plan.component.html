@@ -1,0 +1,34 @@
+<mat-card class="d-flex flex-column m-2">
+  <mat-card-header class="d-flex justify-content-center align-items-center my-2">
+    <mat-card-title class="text-center
+                           cd-pricing-plan-title">{{ assets.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="flex-grow-1">
+    <div class="d-flex flex-column justify-content-between">
+      <div class="cd-card-top">
+        <div class="d-flex justify-content-center align-items-center py-4
+                    cd-pricing-plan-price">
+          <p class="text-center">${{ assets.price }}</p>
+        </div>
+        <div class="d-flex align-items-center my-2
+                    cd-pricing-plan-overview">
+          <p class="m-0">{{ assets.overview }}</p>
+        </div>
+        <div class="d-flex
+                    cd-offerings-list-holder">
+          <mat-list>
+            <mat-list-item *ngFor="let _ of assets.offerings"
+                           class="d-flex align-items-center h-auto my-2">{{ _ }}</mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+      <div class="cd-card-bottom">
+        <ng-container *ngFor="let _ of assets.actions">
+          <button mat-raised-button
+                  color="primary"
+                  class="w-100">{{ _.text }}</button>
+        </ng-container>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

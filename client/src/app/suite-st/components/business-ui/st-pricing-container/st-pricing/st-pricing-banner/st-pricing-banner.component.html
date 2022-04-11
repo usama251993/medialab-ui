@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-center align-items-center
+            st-banner-container">
+  <div class="container-fluid p-0">
+    <img class="img-fluid w-100"
+         [src]="assets.image.src"
+         [alt]="assets.image.alt">
+  </div>
+  <div class="container
+              st-banner-text-holder">
+    <div class="d-flex justify-content-center align-items-center my-2
+                st-banner-title">
+      <p class="m-0 text-center">{{ assets.title }}</p>
+    </div>
+    <div class="d-flex flex-column my-4
+                st-banner-statement-holder">
+      <ng-container *ngFor="let _ of assets.statements">
+        <p class="h4 my-2 text-center">{{ _ }}</p>
+      </ng-container>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+      <ng-container *ngFor="let _ of assets.actions">
+        <button mat-raised-button
+                color="primary"
+                (click)="navigate()"
+                class="m-4">{{ _.text }}</button>
+      </ng-container>
+    </div>
+  </div>
+</div>

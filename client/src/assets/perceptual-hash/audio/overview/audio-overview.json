@@ -1,0 +1,67 @@
+{
+  "results": [
+    {
+      "tag": "PH_Test1_A_B",
+      "inspectedVideo": {
+        "title": "PH_Test1_A",
+        "extension": "mp4",
+        "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data_converted_files/Test1/PH_Test1_A.mp4?authuser=1",
+        "duration": "0:04:33.072800",
+        "fps": 29.97002997002997,
+        "type": "video/mp4",
+        "isAudioPresent": false
+      },
+      "referenceVideo": {
+        "title": "PH_Test1_B",
+        "extension": "mp4",
+        "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data_converted_files/Test1/PH_Test1_B.mp4?authuser=1",
+        "duration": "0:04:33.072800",
+        "fps": 29.97002997002997,
+        "type": "video/mp4",
+        "isAudioPresent": false
+      }
+    },
+    {
+      "tag": "PH_Test1_A_F",
+      "inspectedVideo": {
+        "title": "PH_Test1_A",
+        "extension": "mp4",
+        "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data_converted_files/Test1/PH_Test1_A.mp4?authuser=1",
+        "duration": "0:04:33.072800",
+        "fps": 29.97002997002997,
+        "type": "video/mp4",
+        "isAudioPresent": false
+      },
+      "referenceVideo": {
+        "title": "PH_Test1_F",
+        "extension": "mxf",
+        "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data_converted_files/Test1/PH_Test1_F.mp4?authuser=1",
+        "duration": "0:04:33.072800",
+        "fps": 29.97002997002997,
+        "type": "video/mp4",
+        "isAudioPresent": false
+      }
+    },
+    {
+      "tag": "Iron_Man_2_3",
+      "inspectedVideo": {
+        "title": "Iron Man 2 Official Trailer 1 (2010) - Marvel Movie HD - Copy",
+        "extension": "mp4",
+        "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/final_videos/Iron Man 2 Official Trailer 1 (2010) - Marvel Movie HD - Copy.mp4?authuser=1",
+        "duration": 177.6790929705,
+        "fps": 23.9760254754,
+        "type": "video/mp4",
+        "isAudioPresent": false
+      },
+      "referenceVideo": {
+        "title": "Iron Man 2 Official Trailer 1 (2010) - Marvel Movie HDDifferentBackgroundScore",
+        "extension": "mp4",
+        "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/final_videos/Iron Man 2 Official Trailer 1 (2010) - Marvel Movie HDDifferentBackgroundScore.mp4?authuser=1",
+        "duration": 177.7493333333,
+        "fps": 30.0,
+        "type": "video/mp4",
+        "isAudioPresent": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "PROCESS_BUCKET": {
+    "ACTION": "Process Bucket",
+    "ATTEMPT": "Attempting Process Bucket",
+    "SUCCESS": "Process Bucket Successful",
+    "FAILED": "Process Bucket Failed",
+    "INVALID": "Invalid Process Bucket Request"
+  },
+  "GET_MATRIX_FROM_TOPIC": {
+    "ACTION": "Data Fetch from Topic",
+    "ATTEMPT": "Attempting Data Fetch from Topic",
+    "SUCCESS": "Data Fetch from Topic Successful",
+    "FAILED": "Data Fetch from Topic Failed",
+    "INVALID": "Invalid Data Fetch from Topic Request"
+  },
+  "GET_MATRIX_FROM_TABLE": {
+    "ACTION": "Data Fetch from Table",
+    "ATTEMPT": "Attempting Data Fetch from Table",
+    "SUCCESS": "Data Fetch from Table Successful",
+    "FAILED": "Data Fetch from Table Failed",
+    "INVALID": "Invalid Data Fetch from Table Request"
+  },
+  "FETCH_RESULT": {
+    "ACTION": "Result Fetch",
+    "ATTEMPT": "Attempting Result Fetch",
+    "SUCCESS": "Result Fetch Successful",
+    "FAILED": "Result Fetch Failed",
+    "INVALID": "Invalid Result Fetch Request"
+  },
+  "GENERAL": {
+    "FAILED": "Failed",
+    "PAYLOAD": {
+      "UNDEFINED": "Payload Undefined",
+      "ERROR": "Payload Error"
+    },
+    "SERVER_FAILED": "Unable to connect to the server",
+    "EMPTY": ""
+  }
+}

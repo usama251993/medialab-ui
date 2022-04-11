@@ -1,0 +1,26 @@
+mat-card-title.cd-pricing-plan-title {
+  font-size: 24px;
+  line-height: normal;
+  color: #0707a7;
+}
+
+div.cd-pricing-plan-price {
+  p {
+    font-size: 48px;
+    line-height: normal;
+  }
+}
+
+div.cd-pricing-plan-overview {
+  p {
+    font-size: 16px;
+  }
+}
+
+div.cd-offerings-licd-holder {
+  mat-list {
+    mat-licd-item {
+      min-height: 48px;
+    }
+  }
+}

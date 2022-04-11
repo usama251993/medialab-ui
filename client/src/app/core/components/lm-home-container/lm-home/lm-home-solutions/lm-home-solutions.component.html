@@ -1,0 +1,40 @@
+<div class="container h-100
+            lm-solution-container">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-9 col-sm-12">
+      <div class="d-flex justify-content-center align-items-center m-2">
+        <p class="h3 m-0">{{ assets.title }}</p>
+      </div>
+      <div class="mx-auto my-2
+                  lm-separator lm-separator-small"></div>
+      <div class="">
+        <ng-container *ngFor="let _ of assets._">
+          <div class="d-flex justify-content-center align-items-center">
+            <mat-list class="lm-mat-list">
+              <mat-list-item class="lm-mat-list-item"
+                             *ngFor="let __ of _.summary">
+                <mat-icon mat-list-icon>double_arrow</mat-icon>
+                <p class="m-0">{{ __ }}</p>
+              </mat-list-item>
+            </mat-list>
+          </div>
+          <div class="d-flex justify-content-center flex-wrap">
+            <ng-container *ngFor="let __ of _.buttons">
+              <!-- <button mat-flat-button
+                      color="primary"
+                      (click)="navigate()"
+                      class="m-2">
+                <span>{{ __.text | uppercase }}</span>
+                <mat-icon>arrow_right</mat-icon>
+              </button> -->
+              <app-button-container [disabled]="__.disabled"
+                                    [assets]="__"
+                                    (triggerButton$)="navigate()"></app-button-container>
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+</div>

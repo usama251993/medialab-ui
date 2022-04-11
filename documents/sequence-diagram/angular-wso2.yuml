@@ -1,0 +1,53 @@
+// {type:sequence}
+// {generate:true}
+
+// [Angular] - [note: Login Workflow] - [WSO2-IS]
+[Angular] - [note: Login Workflow]
+[Angular] Authenticate User Request { /api/identity/auth/v1.1/authenticate } >[WSO2-IS]
+[WSO2-IS] Login Token { status: 200 || 401, token } >[Angular]
+
+// [WSO2-IS] - [note: If account is not confirmed] - [Angular]
+[WSO2-IS] - [note: If account is not confirmed]
+[Angular] Redirect to verify e-mail page >[Angular]
+
+
+// [Angular] - [note: Signup Workflow] - [WSO2-IS]
+[Angular] - [note: Signup Workflow]
+[Angular] Register User Request { /api/identity/user/v1.0/me } >[WSO2-IS]
+[WSO2-IS] User Registration Successful { status: 201 || 409 } >[Angular]
+[Angular] Redirect to Verify E-mail Page >[Angular]
+
+
+// [Email] - [note: If the email address is valid] - [WSO2-IS]
+[Email] - [note: If the email address is valid]
+[WSO2-IS] Email containing validation link >[Email]
+[Email] Redirect to Validation Page >[Angular]
+[Angular] Email Validation Request { /api/identity/user/v1.0/validate-code } >[WSO2-IS]
+[WSO2-IS] Email Validation Successful { ?? } >[Angular]
+
+// [Angular] - [note: If token is valid] - [WSO2-IS]
+[Angular] - [note: If token is valid]
+[Angular] Redirect to Login Page >[Angular]
+
+// [Email] - [note: If token is expired] - [WSO2-IS]
+[Email] - [note: If token is expired]
+// [Email] - [note: Try GET Request from Angular to WSO2-IS for retrieval of user details] - [WSO2-IS]
+[Email] - [note: Try GET Request from Angular to WSO2-IS for retrieval of user details]
+[Angular] Request new validation code { /api/identity/user/v1.0/resend-code } >[WSO2-IS]
+[WSO2-IS] Email containing new validation link >[Email]
+[Email] Redirect to Validation Page >[Angular]
+[Angular] Email Validation Request { /api/identity/user/v1.0/validate-code } >[WSO2-IS]
+[WSO2-IS] Email Validation Successful { ?? } >[Angular]
+
+// [Angular] - [note: If token is valid] - [WSO2-IS]
+[Angular] - [note: If token is valid]
+[Angular] Redirect to Login Page >[Angular]
+
+// [Email] - [note: Password Recovery Workflow] - [WSO2-IS]
+[Email] - [note: Password Recovery Workflow]
+[Angular] Password Recovery Request { ?? } >[WSO2-IS]
+[WSO2-IS] Email containing recovery link >[Email]
+[Email] Redirect to Recovery Page >[Angular]
+[Angular] Set Password Request { ?? } >[WSO2-IS]
+[WSO2-IS] Password Recovery Successful >[Angular]
+[WSO2-IS] Email notification sent stating your password has been changed >[Email]

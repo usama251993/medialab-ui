@@ -1,0 +1,44 @@
+<div class="container p-0">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <p class="h5 m-0">{{ result.title.split('.')[0] }}</p>
+    <!-- <button mat-icon-button
+            (click)="closeDialog()">
+      <mat-icon>close</mat-icon> -->
+    <!-- </button> -->
+    <app-button-container [disabled]="assets.buttons.close.disabled"
+                          [assets]="assets.buttons.close"
+                          (triggerButton$)="closeDialog()">
+    </app-button-container>
+  </div>
+  <div class="row justify-content-center align-items-center">
+    <div class="col-xl-6 d-flex justify-content-center align-items-center my-2">
+      <app-theoplayer-container [video]="firstVideo"
+                                [bIsPaused]="bIsPaused"></app-theoplayer-container>
+    </div>
+    <!-- <div class="col-xl-6 d-flex justify-content-center align-items-center my-2">
+      <app-theoplayer-container [video]="secondVideo"
+                                [bIsPaused]="bIsPaused"></app-theoplayer-container>
+    </div> -->
+  </div>
+  <mat-divider></mat-divider>
+  <div class="d-flex justify-content-center align-items-center">
+    <!-- <button mat-icon-button
+            (click)="playVideos()">
+      <mat-icon *ngIf="bIsPaused; else pauseButton">play_circle_outline</mat-icon>
+      <ng-template #pauseButton>
+        <mat-icon>pause_circle_outline</mat-icon>
+      </ng-template>
+    </button> -->
+    <app-button-container *ngIf="bIsPaused; else pauseButton"
+                          [disabled]="assets.buttons.playCircle.disabled"
+                          [assets]="assets.buttons.playCircle"
+                          (triggerButton$)="playVideos()">
+    </app-button-container>
+    <ng-template #pauseButton>
+      <app-button-container [disabled]="assets.buttons.pauseCircle.disabled"
+                            [assets]="assets.buttons.pauseCircle"
+                            (triggerButton$)="playVideos()">
+      </app-button-container>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/viacom-poc/medialabs/ui:2.3.2", "."]
+    timeout: 1800s
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/viacom-poc/medialabs/ui:2.3.2"]
+    timeout: 1800s
+timeout: 1800s

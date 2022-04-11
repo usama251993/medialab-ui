@@ -1,0 +1,29 @@
+# This Deployment manifest defines:
+# - single-replica deployment of the container image, with label "app: node-hello-world"
+# - Pod exposes port 8080
+# - specify PORT environment variable to the container process
+# Syntax reference https://kubernetes.io/docs/concepts/configuration/overview/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: medialab-app-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: medialab-app-ui
+  template:
+    metadata:
+      labels:
+        app: medialab-app-ui
+    spec:
+      containers:
+        - name: server
+          image: medialab-app-ui
+          ports:
+          - containerPort: 8080
+          env:
+          - name: PORT
+            value: "8080"
+
+

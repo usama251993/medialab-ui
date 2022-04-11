@@ -1,0 +1,35 @@
+<div class="app-zigzag-item-holder">
+
+  <ng-container *ngFor="let _ of assets.items">
+    <div class="app-zigzag-item">
+
+      <div class="app-zigzag-side">
+        <div class="m-3 
+                    app-banner-title">
+          <p class="m-0 text-center">{{ _.title }}</p>
+        </div>
+        <div class="m-3">
+          <ng-container *ngFor="let __ of _.statements">
+            <p>{{ __ }}</p>
+          </ng-container>
+        </div>
+        <div class="m-3">
+          <div class="d-flex">
+            <ng-container *ngFor="let __ of _.actions">
+              <button mat-stroked-button
+                      (click)="triggerNavigate()"
+                      class="m-2">{{ __.text }}</button>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+
+      <div class="app-zigzag-side">
+        <img class="img-fluid my-3 justify-content-center"
+             [src]="_.image.src"
+             [alt]="_.image.alt">
+      </div>
+    </div>
+  </ng-container>
+
+</div>

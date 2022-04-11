@@ -1,0 +1,21 @@
+div.cd-table-holder {
+  position: relative;
+  overflow: auto;
+
+  mat-paginator {
+    position: sticky;
+    top: 0px;
+    left: 0px;
+  }
+
+  table {
+    th {
+      span.cd-nowrap {
+        white-space: nowrap;
+      }
+    }
+    td {
+      white-space: nowrap;
+    }
+  }
+}

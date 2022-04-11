@@ -1,0 +1,85 @@
+ol.carousel-indicators {
+  margin: 15px 0px;
+
+  li {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-radius: 50%;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+}
+
+div.app-carousel-item {
+  $height: 72px;
+  max-height: calc(100vh - #{$height}); // To avoid incompatible units error
+
+  div.carousel-caption {
+    div.app-carousel-heading {
+      font-size: 48px;
+      line-height: normal;
+      font-weight: bold;
+    }
+
+    div.app-carousel-subheading {
+      font-size: 32px;
+      line-height: normal;
+    }
+
+    div.app-carousel-statement-holder {
+      line-height: normal;
+    }
+
+    &.caption-centered {
+      top: 50%;
+      transform: translateY(-50%);
+      bottom: unset;
+    }
+
+    &.caption-full {
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      clip-path: polygon(0% 0%, 100% 0%, 75% 100%, 0% 100%);
+      padding: 24px;
+      text-align: unset;
+    }
+  }
+}
+
+a.carousel-control-prev,
+a.carousel-control-next {
+  top: unset;
+  width: unset;
+  z-index: 16;
+  margin: 23px 15px;
+
+  span.carousel-control-prev-icon,
+  span.carousel-control-next-icon {
+    background-image: none;
+
+    &:after {
+      font-size: 28px;
+      font-weight: bold;
+    }
+  }
+
+  span.carousel-control-prev-icon:after {
+    content: "←";
+  }
+
+  span.carousel-control-next-icon:after {
+    content: "→";
+  }
+
+  &.carousel-control-prev {
+    left: 40%;
+  }
+  &.carousel-control-next {
+    right: 40%;
+  }
+}

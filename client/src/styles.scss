@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Angular Theming
+@import "@angular/material/prebuilt-themes/purple-green.css";
+@import "assets/styles/src/app-themes.scss";
+
+// Bootstrap
+@import "assets/styles/src/app-bootstrap.scss";
+
+// Global styles
+@import "assets/styles/src/app-style.scss";
+
+// THEOplayer
+@import "assets/styles/lib/THEOplayer.scss";
+
+// Fonts
+// @import "https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap";
+@import "assets/styles/src/app-typography.scss";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";

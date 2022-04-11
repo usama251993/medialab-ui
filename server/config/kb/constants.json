@@ -1,0 +1,77 @@
+{
+  "ACCOUNT": {
+    "CREATE": {
+      "ACTION": "Create Account",
+      "ATTEMPT": "Attempting to Create Account",
+      "SUCCESS": "Account Creation Successful",
+      "FAILED": "Account Creation Failed",
+      "INVALID": "Invalid Account Creation Request"
+    },
+    "FETCH": {
+      "ACTION": "Fetch Account Details",
+      "ATTEMPT": "Attempting to Fetch Account Details",
+      "SUCCESS": "Account Details Fetch Successful",
+      "FAILED": "Account Details Fetch Failed",
+      "INVALID": "Invalid Account Details Fetch Request"
+    }
+  },
+  "BASEPLANS": {
+    "ACTION": "Fetch Base Plans",
+    "ATTEMPT": "Attempting to Fetch Base Plans",
+    "SUCCESS": "Base Plans Fetch Successful",
+    "FAILED": "Base Plans Fetch Failed",
+    "INVALID": "Invalid Base Plans Fetch Request"
+  },
+  "TAGS": {
+    "ACTION": "Create Tags",
+    "ATTEMPT": "Attempting to Create Tags",
+    "SUCCESS": "Tag Creation Successful",
+    "FAILED": "Tag Creation Failed",
+    "INVALID": "Invalid Tag Creation Request"
+  },
+  "CREATESUBSCRIPTION": {
+    "ACTION": "Create Subscription",
+    "ATTEMPT": "Attempting to Create Subscription",
+    "SUCCESS": "Subscription Creation Successful",
+    "FAILED": "Subscription Creation Failed",
+    "INVALID": "Invalid Subscription Creation Request"
+  },
+  "INVOICE": {
+    "ACTION": "Fetch Invoice",
+    "ATTEMPT": "Attempting to Fetch Invoice",
+    "SUCCESS": "Invoice Fetch Successful",
+    "FAILED": "Invoice Fetch Failed",
+    "INVALID": "Invalid Invoice Fetch Request"
+  },
+  "PAYMENT": {
+    "CREATE": {
+      "ACTION": "Create Payment",
+      "ATTEMPT": "Attempting to Create Payment",
+      "SUCCESS": "Payment Creation Successful",
+      "FAILED": "Payment Creation Failed",
+      "INVALID": "Invalid Payment Creation Request"
+    },
+    "PROCESS": {
+      "ACTION": "Processing Payment",
+      "ATTEMPT": "Attempting to Process Payment",
+      "SUCCESS": "Payment Processed Successful",
+      "FAILED": "Payment Process Failed",
+      "INVALID": "Invalid Payment Process Request"
+    },
+    "FETCH": {
+      "ACTION": "Fetch Payment Method",
+      "ATTEMPT": "Attempting to Fetch Payment Method",
+      "SUCCESS": "Payment Method Fetch Successful",
+      "FAILED": "Payment Method Fetch Failed",
+      "INVALID": "Invalid Payment Method Fetch Request"
+    }
+  },
+  "GENERAL": {
+    "FAILED": "Failed",
+    "PAYLOAD": {
+      "UNDEFINED": "Payload Undefined",
+      "ERROR": "Payload Error"
+    },
+    "EMPTY": ""
+  }
+}

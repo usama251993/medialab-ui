@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let _ of assets._">
+      <div class="col-lg-6 col-md-6 col-sm-12">
+
+        <div class="d-flex my-4 mx-3 st-description-title">
+          <p class="m-0 text-center">{{ _.title }}</p>
+        </div>
+        <div class="d-flex flex-column my-2 mx-3 ">
+          <ng-container *ngFor="let _ of _.statements">
+            <p>{{_}}</p>
+          </ng-container>
+          <!-- <p>{{_.}}</p> -->
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

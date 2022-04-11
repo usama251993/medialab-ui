@@ -1,0 +1,11 @@
+div.lm-footer-section {
+  p {
+    cursor: pointer;
+  }
+
+  &.lm-footer-copyright {
+    p {
+      cursor: default;
+    }
+  }
+}

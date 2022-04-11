@@ -1,0 +1,18 @@
+<div class="container-fluid p-0 
+            st-home-container">
+  <app-st-banner [assets]="assets.banner"></app-st-banner>
+  <app-st-zigzag [assets]="assets.more"></app-st-zigzag>
+  <app-st-home-multi [assets]="assets.multi"></app-st-home-multi>
+  <app-st-home-advantages [assets]="assets.advantages"></app-st-home-advantages>
+  <app-st-home-overview [assets]="assets.overview"
+                        (triggerNavigate$)="navigate($event)"></app-st-home-overview>
+  <app-st-home-short-info [assets]="assets.shortInfo"
+                          (triggerNavigate$)="navigate($event)"></app-st-home-short-info>
+  <app-st-zigzag [assets]="assets.insights"></app-st-zigzag>
+  <app-st-home-features [assets]="assets.features"
+                        (triggerNavigate$)="navigate($event)"></app-st-home-features>
+  <app-st-home-trusted-by [assets]="assets.trustedBy"
+                          (triggerNavigate$)="navigate($event)"></app-st-home-trusted-by>
+  <app-st-home-closure [assets]="assets.closure"
+                       (triggerNavigate$)="navigate($event)"></app-st-home-closure>
+</div>

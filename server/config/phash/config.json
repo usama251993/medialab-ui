@@ -1,0 +1,28 @@
+{
+  "METHOD": {
+    "GET": "get",
+    "POST": "post"
+  },
+  "PROTOCOL": "http",
+  "DOMAIN": {
+    "DEV": {
+      "HOSTNAME": "localhost",
+      "PORT": "8086"
+    },
+    "PROD": {
+      "SERVICE": "medialab-springboot-phash",
+      "NAMESPACE": "default",
+      "CLUSTER": "svc.cluster.local",
+      "PORT": "8086"
+    }
+  },
+  "ENDPOINT": {
+    "BUCKET_LOCATION": "bucketlocation",
+    "GET_MATRIX_FROM_TOPIC": "getMatrixFromTopic",
+    "GET_MATRIX_FROM_TABLE": "getMatrixFromTable",
+    "FETCH_RESULT": {
+      "COORDINATE": "api/coordinate",
+      "IDS": "ids"
+    }
+  }
+}

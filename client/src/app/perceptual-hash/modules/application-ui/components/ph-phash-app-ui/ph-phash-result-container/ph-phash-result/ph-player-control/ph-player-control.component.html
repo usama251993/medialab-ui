@@ -1,0 +1,109 @@
+<ng-container *ngIf="!!form; else loadingForm">
+
+  <mat-card class="m-2">
+    <mat-card-header>
+      <mat-card-title>Frame Inspection Control</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-12">
+          <form [formGroup]="form">
+            <div class="row my-1">
+              <div class="col-9">
+                <mat-form-field class="w-100">
+                  <mat-label>Frame Index</mat-label>
+                  <input matInput
+                         [formControlName]="formAssets.frameIndex.name"
+                         [type]="formAssets.frameIndex.type"
+                         [placeholder]="formAssets.frameIndex.placeholder"
+                         [required]="formAssets.frameIndex.validation.bIsMandatory"
+                         [min]="formAssets.frameIndex.validation.min"
+                         [max]="chartData.hammingDistances.length"
+                         autofocus="true">
+                  <mat-error *ngIf="form
+                             .get(formAssets.frameIndex.name)
+                             .hasError('required')">
+                    <p class="m-0">{{ formAssets.frameIndex.label }} is
+                      required</p>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-3 d-flex justify-content-center align-items-center">
+                <button mat-icon-button
+                        matTooltip="Inspect Frame"
+                        (click)="examineFrame()"
+                        #tooltip="matTooltip">
+                  <mat-icon>search</mat-icon>
+                </button>
+              </div>
+            </div>
+            <div class="row my-1">
+              <div class="col-6 d-flex justify-content-center align-items-center">
+                <button mat-icon-button
+                        matTooltip="Previous Frame"
+                        (click)="previousFrame()"
+                        #tooltip="matTooltip">
+                  <mat-icon>fast_rewind</mat-icon>
+                </button>
+              </div>
+              <div class="col-6 d-flex justify-content-center align-items-center">
+                <button mat-icon-button
+                        matTooltip="Next Frame"
+                        (click)="nextFrame()"
+                        #tooltip="matTooltip">
+                  <mat-icon>fast_forward</mat-icon>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <ng-container *ngIf="!!currentFrameIndex">
+            <p class="h5 m-0">Hamming Distance at Frame <span
+                    class="text-monospace font-weight-bold">{{ currentFrameIndex }}</span> is
+              <span class="text-monospace font-weight-bold">{{
+                chartData.hammingDistances[currentFrameIndex - 1] }}</span>
+            </p>
+          </ng-container>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="m-2">
+    <mat-card-header>
+      <mat-card-title>Instructions</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item class="h-auto my-2">
+          <p class="m-0">
+            Ensure to pause the videos before inspecting a frame
+          </p>
+        </mat-list-item>
+        <mat-list-item class="h-auto my-2">
+          <p class="m-0">
+            <span class="text-monospace">Previous Frame</span> decreases the frame index by 1
+            unit
+          </p>
+        </mat-list-item>
+        <mat-list-item class="h-auto my-2">
+          <p class="m-0">
+            <span class="text-monospace">Next Frame</span> increases the frame index by 1 unit
+          </p>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<ng-template #loadingForm>
+  <div class="row h-100">
+    <div class="col-12 d-flex justify-content-center align-items-center">
+      <app-loader-container></app-loader-container>
+    </div>
+  </div>
+</ng-template>

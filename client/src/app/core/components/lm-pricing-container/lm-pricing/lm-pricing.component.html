@@ -1,0 +1,18 @@
+<div class="container h-100 lm-login-container">
+  <div class="row justify-content-center align-items-center mt-2">
+    <ng-container *ngFor="let _ of pricingData">
+
+      <mat-card class="col-12 col-sm-6 col-md-4 col-lg-3 ">
+        <mat-card-title>
+          <ng-container *ngFor="let __ of _.finalPhaseRecurringPrice">
+            <h1><b> {{__.currency}} {{__.value}} /Month</b></h1>
+          </ng-container>
+        </mat-card-title>
+        <mat-card-content>
+          <h2>{{_.plan}}</h2>
+        </mat-card-content>
+      </mat-card>
+
+    </ng-container>
+  </div>
+</div>

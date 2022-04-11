@@ -1,0 +1,478 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="col-11">
+      <p class="h5 m-0 d-flex align-items-center">
+        <button mat-icon-button
+                (click)="triggerNavigate()"
+                matTooltip="Back to Bucket Selection"
+                #tooltip="matTooltip">
+          <mat-icon>chevron_left</mat-icon>
+        </button>{{appName.title}}</p>
+    </div>
+    <div class="col-1">
+      <button mat-button
+              (click)="refresh()"
+              class="h6 m-0 d-flex align-items-center st-button-color">
+        <mat-icon>refresh</mat-icon> REFRESH
+      </button>
+    </div>
+  </div>
+</div>
+
+<mat-divider></mat-divider>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <mat-tab-group mat-align-tabs="start"
+                     [selectedIndex]="selectTab"
+                     (selectedIndexChange)="selectTab = ($event)">
+        <mat-tab label="Finished Test Pack Runs">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-4 my-2">
+                <mat-card class="my-1 selectionList">
+                  <mat-selection-list [multiple]="false">
+                    <div class="row">
+                      <div class="col-10">Please Select Finished Test Pack</div>
+                    </div>
+                    <mat-list-option *ngFor="let _ of fTestPackQuickLinks"
+                                     (click)="viewTestPackRunResult(_)">
+                      <div class="row">
+                        <div class="col-2">
+                          <mat-icon aria-hidden="false"
+                                    aria-label="API"
+                                    *ngIf="_.initiatedBy.type == 'api'">http</mat-icon>
+                          <mat-icon aria-hidden="false"
+                                    aria-label="User"
+                                    *ngIf="_.initiatedBy.type == 'user'">account_circle
+                          </mat-icon>
+                        </div>
+                        <div class="col-7 mt-1">
+                          {{ _.testPackName}}
+                        </div>
+                        <div class="col-3 mt-1">
+                          Round {{_.round}}
+                        </div>
+                      </div>
+                    </mat-list-option>
+                  </mat-selection-list>
+                </mat-card>
+              </div>
+
+              <div class="col col-md-8 col-lg-8 my-2">
+                <mat-card *ngIf="testPackResult.testPackName!= ''">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-9">
+                        <mat-card-header>
+                          <mat-card-title> {{testPackResult.testPackName}} </mat-card-title>
+                          <mat-card-subtitle>
+                            {{appName.title}}
+                          </mat-card-subtitle>
+                        </mat-card-header>
+                      </div>
+                      <div class="col-3"
+                           *ngIf="testPackResult.executionStatus == 'waiting'">
+                        <button mat-raised-button
+                                class="h6 m-0 d-flex align-items-center st-button-color"
+                                (click)="stopTestPackExecution(testPackResult)">
+                          <mat-icon>close</mat-icon> STOP EXECUTION
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <mat-card-content>
+                    <table mat-table
+                           [dataSource]="finishedTestPackData"
+                           class="w-100">
+
+                      <ng-container matColumnDef="parameter">
+                        <th mat-header-cell
+                            *matHeaderCellDef>
+                          <span>Parameter</span>
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let __">
+                          <span>{{ __.parameter }}</span>
+                        </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="value">
+                        <th mat-header-cell
+                            *matHeaderCellDef>
+                          <span>Value</span>
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let __">
+                          <span>{{ __.value }}</span>
+                        </td>
+                      </ng-container>
+
+                      <tr mat-header-row
+                          *matHeaderRowDef="displayedColumns;"></tr>
+                      <tr mat-row
+                          *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    </table>
+
+                    <mat-accordion class="headers-align"
+                                   *ngIf="!!(result)"
+                                   multi>
+                      <ng-container *ngFor="let _ of result['tests']">
+                        <mat-expansion-panel>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title *ngIf="_!== null">
+                              <b>{{getTestName(_)}}</b>
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              {{_.testId}}
+                              <mat-icon>view_agenda</mat-icon>
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <div class="row">
+                            <div class="col-4">
+                              <p>Execution Status</p>
+                            </div>
+                            <div class="col-8">
+                              <p>
+                                {{_.executionStatus}}
+                              </p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-4">
+                              <p>Overall Result</p>
+                            </div>
+                            <div class="col-8">
+                              <p>
+                                {{_.overallResult}}
+                              </p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-4">
+                              <p>Test Run Id</p>
+                            </div>
+                            <div class="col-8"> {{_.testRunId}} </div>
+                          </div>
+                        </mat-expansion-panel>
+                        <mat-divider></mat-divider>
+                      </ng-container>
+                    </mat-accordion>
+                  </mat-card-content>
+                  <mat-card-actions>
+                  </mat-card-actions>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+
+        </mat-tab>
+
+        <mat-tab label="Test Pack">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-4 my-4">
+                <mat-card>
+                  <mat-selection-list [multiple]="false">
+                    <div mat-subheader>Please Select Test Pack</div>
+                    <mat-list-option *ngFor="let _ of testPackQuickLinks"
+                                     (click)="viewTestPack(_)">
+                      {{_.name}}
+                    </mat-list-option>
+                  </mat-selection-list>
+                </mat-card>
+              </div>
+
+              <div class="col col-md-8 col-lg-8">
+                <mat-card class="mt-2"
+                          *ngIf="testPack.name!= ''">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-10">
+                        <mat-card-header>
+
+                          <mat-card-title> {{testPack.name}} </mat-card-title>
+
+                          <mat-card-subtitle>
+                            {{testPack.id}}
+                          </mat-card-subtitle>
+
+                        </mat-card-header>
+                      </div>
+                      <div class="col-2">
+                        <button mat-raised-button
+                                class="h6 m-0 d-flex align-items-center st-button-color"
+                                (click)="executeTestPack()">
+                          <mat-icon>play_arrow</mat-icon> EXECUTE
+                        </button>
+                      </div>
+
+                    </div>
+                  </div>
+
+
+                  <mat-card-content>
+                    <table mat-table
+                           [dataSource]="this.testPackData"
+                           class="w-100">
+
+                      <ng-container matColumnDef="parameter">
+                        <th mat-header-cell
+                            *matHeaderCellDef>
+                          <span>Parameter</span>
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let __">
+                          <span>{{ __.parameter }}</span>
+                        </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="value">
+                        <th mat-header-cell
+                            *matHeaderCellDef>
+                          <span>Value</span>
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let __">
+                          <span>{{ __.value }}</span>
+                        </td>
+                      </ng-container>
+
+                      <tr mat-header-row
+                          *matHeaderRowDef="displayedColumns;"></tr>
+                      <tr mat-row
+                          *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    </table>
+                    <mat-divider></mat-divider>
+                    <div class="row mt-2">
+                      <div class="col-12">
+                        <p>Notifications:</p>
+                      </div>
+                      <div class="col-3">
+                        <p>Email</p>
+                      </div>
+                      <div class="col-3">
+                        <p>{{testPack.notifications.email}}</p>
+                      </div>
+                      <div class="col-3">
+                        <p>Report First Error For Device </p>
+                      </div>
+                      <div class="col-3">
+                        <p>{{testPack.notifications.reportFirstErrorForDevice}}</p>
+                      </div>
+                      <div class="col-3">
+                        <p>Report Summary</p>
+                      </div>
+                      <div class="col-3">
+                        <p>{{testPack.notifications.reportSummary}}</p>
+                      </div>
+                      <div class="col-3">
+                        <p>Slack </p>
+                      </div>
+                      <div class="col-3">
+                        <p>{{testPack.notifications.slack}}</p>
+                      </div>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Tests">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-4 my-2">
+                <mat-card>
+                  <mat-selection-list [multiple]="false">
+                    <div mat-subheader>Please Select Test</div>
+                    <mat-list-option *ngFor="let _ of testQuickLinks"
+                                     (click)="viewTest(_)">
+                      {{_.title}}
+                    </mat-list-option>
+                  </mat-selection-list>
+                </mat-card>
+              </div>
+
+              <div class="col col-md-8 col-lg-8 my-2">
+                <mat-card *ngIf="test.title!= ''">
+                  <mat-card-header>
+                    <mat-card-title> {{test.title}} </mat-card-title>
+                    <mat-card-subtitle>
+                      {{test.testId}}
+                    </mat-card-subtitle>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <table mat-table
+                           [dataSource]="testData"
+                           class="w-100">
+
+                      <ng-container matColumnDef="parameter">
+                        <th mat-header-cell
+                            *matHeaderCellDef>
+                          <span>Parameter</span>
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let __">
+                          <span>{{ __.parameter }}</span>
+                        </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="value">
+                        <th mat-header-cell
+                            *matHeaderCellDef>
+                          <span>Value</span>
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let __">
+                          <span>{{ __.value }}</span>
+                        </td>
+                      </ng-container>
+
+                      <tr mat-header-row
+                          *matHeaderRowDef="displayedColumns;"></tr>
+                      <tr mat-row
+                          *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    </table>
+                  </mat-card-content>
+                  <mat-card-actions>
+                  </mat-card-actions>
+                </mat-card>
+              </div>
+
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Configurations">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-4 my-2">
+                <mat-card>
+                  <mat-selection-list [multiple]="false">
+                    <div mat-subheader>Please Select Configuration</div>
+                    <mat-list-option *ngFor="let _ of configQuickLinks"
+                                     (click)="viewConfig(_)">
+                      {{_.name}}
+                    </mat-list-option>
+                  </mat-selection-list>
+                </mat-card>
+              </div>
+
+              <div class="col col-md-8 col-lg-8 my-2">
+                <mat-card *ngIf="config.name!= ''">
+                  <mat-card-header>
+                    <mat-card-title> {{config.name}} </mat-card-title>
+                    <mat-card-subtitle>
+                      {{config.id}}
+                    </mat-card-subtitle>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <table mat-table
+                           [dataSource]="configData"
+                           class="w-100">
+
+                      <ng-container matColumnDef="parameter">
+                        <th mat-header-cell
+                            *matHeaderCellDef>
+                          <span>Parameter</span>
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let __">
+                          <span>{{ __.parameter }}</span>
+                        </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="value">
+                        <th mat-header-cell
+                            *matHeaderCellDef>
+                          <span>Value</span>
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let __">
+                          <span>{{ __.value }}</span>
+                        </td>
+                      </ng-container>
+
+                      <tr mat-header-row
+                          *matHeaderRowDef="displayedColumns;"></tr>
+                      <tr mat-row
+                          *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    </table>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Devices">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-4 my-2">
+                <mat-card>
+                  <mat-selection-list [multiple]="false">
+                    <div mat-subheader>Please Select Device</div>
+                    <mat-list-option *ngFor="let _ of deviceQuickLinks"
+                                     (click)="viewDevice(_)">
+                      {{_.customName}}
+                    </mat-list-option>
+                  </mat-selection-list>
+                </mat-card>
+              </div>
+
+              <div class="col col-md-8 col-lg-8 my-2">
+                <mat-card *ngIf="device.customName!= ''">
+                  <mat-card-header>
+                    <mat-card-title> {{device.customName}} </mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <table mat-table
+                           [dataSource]="deviceData"
+                           class="w-100">
+
+                      <ng-container matColumnDef="parameter">
+                        <th mat-header-cell
+                            *matHeaderCellDef>
+                          <span>Parameter</span>
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let __">
+                          <span>{{ __.parameter }}</span>
+                        </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="value">
+                        <th mat-header-cell
+                            *matHeaderCellDef>
+                          <span>Value</span>
+                        </th>
+                        <td mat-cell
+                            *matCellDef="let __">
+                          <span>{{ __.value }}</span>
+                        </td>
+                      </ng-container>
+
+                      <tr mat-header-row
+                          *matHeaderRowDef="displayedColumns;"></tr>
+                      <tr mat-row
+                          *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    </table>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

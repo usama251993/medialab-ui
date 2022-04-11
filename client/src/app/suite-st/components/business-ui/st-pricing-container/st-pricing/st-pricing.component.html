@@ -1,0 +1,10 @@
+<div class="container-fluid p-0
+            st-pricing-container">
+  <app-st-pricing-banner [assets]="assets.banner"
+                         (triggerNavigate$)="navigate()"></app-st-pricing-banner>
+  <app-st-pricing-module [assets]="assets.module"
+                         (triggerNavigate$)="navigate()"></app-st-pricing-module>
+  <app-st-pricing-feature-overview [assets]="assets.feature"></app-st-pricing-feature-overview>
+  <app-st-pricing-closure [assets]="assets.closure"
+                          (triggerNavigate$)="navigate()"></app-st-pricing-closure>
+</div>

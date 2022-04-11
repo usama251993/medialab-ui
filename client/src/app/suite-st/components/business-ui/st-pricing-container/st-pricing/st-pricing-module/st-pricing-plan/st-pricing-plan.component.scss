@@ -1,0 +1,26 @@
+mat-card-title.st-pricing-plan-title {
+  font-size: 24px;
+  line-height: normal;
+  color: #0707a7;
+}
+
+div.st-pricing-plan-price {
+  p {
+    font-size: 48px;
+    line-height: normal;
+  }
+}
+
+div.st-pricing-plan-overview {
+  p {
+    font-size: 16px;
+  }
+}
+
+div.st-offerings-list-holder {
+  mat-list {
+    mat-list-item {
+      min-height: 48px;
+    }
+  }
+}

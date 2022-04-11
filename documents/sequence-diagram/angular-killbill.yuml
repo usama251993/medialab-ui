@@ -1,0 +1,58 @@
+// {type:sequence}
+// {generate:true}
+
+[KAUI]#1 Create Tenant>[KAUI]
+[KAUI]persist tenant>[Killbill DB]
+[KAUI]#2 Create Plan, Catalog, Products>[Killbill DB]
+[Killbill Core]#3 registerPushNotificationCallbackApi (Angular Exp URL)>[Killbill DB]
+
+[Angular App]#4 User Registration>[Killbill Core]
+[Killbill Core]#4 createAccountApi>[Killbill DB]
+[Killbill Core]201 - Created>[Angular App]
+[Killbill Core]trigger push notification to callback url>[Killbill Core]
+[Killbill Core]Receive CallBack Event & Notify>[Angular App]
+
+[Angular App]#5 Get Account ID>[Killbill Core]
+[Killbill Core]#5 getAccountByKeyApi>[Killbill DB]
+
+[Killbill Core]200 - Account Obj>[Angular App]
+[Angular App]#6 Add Tags to Account>[Killbill Core]
+[Killbill Core]#6 createAccountTagsApi>[Killbill DB]
+[Killbill Core]201 Created>[Angular App]
+[Killbill Core]trigger push notification to callback url>[Killbill Core]
+[Killbill Core]Receive CallBack Event & Notify>[Angular App]
+
+[Angular App]#7 Add PaymentMethods to Account>[Killbill Core]
+[Killbill Core]#7 createPaymentMethodApi>[Killbill DB]
+[Killbill Core]201 Created>[Angular App]
+[Killbill Core]trigger push notification to callback url>[Killbill Core]
+[Killbill Core]Receive CallBack Event & Notify>[Angular App]
+
+[Angular App]#8 Get List of Available Plans>[Killbill Core]
+[Killbill Core]#8 getAvailableBasePlansApi / getCatalogJsonApi>[Killbill DB]
+[Killbill Core]200 - JSON of Plan Info>[Angular App]
+
+[Angular App]#9 Choose Plan and Create Subscription>[Killbill Core]
+[Killbill Core]#9 createSubscriptionApi>[Killbill DB]
+[Killbill Core]201 Created>[Angular App]
+[Killbill Core]trigger push notification to callback url>[Killbill Core]
+[Killbill Core]Receive CallBack Event & Notify>[Angular App]
+
+[Killbill Core]trigger auto invoice based on 'BCD' (Bill Cycle Date) or  Next Invoice Date>[Killbill Core]
+[Killbill Core]persist triggered auto invoice>[Killbill DB]
+[Killbill Core]trigger push notification to callback url>[Killbill Core]
+[Killbill Core]Receive CallBack Event & Notify>[Angular App]
+
+[Angular App]#10 Get Invoice ID>[Killbill Core]
+[Killbill Core]#10 getInvoicesForAccountApi>[Killbill DB]
+[Killbill Core]200 - Invoice Obj>[Angular App]
+
+[Angular App]#11 Get Payment Method ID>[Killbill Core]
+[Killbill Core]#11 getPaymentMethodsForAccountApi>[Killbill DB]
+[Killbill Core]200 Payment Method Obj>[Angular App]
+
+[Angular App]#12 Process Payment>[Killbill Core]
+[Killbill Core]#12 processPaymentApi>[Killbill DB]
+[Killbill Core]201 Payment transaction created successfully>[Angular App]
+[Killbill Core]trigger push notification to callback url>[Killbill Core]
+[Killbill Core]Receive CallBack Event & Notify>[Angular App]

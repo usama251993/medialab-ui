@@ -1,0 +1,21 @@
+{
+  "METHOD": {
+    "GET": "get",
+    "POST": "post"
+  },
+  "PROTOCOL": "http",
+  "DOMAIN": {
+    "HOSTNAME": "104.197.153.32",
+    "PORT": "8080"
+  },
+  "VERSION": {
+    "v1.0": "1.0"
+  },
+  "IDENTITY": {
+    "API": "kb"
+  },
+  "CONTEXT": {
+    "ACCOUNTS": "accounts",
+    "TENANTS": "tenants"
+  }
+}

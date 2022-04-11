@@ -1,0 +1,23 @@
+p::first-letter {
+  text-transform: capitalize;
+}
+
+.headers-align .mat-expansion-panel-header-title,
+.headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selectionList {
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.st-button-color {
+  background-color: #0200d2;
+  color: white;
+}

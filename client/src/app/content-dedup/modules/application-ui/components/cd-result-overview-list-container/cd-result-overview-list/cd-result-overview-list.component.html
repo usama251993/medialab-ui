@@ -1,0 +1,31 @@
+<div class="d-flex align-items-center">
+  <div class="mr-2">
+    <p class="m-0">Detected Conditions</p>
+  </div>
+  <div class="ml-2 flex-grow-1">
+    <mat-divider></mat-divider>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <ng-container *ngFor="let _ of overviewList.analysis">
+      <div class="cd-result-overview-holder">
+        <app-cd-result-overview-container [analysis]="_"
+                                          [videoCount]="overviewList.summary.sample_size">
+        </app-cd-result-overview-container>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 d-flex justify-content-end align-items-center my-4">
+    <!-- <button mat-flat-button
+            color="primary"
+            (click)="showSummary()">Next</button> -->
+    <app-button-container *ngIf="!!assets.buttons.next"
+                          [disabled]="assets.buttons.next.disabled"
+                          [assets]="assets.buttons.next"
+                          (triggerButton$)="showSummary()">
+    </app-button-container>
+  </div>
+</div>

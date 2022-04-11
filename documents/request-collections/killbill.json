@@ -1,0 +1,693 @@
+{
+	"info": {
+		"_postman_id": "ccd0613b-531c-4026-80b7-90e5d531c947",
+		"name": "Killbill",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register Push Notiifcation Callback",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Killbill-CreatedBy",
+						"value": "Swagger"
+					},
+					{
+						"key": "authorization",
+						"value": "Basic YWRtaW46cGFzc3dvcmQ="
+					},
+					{
+						"key": "X-Killbill-ApiKey",
+						"value": "Disney"
+					},
+					{
+						"key": "X-Killbill-ApiSecret",
+						"value": "medialab123"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/1.0/kb/tenants/registerNotificationCallback?cb=http%3A%2F%2F35.232.60.236%3A8080",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"1.0",
+						"kb",
+						"tenants",
+						"registerNotificationCallback"
+					],
+					"query": [
+						{
+							"key": "cb",
+							"value": "http%3A%2F%2F35.232.60.236%3A8080"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Killbill-CreatedBy",
+						"value": "Swagger"
+					},
+					{
+						"key": "authorization",
+						"value": "Basic YWRtaW46cGFzc3dvcmQ="
+					},
+					{
+						"key": "X-Killbill-ApiKey",
+						"value": "Disney"
+					},
+					{
+						"key": "X-Killbill-ApiSecret",
+						"value": "medialab123"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"name\": \"Walt\", \"externalKey\": \"Walt\", \"email\": \"walt@disney.com\", \"company\": \"disney\", \"country\": \"us\", \"currency\": \"USD\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/1.0/kb/accounts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"1.0",
+						"kb",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account by API Key",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "authorization",
+						"value": "Basic YWRtaW46cGFzc3dvcmQ="
+					},
+					{
+						"key": "X-Killbill-ApiKey",
+						"value": "Disney"
+					},
+					{
+						"key": "X-Killbill-ApiSecret",
+						"value": "medialab123"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/1.0/kb/accounts?externalKey=Walt&accountWithBalance=false&accountWithBalanceAndCBA=false&audit=NONE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"1.0",
+						"kb",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "externalKey",
+							"value": "Walt"
+						},
+						{
+							"key": "accountWithBalance",
+							"value": "false"
+						},
+						{
+							"key": "accountWithBalanceAndCBA",
+							"value": "false"
+						},
+						{
+							"key": "audit",
+							"value": "NONE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Account Tags",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Killbill-CreatedBy",
+						"value": "Swagger"
+					},
+					{
+						"key": "authorization",
+						"value": "Basic YWRtaW46cGFzc3dvcmQ="
+					},
+					{
+						"key": "X-Killbill-ApiKey",
+						"value": "Disney"
+					},
+					{
+						"key": "X-Killbill-ApiSecret",
+						"value": "medialab123"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\"00000000-0000-0000-0000-000000000001\"]"
+				},
+				"url": {
+					"raw": "http://localhost:8080/1.0/kb/accounts/ca8e82bd-1c21-4dbe-8caa-3f9fb8e07aa6/tags",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"1.0",
+						"kb",
+						"accounts",
+						"ca8e82bd-1c21-4dbe-8caa-3f9fb8e07aa6",
+						"tags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Payment Method",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Killbill-CreatedBy",
+						"value": "Swagger"
+					},
+					{
+						"key": "authorization",
+						"value": "Basic YWRtaW46cGFzc3dvcmQ="
+					},
+					{
+						"key": "X-Killbill-ApiKey",
+						"value": "Disney"
+					},
+					{
+						"key": "X-Killbill-ApiSecret",
+						"value": "medialab123"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"accountId\": \"ca8e82bd-1c21-4dbe-8caa-3f9fb8e07aa6\", \"isDefault\": false, \"pluginName\": \"__EXTERNAL_PAYMENT__\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/1.0/kb/accounts/ca8e82bd-1c21-4dbe-8caa-3f9fb8e07aa6/paymentMethods?isDefault=false&payAllUnpaidInvoices=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"1.0",
+						"kb",
+						"accounts",
+						"ca8e82bd-1c21-4dbe-8caa-3f9fb8e07aa6",
+						"paymentMethods"
+					],
+					"query": [
+						{
+							"key": "isDefault",
+							"value": "false"
+						},
+						{
+							"key": "payAllUnpaidInvoices",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Base Plans",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "authorization",
+						"value": "Basic YWRtaW46cGFzc3dvcmQ="
+					},
+					{
+						"key": "X-Killbill-ApiKey",
+						"value": "Disney"
+					},
+					{
+						"key": "X-Killbill-ApiSecret",
+						"value": "medialab123"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/1.0/kb/catalog/availableBasePlans",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"1.0",
+						"kb",
+						"catalog",
+						"availableBasePlans"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Base Plan for Account",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "authorization",
+						"value": "Basic YWRtaW46cGFzc3dvcmQ="
+					},
+					{
+						"key": "X-Killbill-ApiKey",
+						"value": "Disney"
+					},
+					{
+						"key": "X-Killbill-ApiSecret",
+						"value": "medialab123"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/1.0/kb/catalog/availableBasePlans?accountId=ca8e82bd-1c21-4dbe-8caa-3f9fb8e07aa6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"1.0",
+						"kb",
+						"catalog",
+						"availableBasePlans"
+					],
+					"query": [
+						{
+							"key": "accountId",
+							"value": "ca8e82bd-1c21-4dbe-8caa-3f9fb8e07aa6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Catalogs",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/xml"
+					},
+					{
+						"key": "authorization",
+						"value": "Basic YWRtaW46cGFzc3dvcmQ="
+					},
+					{
+						"key": "X-Killbill-ApiKey",
+						"value": "Disney"
+					},
+					{
+						"key": "X-Killbill-ApiSecret",
+						"value": "medialab123"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/1.0/kb/catalog/xml",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"1.0",
+						"kb",
+						"catalog",
+						"xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Catalog for Account",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/xml"
+					},
+					{
+						"key": "authorization",
+						"value": "Basic YWRtaW46cGFzc3dvcmQ="
+					},
+					{
+						"key": "X-Killbill-ApiKey",
+						"value": "Disney"
+					},
+					{
+						"key": "X-Killbill-ApiSecret",
+						"value": "medialab123"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/1.0/kb/catalog/xml?accountId=ca8e82bd-1c21-4dbe-8caa-3f9fb8e07aa6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"1.0",
+						"kb",
+						"catalog",
+						"xml"
+					],
+					"query": [
+						{
+							"key": "accountId",
+							"value": "ca8e82bd-1c21-4dbe-8caa-3f9fb8e07aa6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Subscription",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Killbill-CreatedBy",
+						"value": "Swagger"
+					},
+					{
+						"key": "authorization",
+						"value": "Basic YWRtaW46cGFzc3dvcmQ="
+					},
+					{
+						"key": "X-Killbill-ApiKey",
+						"value": "Disney"
+					},
+					{
+						"key": "X-Killbill-ApiSecret",
+						"value": "medialab123"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"accountId\": \"ca8e82bd-1c21-4dbe-8caa-3f9fb8e07aa6\", \"externalKey\": \"Key1\", \"planName\": \"Gold-MonthlySubscription\", \"bundleExternalKey\": \"BundleKey1\" }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/1.0/kb/subscriptions?renameKeyIfExistsAndUnused=true&migrated=false&callCompletion=false&callTimeoutSec=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"1.0",
+						"kb",
+						"subscriptions"
+					],
+					"query": [
+						{
+							"key": "renameKeyIfExistsAndUnused",
+							"value": "true"
+						},
+						{
+							"key": "migrated",
+							"value": "false"
+						},
+						{
+							"key": "callCompletion",
+							"value": "false"
+						},
+						{
+							"key": "callTimeoutSec",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Invoices for Account",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "authorization",
+						"value": "Basic YWRtaW46cGFzc3dvcmQ="
+					},
+					{
+						"key": "X-Killbill-ApiKey",
+						"value": "Disney"
+					},
+					{
+						"key": "X-Killbill-ApiSecret",
+						"value": "medialab123"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/1.0/kb/accounts/ca8e82bd-1c21-4dbe-8caa-3f9fb8e07aa6/invoices?withMigrationInvoices=false&unpaidInvoicesOnly=false&includeVoidedInvoices=false&audit=NONE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"1.0",
+						"kb",
+						"accounts",
+						"ca8e82bd-1c21-4dbe-8caa-3f9fb8e07aa6",
+						"invoices"
+					],
+					"query": [
+						{
+							"key": "withMigrationInvoices",
+							"value": "false"
+						},
+						{
+							"key": "unpaidInvoicesOnly",
+							"value": "false"
+						},
+						{
+							"key": "includeVoidedInvoices",
+							"value": "false"
+						},
+						{
+							"key": "audit",
+							"value": "NONE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Payment Methods for Account",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "authorization",
+						"value": "Basic YWRtaW46cGFzc3dvcmQ="
+					},
+					{
+						"key": "X-Killbill-ApiKey",
+						"value": "Disney"
+					},
+					{
+						"key": "X-Killbill-ApiSecret",
+						"value": "medialab123"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/1.0/kb/accounts/ca8e82bd-1c21-4dbe-8caa-3f9fb8e07aa6/paymentMethods?withPluginInfo=false&includedDeleted=false&audit=NONE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"1.0",
+						"kb",
+						"accounts",
+						"ca8e82bd-1c21-4dbe-8caa-3f9fb8e07aa6",
+						"paymentMethods"
+					],
+					"query": [
+						{
+							"key": "withPluginInfo",
+							"value": "false"
+						},
+						{
+							"key": "includedDeleted",
+							"value": "false"
+						},
+						{
+							"key": "audit",
+							"value": "NONE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pay Invoices",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Killbill-ApiKey",
+						"value": "StreamingFromGUI"
+					},
+					{
+						"key": "X-Killbill-ApiSecret",
+						"value": "medialab123"
+					},
+					{
+						"key": "X-Killbill-CreatedBy",
+						"value": "Postman"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46cGFzc3dvcmQ="
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/1.0/kb/accounts/57737390-8a94-4992-8290-86e1d5a6e8c4/invoicePayments?externalPayment=false&paymentAmount=1&targetDate=&pluginProperty=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"1.0",
+						"kb",
+						"accounts",
+						"57737390-8a94-4992-8290-86e1d5a6e8c4",
+						"invoicePayments"
+					],
+					"query": [
+						{
+							"key": "externalPayment",
+							"value": "false"
+						},
+						{
+							"key": "paymentAmount",
+							"value": "1"
+						},
+						{
+							"key": "targetDate",
+							"value": ""
+						},
+						{
+							"key": "pluginProperty",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

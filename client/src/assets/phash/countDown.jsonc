@@ -1,0 +1,89 @@
+{
+  "data": [
+    {
+      "fileName": "count (1).mp4",
+      "total_duration": "00:05.0",
+      "video_url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/countdown_and_colourbars/count%20(1).mp4?authuser=3",
+      "time_code_location": [
+        {
+          "start": "0:00:00.8",
+          "end": "0:00:01.31"
+        },
+        {
+          "start": "0:00:01.33",
+          "end": "0:00:01.39"
+        },
+        {
+          "start": "0:00:02.41",
+          "end": "0:00:04.99"
+        },
+        {
+          "start": "0:00:05.101",
+          "end": "0:00:05.102"
+        }
+      ]
+    },
+    {
+      "fileName": "start_end_slate.mp4",
+      "total_duration": "02:44.6",
+      "video_url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/countdown_and_colourbars/start_end_slate.mp4?authuser=3",
+      "time_code_location": [
+        {
+          "start": "0:00:01.30",
+          "end": "0:00:04.134"
+        },
+        {
+          "start": "0:00:04.137",
+          "end": "0:00:05.151"
+        },
+        {
+          "start": "0:02:38.4749",
+          "end": "0:02:38.4751"
+        },
+        {
+          "start": "0:02:38.4754",
+          "end": "0:02:39.4796"
+        },
+        {
+          "start": "0:02:39.4799",
+          "end": "0:02:40.4808"
+        },
+        {
+          "start": "0:02:40.4811",
+          "end": "0:02:43.4898"
+        },
+        {
+          "start": "0:02:43.4901",
+          "end": "0:02:43.4902"
+        },
+        {
+          "start": "0:02:43.4905",
+          "end": "0:02:43.4907"
+        }
+      ]
+    },
+    {
+      "fileName": "CountdownSlate (1).mp4",
+      "total_duration": "02:50.7",
+      "video_url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/countdown_and_colourbars/CountdownSlate%20(1).mp4?authuser=3",
+      "time_code_location": [
+        {
+          "start": "0:00:00.12",
+          "end": "0:00:00.13"
+        },
+        {
+          "start": "0:00:00.15",
+          "end": "0:00:06.181"
+        },
+        {
+          "start": "0:02:38.4749",
+          "end": "0:02:38.4757"
+        },
+        {
+          "start": "0:02:38.4760",
+          "end": "0:02:43.4919"
+        }
+      ]
+    }
+  ]
+}

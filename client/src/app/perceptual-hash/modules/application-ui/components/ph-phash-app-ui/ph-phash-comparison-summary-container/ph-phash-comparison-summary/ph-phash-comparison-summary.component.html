@@ -1,0 +1,133 @@
+<div class="row justify-content-center align-items-center">
+  <!-- <div class="col-lg-6 col-md-12">
+    <mat-card class="m-2">
+      <mat-card-header>
+        <mat-card-title>Inspected Video</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table mat-table
+               [dataSource]="inspectedVideoData"
+               class="w-100">
+
+          <ng-container matColumnDef="parameter">
+            <th mat-header-cell
+                *matHeaderCellDef>
+              <span>Parameter</span>
+            </th>
+            <td mat-cell
+                *matCellDef="let __">
+              <span>{{ __.parameter }}</span>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="value">
+            <th mat-header-cell
+                *matHeaderCellDef>
+              <span>Value</span>
+            </th>
+            <td mat-cell
+                *matCellDef="let __">
+              <span>{{ __.value }}</span>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row
+              *matHeaderRowDef="displayedColumns;"></tr>
+          <tr mat-row
+              *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-lg-6 col-md-12">
+    <mat-card class="m-2">
+      <mat-card-header>
+        <mat-card-title>Reference Video</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table mat-table
+               [dataSource]="referenceVideoData"
+               class="w-100">
+
+          <ng-container matColumnDef="parameter">
+            <th mat-header-cell
+                *matHeaderCellDef>
+              <span>Parameter</span>
+            </th>
+            <td mat-cell
+                *matCellDef="let __">
+              <span>{{ __.parameter }}</span>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="value">
+            <th mat-header-cell
+                *matHeaderCellDef>
+              <span>Value</span>
+            </th>
+            <td mat-cell
+                *matCellDef="let __">
+              <span>{{ __.value }}</span>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row
+              *matHeaderRowDef="displayedColumns;"></tr>
+          <tr mat-row
+              *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div> -->
+  <div class="col-lg-6 col-md-12">
+    <mat-card class="m-2">
+      <mat-card-header>
+        <mat-card-title>
+          <p class="m-0">Comparative Analysis</p>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table mat-table
+               [dataSource]="comparisonAnalysis"
+               class="w-100">
+
+          <ng-container matColumnDef="parameter">
+            <th mat-header-cell
+                *matHeaderCellDef>
+              <span>Parameter</span>
+            </th>
+            <td mat-cell
+                *matCellDef="let __">
+              <span>{{ __.parameter }}</span>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="value">
+            <th mat-header-cell
+                *matHeaderCellDef>
+              <span>Value</span>
+            </th>
+            <td mat-cell
+                *matCellDef="let __">
+              <span>{{ __.value }}</span>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row
+              *matHeaderRowDef="displayedColumns;"></tr>
+          <tr mat-row
+              *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+        <div class="row mt-4">
+          <div class="col-12">
+            <p class="">{{chartData.inspectedVideo.title}} and
+              {{chartData.referenceVideo.title}} show {{ chartData.inference }}</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

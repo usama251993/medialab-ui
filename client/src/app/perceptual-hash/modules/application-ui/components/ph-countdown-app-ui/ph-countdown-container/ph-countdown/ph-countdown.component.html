@@ -1,0 +1,80 @@
+<ng-container *ngIf="!!chartData; else loadingData">
+
+  <div class="container">
+    <div class="row my-4">
+      <div class="col-12">
+        <p class="h5 m-0 d-flex align-items-center">
+          <button mat-icon-button
+                  (click)="triggerNavigate()"
+                  matTooltip="Back to Perceptual Hash Home"
+                  #tooltip="matTooltip">
+            <mat-icon>chevron_left</mat-icon>
+          </button> Countdown Detection</p>
+      </div>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4 my-4">
+
+        <mat-card class="my-2">
+          <mat-card-title>Description</mat-card-title>
+          <mat-card-content>
+            <mat-list>
+              <mat-list-item class="h-auto">The graph represents the duration of count down
+                slates rendered in between the video</mat-list-item>
+              <mat-list-item class="h-auto">The x-axis of graph represents the duration of video
+                and the bars represent the duration of count down slates rendered in the video
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-divider></mat-divider>
+
+        <mat-card class="my-2">
+          <mat-selection-list [multiple]="false">
+            <div mat-subheader>Please Select The Video</div>
+            <mat-list-option *ngFor="let _ of quickLinks"
+                             (click)="selectGraph(_)">
+              {{ _.fileName}}
+            </mat-list-option>
+          </mat-selection-list>
+        </mat-card>
+
+      </div>
+
+      <div class="col-lg-8">
+        <ng-container *ngIf="!!bChartData; else noVideoSelected">
+          <div class="d-flex justify-content-center align-items-center flex-grow-1 my-4">
+            <app-ph-countdown-chart [bChartData]="bChartData "
+                                    (playVideo$)="playVideo($event)"></app-ph-countdown-chart>
+          </div>
+
+          <mat-divider></mat-divider>
+
+          <div class="d-flex justify-content-center align-items-center flex-grow-1 my-4">
+            <app-theoplayer-container [video]="changeVideo"
+                                      [time]="updateTime"></app-theoplayer-container>
+          </div>
+        </ng-container>
+        <ng-template #noVideoSelected>
+          <p class="m-2">Please select a video from the list</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+
+<ng-template #loadingData>
+  <div class="container h-100 d-flex justify-content-center align-items-center">
+    <div class="d-flex align-items-center">
+      <app-loader-container></app-loader-container>
+      <p class="h5">Loading Data...</p>
+    </div>
+  </div>
+</ng-template>

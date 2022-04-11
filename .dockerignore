@@ -1,0 +1,20 @@
+# System Files
+.DS_Store
+Thumbs.db
+
+# dependencies
+/client/node_modules
+/server/node_modules
+
+# compiled output
+/client/public
+/server/public
+
+# Folders not required by docker
+/client/src/assets/temp
+/documents
+/.vscode
+/docker
+/k8s
+
+

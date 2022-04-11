@@ -1,0 +1,22 @@
+<div class="container m-2">
+  <div class="row">
+    <div class="col-3
+                st-pricing-feature-image-holder">
+      <img [src]="assets.image.src"
+           [alt]="assets.image.alt"
+           class="img-fluid">
+    </div>
+    <div class="col-9">
+      <div class="d-flex mb-2
+                  st-pricing-feature-title">
+        <p class="m-0">{{ assets.title }}</p>
+      </div>
+      <div class="d-flex mt-2 st-pricing-list-holder">
+        <mat-list>
+          <mat-list-item *ngFor="let _ of assets.statements"
+                         class="h-auto">{{ _ }}</mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  </div>
+</div>

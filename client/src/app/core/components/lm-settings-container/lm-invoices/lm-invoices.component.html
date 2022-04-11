@@ -1,0 +1,107 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <mat-accordion class="example-headers-align"
+                     multi>
+        <ng-container *ngFor="let _ of  invoiceData">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                ID: {{_.invoiceId}}
+              </mat-panel-title>
+              <mat-panel-description>
+                Start Date: {{_.invoiceDate}}
+                <mat-icon>account_circle</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <table mat-table
+                   *ngIf="!!invoiceData"
+                   [dataSource]="_.items"
+                   class="w-100">
+
+              <ng-container matColumnDef="description">
+                <th mat-header-cell
+                    *matHeaderCellDef>
+                  <span>Description</span>
+                </th>
+                <td mat-cell
+                    *matCellDef="let __">
+                  <span>{{ __.description }}</span>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="startDate">
+                <th mat-header-cell
+                    *matHeaderCellDef>
+                  <span>Start Date</span>
+                </th>
+                <td mat-cell
+                    *matCellDef="let __">
+                  <span>{{ __.startDate }}</span>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="endDate">
+                <th mat-header-cell
+                    *matHeaderCellDef>
+                  <span>End Date</span>
+                </th>
+                <td mat-cell
+                    *matCellDef="let __">
+                  <span>{{ __.endDate }}</span>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="subscriptionId">
+                <th mat-header-cell
+                    *matHeaderCellDef>
+                  <span>Subscription ID</span>
+                </th>
+                <td mat-cell
+                    *matCellDef="let __">
+                  <span>{{ __.subscriptionId }}</span>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="amount">
+                <th mat-header-cell
+                    *matHeaderCellDef>
+                  <span>Amount</span>
+                </th>
+                <td mat-cell
+                    *matCellDef="let __">
+                  <span>{{ __.amount }}</span>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row
+                  *matHeaderRowDef="displayedColumns;"></tr>
+              <tr mat-row
+                  *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            </table>
+
+            <div class="row my-4">
+              <div class="col-8"></div>
+              <div class="col-2">
+                <p>Invoice Total</p>
+                <p>Credits</p>
+                <p>Refunded</p>
+                <p>Balance</p>
+              </div>
+              <div class="col-2">
+                <p>{{_.amount}}</p>
+                <p>{{_.creditAdj}}</p>
+                <p>{{_.refundAdj}}</p>
+                <p>{{_.balance}}</p>
+              </div>
+            </div>
+
+          </mat-expansion-panel>
+        </ng-container>
+
+      </mat-accordion>
+    </div>
+  </div>
+</div>

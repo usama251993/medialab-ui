@@ -1,0 +1,39 @@
+// @import '../../../st-app-shell/st-app-shell.component.scss';
+
+div.st-overview-title {
+  p {
+    color: white;
+    // font-family: "BwModelicaSS02-Bold", sans-serif;
+    font-size: 28px;
+    font-family: LTIMediaLabs;
+    line-height: normal;
+  }
+}
+
+div.st-overview-card-title {
+  p {
+    color: #000078;
+    // font-family: "BwModelicaSS02-Bold", sans-serif;
+    font-size: 20px;
+    font-family: LTIMediaLabs;
+    line-height: normal;
+  }
+}
+
+div.st-overview-container {
+  background: transparent
+    linear-gradient(
+      180deg,
+      var(--unnamed-color-0d0da6) 0%,
+      #114dda 40%,
+      #005ffcd1 100%
+    )
+    0% 0% no-repeat padding-box;
+  background: transparent
+    linear-gradient(180deg, #0d0da6 0%, #114dda 40%, #005ffcd1 100%) 0% 0%
+    no-repeat padding-box;
+}
+
+div.st-overview-card {
+  background-color: white;
+}

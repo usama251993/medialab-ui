@@ -1,0 +1,111 @@
+<ng-container *ngIf="!!chartOverviewData; else loadingData">
+
+  <ng-container *ngIf="!localFlag.overview; else resolveFailed">
+    <div class="container">
+      <div class="row my-4">
+        <div class="col-12">
+          <p class="h5 m-0 d-flex align-items-center">
+            <button mat-icon-button
+                    (click)="gotoBucketSelection()"
+                    matTooltip="Back to Bucket Selection"
+                    #tooltip="matTooltip">
+              <mat-icon>chevron_left</mat-icon>
+            </button> Analysis of videos in {{ chartOverviewData.bucket }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <mat-card class="m-4">
+            <mat-card-header>
+              <mat-card-title>Description</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <mat-list>
+                <mat-list-item class="h-auto my-2">The Matrix diagram provides and overview of
+                  all
+                  the
+                  videos compared</mat-list-item>
+                <mat-list-item class="h-auto my-2">Warmer color indicates higher mean hamming
+                  distance
+                  between two videos which are compared</mat-list-item>
+                <mat-list-item class="h-auto my-2">Higher mean hamming distance represents more
+                  average
+                  dissimilarity between the videos</mat-list-item>
+                <mat-list-item class="h-auto my-2">The exact mean hamming distance represented
+                  by
+                  each
+                  color is described in the legend</mat-list-item>
+              </mat-list>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <app-ph-matrix [matrixData]="matrixData"
+                         (triggerDataPointUpdate$)="updateDataPoint($event)">
+          </app-ph-matrix>
+        </div>
+      </div>
+    </div>
+
+    <ng-container *ngIf="!localFlag.dataPoint; else selectDataPoint">
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-12">
+            <app-ph-phash-comparison-summary-container [chartData]="matrixDataPoint">
+            </app-ph-phash-comparison-summary-container>
+          </div>
+        </div>
+        <ng-container
+                      *ngIf="matrixDataPoint.inspectedVideo.title !== matrixDataPoint.referenceVideo.title">
+          <div class="row justify-content-center align-items center my-2">
+            <div class="col-md-4">
+              <button mat-raised-button
+                      color="primary"
+                      class="w-100"
+                      (click)="gotoResults(matrixDataPoint)">Detailed
+                comparison<mat-icon>launch</mat-icon>
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+
+    <ng-template #selectDataPoint>
+      <p class="m-0">Please select one cell from the graph</p>
+    </ng-template>
+  </ng-container>
+
+  <ng-template #resolveFailed>
+    <div class="container h-100 d-flex justify-content-center align-items-center">
+      <mat-card>
+        <mat-card-content>
+          <p class="h4">No Storage Bucket selected</p>
+          <p class="m-0">
+            Try selecting another bucket from <a mat-button
+               color="primary"
+               (click)="gotoBucketSelection()">here</a>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </ng-template>
+
+</ng-container>
+
+<ng-template #loadingData>
+  <div class="container h-100 d-flex justify-content-center align-items-center">
+    <div class="d-flex align-items-center">
+      <app-loader-container></app-loader-container>
+      <p class="h5">Loading Data...</p>
+    </div>
+  </div>
+</ng-template>

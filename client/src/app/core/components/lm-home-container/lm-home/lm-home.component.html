@@ -1,0 +1,36 @@
+<div class="container-fluid p-0 
+            lm-home-container">
+
+  <!-- carousel-->
+  <div>
+    <app-lm-home-carousel [assets]="assets.carousel"
+                          (triggerNavigate$)="triggerNavigate()">
+    </app-lm-home-carousel>
+  </div>
+
+  <!-- offerings -->
+  <div class="lm-home-section-holder">
+    <app-lm-home-offerings [assets]="assets.offerings"
+                           (triggerNavigate$)="triggerNavigate()">
+    </app-lm-home-offerings>
+  </div>
+
+  <!-- about -->
+  <div class="lm-home-section-holder">
+    <app-lm-home-about [assets]="assets.about"></app-lm-home-about>
+
+  </div>
+  <!-- solution -->
+  <div class="lm-home-section-holder">
+    <app-lm-home-solutions [assets]="assets.solution"
+                           (triggerNavigate$)="triggerNavigate()">
+    </app-lm-home-solutions>
+  </div>
+
+  <!-- customers -->
+  <div class="lm-home-section-holder">
+    <app-lm-home-customers [assets]="assets.customers">
+    </app-lm-home-customers>
+  </div>
+
+</div>

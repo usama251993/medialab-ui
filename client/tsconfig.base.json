@@ -1,0 +1,64 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "lib": [
+      "dom",
+      "es2018"
+    ],
+    "module": "es2020",
+    "moduleResolution": "node",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "target": "es2015",
+    "paths": {
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+      "@lm-core/*": [
+        "src/app/core/*"
+      ],
+      "@cd-core/*": [
+        "src/app/content-dedup/*"
+      ],
+      "@cd-business/*": [
+        "src/app/content-dedup/modules/business-ui/*"
+      ],
+      "@cd-app/*": [
+        "src/app/content-dedup/modules/application-ui/*"
+      ],
+      "@ph-core/*": [
+        "src/app/perceptual-hash/*"
+      ],
+      "@ph-business/*": [
+        "src/app/perceptual-hash/modules/business-ui/*"
+      ],
+      "@ph-app/*": [
+        "src/app/perceptual-hash/modules/application-ui/*"
+      ],
+      "@st-core/*": [
+        "src/app/suite-st/*"
+      ],
+      "@ia-core/*": [
+        "src/app/image-analytics/*"
+      ],
+      "@ia-business/*": [
+        "src/app/image-analytics/modules/business-ui/*"
+      ],
+      "@ia-app/*": [
+        "src/app/image-analytics/modules/application-ui/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@environments/*": [
+        "src/environments/*"
+      ],
+    }
+  }
+}

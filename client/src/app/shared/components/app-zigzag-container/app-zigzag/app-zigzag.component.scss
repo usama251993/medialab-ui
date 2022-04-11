@@ -1,0 +1,30 @@
+div.app-zigzag-item-holder {
+  display: grid;
+  grid-gap: 24px;
+
+  div.app-zigzag-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+
+    div.app-zigzag-side {
+      div.app-banner-title {
+        p {
+          color: #000078;
+          font-size: 28px;
+          font-family: LTIMediaLabs;
+          line-height: normal;
+        }
+      }
+    }
+
+    &:nth-child(even) {
+      div.app-zigzag-side:nth-child(odd) {
+        grid-area: 1/2/2/3;
+      }
+      div.app-zigzag-side:nth-child(even) {
+        grid-area: 1/1/2/2;
+      }
+    }
+  }
+}

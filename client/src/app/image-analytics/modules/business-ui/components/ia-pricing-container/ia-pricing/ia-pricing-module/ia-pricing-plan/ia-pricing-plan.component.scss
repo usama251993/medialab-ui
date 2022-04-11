@@ -1,0 +1,26 @@
+mat-card-title.ia-pricing-plan-title {
+  font-size: 24px;
+  line-height: normal;
+  color: #0707a7;
+}
+
+div.ia-pricing-plan-price {
+  p {
+    font-size: 48px;
+    line-height: normal;
+  }
+}
+
+div.ia-pricing-plan-overview {
+  p {
+    font-size: 16px;
+  }
+}
+
+div.ia-offerings-licd-holder {
+  mat-list {
+    mat-licd-item {
+      min-height: 48px;
+    }
+  }
+}

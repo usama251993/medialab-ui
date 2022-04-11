@@ -1,0 +1,95 @@
+{
+  // editor
+  "editor.find.autoFindInSelection": "multiline",
+  "editor.fontFamily": "'Fira Code', 'Consolas', monospace",
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.hover.delay": 500,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.scale": 2,
+  "editor.minimap.size": "proportional",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  "editor.quickSuggestionsDelay": 50,
+  "editor.renameOnType": true,
+  "editor.renderWhitespace": "all",
+  "editor.smoothScrolling": true,
+  "editor.suggest.insertMode": "replace",
+  "editor.suggest.statusBar.visible": true,
+  "editor.tabSize": 2,
+  // workbench
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.list.smoothScrolling": true,
+  "workbench.settings.openDefaultSettings": true,
+  "workbench.settings.useSplitJSON": true,
+  // git
+  "git.path": "C:\\Users\\10619647\\AppData\\Local\\Git\\bin\\git.exe",
+  "git.autofetch": true,
+  // gitlens
+  "gitlens.codeLens.includeSingleLineSymbols": true,
+  // files
+  "files.insertFinalNewline": true,
+  // zen mode
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideTabs": false,
+  // explorer
+  "explorer.compactFolders": false,
+  // search
+  "search.collapseResults": "auto",
+  "search.searchOnTypeDebouncePeriod": 750,
+  "search.showLineNumbers": true,
+  "search.sortOrder": "countDescending",
+  // html
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "html.format.endWithNewline": true,
+  "html.format.wrapAttributes": "force-aligned",
+  "html.format.wrapLineLength": 96,
+  // javascript
+  "javascript.format.semicolons": "remove",
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "javascript.preferences.importModuleSpecifierEnding": "minimal",
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.suggest.completeFunctionCalls": true,
+  // typescript
+  "typescript.preferences.importModuleSpecifierEnding": "minimal",
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.suggest.completeFunctionCalls": true,
+  "typescript.workspaceSymbols.scope": "currentProject",
+  // css
+  "css.completion.completePropertyWithSemicolon": false,
+  "css.lint.duplicateProperties": "warning",
+  "css.lint.hexColorLength": "warning",
+  "css.lint.important": "error",
+  // scss
+  "scss.completion.completePropertyWithSemicolon": false,
+  "scss.lint.duplicateProperties": "warning",
+  "scss.lint.hexColorLength": "warning",
+  "scss.lint.important": "error",
+  // scss-formatter
+  "scssFormatter.singleQuote": true,
+  "scssFormatter.printWidth": 72,
+  // breadcrumbs
+  "breadcrumbs.filePath": "last",
+  "breadcrumbs.symbolPath": "last",
+  // merge-conflict
+  "merge-conflict.autoNavigateNextConflict.enabled": true,
+  // others
+  "markdown.preview.fontFamily": "'Fira Sans', 'Calibri', sans-serif",
+  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+  "files.eol": "\r\n",
+  "terminal.integrated.fontWeightBold": "normal",
+  "bracket-pair-colorizer-2.colors": [
+    "Gold",
+    "Orchid",
+    "LightSkyBlue",
+    "#00e676"
+  ],
+  "svg.preview.background": "transparent",
+}

@@ -1,0 +1,18 @@
+## Docker Compose Version
+version: "3.7"
+
+## Services Definition
+services:
+  ## `ui` Service
+  ui:
+    ## `ui` Service Build context and target name
+    build:
+      context: ./
+      target: ui
+
+    ## `ui` Service Target to Google Container Registry
+    image: gcr.io/viacom-poc/medialabs/ui
+
+    ## `ui` Service Exposing ports
+    ports:
+      - "3000:3000"

@@ -1,0 +1,26 @@
+// @import "../../../st-app-shell/st-app-shell.component.scss";
+
+div.st-banner-container {
+  position: relative;
+
+  div.st-banner-text-holder {
+    position: absolute;
+
+    div.st-banner-title {
+      p {
+        color: #000078;
+        font-size: 64px;
+        font-family: LTIMediaLabsSS02Bold;
+        line-height: normal;
+      }
+    }
+
+    div.st-banner-statement-holder {
+      p {
+        color: #121212;
+        font-size: 28px;
+        line-height: normal;
+      }
+    }
+  }
+}

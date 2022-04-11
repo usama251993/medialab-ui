@@ -1,0 +1,19 @@
+div.lm-cookie-bar-container {
+  position: fixed;
+  bottom: 8px;
+  left: 0px;
+  right: 0px;
+  z-index: 10;
+
+  div.lm-cookie-bar-content-holder {
+    div.lm-cookie-bar-content {
+      border-radius: 8px;
+
+      div.lm-cookie-bar-message {
+        span {
+          font-size: 10pt;
+        }
+      }
+    }
+  }
+}

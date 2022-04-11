@@ -1,0 +1,912 @@
+{
+  "tag": "bucketA",
+  "data": null,
+  "children": [
+    {
+      "tag": "PH_Test1_A",
+      "data": null,
+      "children": [
+        {
+          "tag": "",
+          "data": {
+            "index": 40,
+            "inspectedVideo": {
+              "title": "PH_Test1_A",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:03.170000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_D",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:03.170000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "similarityPercent": 85,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.06,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 41,
+            "inspectedVideo": {
+              "title": "PH_Test1_A",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:03.170000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_F",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:03.170000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "similarityPercent": 85,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.06,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 42,
+            "inspectedVideo": {
+              "title": "PH_Test1_A",
+              "extension": "mp4",
+              "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data/PH_Test1_A.mp4",
+              "duration": "0:04:33.073000",
+              "fps": 29.97002997,
+              "type": "video/mp4"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_E",
+              "extension": "mp4",
+              "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data/PH_Test1_E.mp4",
+              "duration": "0:04:33.073000",
+              "fps": 29.97002997,
+              "type": "video/mp4"
+            },
+            "similarityPercent": 95,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 0.37,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 44,
+            "inspectedVideo": {
+              "title": "PH_Test1_A",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:02.436000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_C",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:02.436000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "similarityPercent": 86,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.04,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 46,
+            "inspectedVideo": {
+              "title": "PH_Test1_A",
+              "extension": "mp4",
+              "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data/PH_Test1_A.mp4",
+              "duration": "0:04:33.073000",
+              "fps": 29.97002997,
+              "type": "video/mp4"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_B",
+              "extension": "mp4",
+              "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data/PH_Test1_B.mp4",
+              "duration": "0:04:33.073000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "similarityPercent": 90,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 0.73,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "tag": "PH_Test1_D",
+      "data": null,
+      "children": [
+        {
+          "tag": "",
+          "data": {
+            "index": 60,
+            "inspectedVideo": {
+              "title": "PH_Test1_D",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:00",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_F",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:00",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "similarityPercent": 100,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 0.0,
+            "inference": "Match",
+            "radius": 100
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 61,
+            "inspectedVideo": {
+              "title": "PH_Test1_D",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:04.571000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_E",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:04.571000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "similarityPercent": 85,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.13,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 63,
+            "inspectedVideo": {
+              "title": "PH_Test1_D",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:01.235000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_C",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:01.235000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "similarityPercent": 88,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 0.82,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 65,
+            "inspectedVideo": {
+              "title": "PH_Test1_D",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:14.481000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_B",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:14.481000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "similarityPercent": 79,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.77,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 40,
+            "inspectedVideo": {
+              "title": "PH_Test1_D",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:03.170000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_A",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:03.170000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "similarityPercent": 85,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.06,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "tag": "PH_Test1_F",
+      "data": null,
+      "children": [
+        {
+          "tag": "",
+          "data": {
+            "index": 41,
+            "inspectedVideo": {
+              "title": "PH_Test1_F",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:03.170000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_A",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:03.170000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "similarityPercent": 85,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.06,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 60,
+            "inspectedVideo": {
+              "title": "PH_Test1_F",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:00",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_D",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:00",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "similarityPercent": 100,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 0.0,
+            "inference": "Match",
+            "radius": 100
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 69,
+            "inspectedVideo": {
+              "title": "PH_Test1_F",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:04.571000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_E",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:04.571000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "similarityPercent": 85,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.13,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 71,
+            "inspectedVideo": {
+              "title": "PH_Test1_F",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:01.235000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_C",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:01.235000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "similarityPercent": 88,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 0.82,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 73,
+            "inspectedVideo": {
+              "title": "PH_Test1_F",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:14.481000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_B",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:14.481000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "similarityPercent": 79,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.77,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "tag": "PH_Test1_E",
+      "data": null,
+      "children": [
+        {
+          "tag": "",
+          "data": {
+            "index": 69,
+            "inspectedVideo": {
+              "title": "PH_Test1_E",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:04.571000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_F",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:04.571000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "similarityPercent": 85,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.13,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 61,
+            "inspectedVideo": {
+              "title": "PH_Test1_E",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:04.571000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_D",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:04.571000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "similarityPercent": 85,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.13,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 42,
+            "inspectedVideo": {
+              "title": "PH_Test1_E",
+              "extension": "mp4",
+              "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data/PH_Test1_E.mp4",
+              "duration": "0:04:33.073000",
+              "fps": 29.97002997,
+              "type": "video/mp4"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_A",
+              "extension": "mp4",
+              "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data/PH_Test1_A.mp4",
+              "duration": "0:04:33.073000",
+              "fps": 29.97002997,
+              "type": "video/mp4"
+            },
+            "similarityPercent": 95,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 0.37,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 78,
+            "inspectedVideo": {
+              "title": "PH_Test1_E",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:03.704000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_C",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:03.704000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "similarityPercent": 86,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.08,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 80,
+            "inspectedVideo": {
+              "title": "PH_Test1_E",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:10.310000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_B",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:10.310000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "similarityPercent": 80,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.65,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "tag": "PH_Test1_C",
+      "data": null,
+      "children": [
+        {
+          "tag": "",
+          "data": {
+            "index": 44,
+            "inspectedVideo": {
+              "title": "PH_Test1_C",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:02.436000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_A",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:02.436000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "similarityPercent": 86,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.04,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 63,
+            "inspectedVideo": {
+              "title": "PH_Test1_C",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:01.235000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_D",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:01.235000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "similarityPercent": 88,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 0.82,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 71,
+            "inspectedVideo": {
+              "title": "PH_Test1_C",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:01.235000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_F",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:01.235000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "similarityPercent": 88,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 0.82,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 91,
+            "inspectedVideo": {
+              "title": "PH_Test1_C",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:11.645000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_B",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:11.645000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "similarityPercent": 80,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.69,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 78,
+            "inspectedVideo": {
+              "title": "PH_Test1_C",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:03.704000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_E",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:03.704000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "similarityPercent": 86,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.08,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "tag": "PH_Test1_B",
+      "data": null,
+      "children": [
+        {
+          "tag": "",
+          "data": {
+            "index": 46,
+            "inspectedVideo": {
+              "title": "PH_Test1_B",
+              "extension": "mp4",
+              "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data/PH_Test1_B.mp4",
+              "duration": "0:04:33.073000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_A",
+              "extension": "mp4",
+              "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data/PH_Test1_A.mp4",
+              "duration": "0:04:33.073000",
+              "fps": 29.97002997,
+              "type": "video/mp4"
+            },
+            "similarityPercent": 90,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 0.73,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 65,
+            "inspectedVideo": {
+              "title": "PH_Test1_B",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:14.481000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_D",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:14.481000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "similarityPercent": 79,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.77,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 73,
+            "inspectedVideo": {
+              "title": "PH_Test1_B",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:14.481000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_F",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:14.481000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "similarityPercent": 79,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.77,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 80,
+            "inspectedVideo": {
+              "title": "PH_Test1_B",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:10.310000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_E",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:10.310000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "similarityPercent": 80,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.65,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        },
+        {
+          "tag": "",
+          "data": {
+            "index": 91,
+            "inspectedVideo": {
+              "title": "PH_Test1_B",
+              "extension": "mp4",
+              "url": "",
+              "duration": "0:00:11.645000",
+              "fps": 24,
+              "type": "video/mp4"
+            },
+            "referenceVideo": {
+              "title": "PH_Test1_C",
+              "extension": "mxf",
+              "url": "",
+              "duration": "0:00:11.645000",
+              "fps": 24,
+              "type": "application/mxf"
+            },
+            "similarityPercent": 80,
+            "hammingDistances": [],
+            "timeCodes": [],
+            "meanHammingDistance": 1.69,
+            "inference": "Very Close Perceptibility",
+            "radius": 80
+          },
+          "children": []
+        }
+      ]
+    }
+  ]
+}

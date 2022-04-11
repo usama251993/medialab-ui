@@ -1,0 +1,91 @@
+<div class="container h-100
+            lm-verify-container">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-lg-6">
+      <mat-card>
+
+        <mat-card-title>
+          <p class="m-0 text-center text-sm-left">{{ assets._.title }}</p>
+        </mat-card-title>
+
+        <mat-card-content class="pt-4">
+
+          <div class="d-flex my-2">
+            <p class="m-0">{{ assets._.content }}</p>
+          </div>
+
+          <ng-container *ngIf="componentFlags.verify.visible">
+            <div class="d-flex flex-column flex-sm-row align-items-center">
+              <p class="m-0">{{ assets.verify.message._ }}</p>
+              <!-- <a mat-button
+                 color="accent"
+                 type="button"
+                 class="my-2"
+                 (click)="verifyCode()">{{ assets.verify.button.text }}</a> -->
+              <app-button-container [disabled]="assets.verify.button.disabled"
+                                    [assets]="assets.verify.button"
+                                    (triggerButton$)="verifyCode()"></app-button-container>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="componentFlags.verify.progress">
+            <div class="d-flex flex-column flex-sm-row align-items-center">
+              <app-loader-container></app-loader-container>
+              <p class="my-2">{{ assets.verify.message.progress }}</p>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="componentFlags.verify.success">
+            <div class="d-flex align-items-center">
+              <mat-icon class="mr-2">check</mat-icon>
+              <p class="m-0">{{ assets.verify.message.success }}</p>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="componentFlags.verify.fail">
+            <div class="d-flex align-items-center">
+              <mat-icon class="mr-2">error</mat-icon>
+              <p class="m-0">{{ assets.verify.message.failed }}</p>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="componentFlags.resend.visible">
+            <div class="d-flex flex-column flex-sm-row align-items-center">
+              <p class="m-0">{{ assets.resend.message._ }}</p>
+              <!-- <a mat-button
+                 color="accent"
+                 type="button"
+                 class="my-2"
+                 (click)="resendCode(user)">{{ assets.resend.button.text }}</a> -->
+              <app-button-container [disabled]="assets.resend.button.disabled"
+                                    [assets]="assets.resend.button"
+                                    (triggerButton$)="resendCode(user)"></app-button-container>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="componentFlags.resend.progress">
+            <div class="d-flex flex-column flex-sm-row align-items-center">
+              <app-loader-container></app-loader-container>
+              <p class="my-2">{{ assets.resend.message.progress }}</p>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="componentFlags.resend.success">
+            <div class="d-flex align-items-center">
+              <mat-icon class="mr-2">check</mat-icon>
+              <p class="m-0">{{ assets.resend.message.success }}</p>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="componentFlags.resend.fail">
+            <div class="d-flex align-items-center">
+              <mat-icon class="mr-2">error</mat-icon>
+              <p class="m-0">{{ assets.resend.message.failed }}</p>
+            </div>
+          </ng-container>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+@import '../lm-home.component.scss';
+
+div.lm-offerings-container {
+  div.lm-offering {
+    div.lm-offering-video {
+      div.lm-video-placeholder {
+        height: 150px;
+        background-color: #00000040;
+        width: 300px;
+      }
+    }
+  }
+}

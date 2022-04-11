@@ -1,0 +1,313 @@
+{
+  "bucket": "Test Bucket 1",
+  "videos": [
+    {
+      "index": 0,
+      "title": "PH_Test1_A",
+      "extension": "mp4",
+      "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data_converted_files/Test1/PH_Test1_A.mp4",
+      "duration": "0:04:33.073000",
+      "fps": 0,
+      "type": "video/mp4"
+    },
+    {
+      "index": 1,
+      "title": "PH_Test1_B",
+      "extension": "mp4",
+      "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data_converted_files/Test1/PH_Test1_B.mp4",
+      "duration": "0:04:33.073000",
+      "fps": 29.97002997,
+      "type": "video/mp4"
+    },
+    {
+      "index": 2,
+      "title": "PH_Test1_C",
+      "extension": "mxf",
+      "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data_converted_files/Test1/PH_Test1_C.mp4",
+      "duration": "0:04:33.073000",
+      "fps": 29.97002997,
+      "type": "application/mxf"
+    },
+    {
+      "index": 3,
+      "title": "PH_Test1_D",
+      "extension": "mxf",
+      "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data_converted_files/Test1/PH_Test1_D.mp4",
+      "duration": "0:04:33.073000",
+      "fps": 29.97002997,
+      "type": "application/mxf"
+    },
+    {
+      "index": 4,
+      "title": "PH_Test1_E",
+      "extension": "mp4",
+      "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data_converted_files/Test1/PH_Test1_E.mp4",
+      "duration": "0:04:33.073000",
+      "fps": 29.97002997,
+      "type": "video/mp4"
+    },
+    {
+      "index": 5,
+      "title": "PH_Test1_F",
+      "extension": "mxf",
+      "url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/discovery_data_converted_files/Test1/PH_Test1_F.mp4",
+      "duration": "0:04:27.467000",
+      "fps": 29.97002997,
+      "type": "application/mxf"
+    }
+  ],
+  "comparisons": [
+    {
+      "inspectedVideoIndex": 0,
+      "referenceVideoIndex": 0,
+      "meanHammingDistance": 0,
+      "similarityPercentage": 100,
+      "inference": "Exact Match"
+    },
+    {
+      "inspectedVideoIndex": 0,
+      "referenceVideoIndex": 1,
+      "meanHammingDistance": 1.63,
+      "similarityPercentage": 74,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 0,
+      "referenceVideoIndex": 2,
+      "meanHammingDistance": 1.037,
+      "similarityPercentage": 82,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 0,
+      "referenceVideoIndex": 3,
+      "meanHammingDistance": 1.057,
+      "similarityPercentage": 81,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 0,
+      "referenceVideoIndex": 4,
+      "meanHammingDistance": 1.008,
+      "similarityPercentage": 82,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 0,
+      "referenceVideoIndex": 5,
+      "meanHammingDistance": 1.057,
+      "similarityPercentage": 81,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 1,
+      "referenceVideoIndex": 0,
+      "meanHammingDistance": 1.63,
+      "similarityPercentage": 74,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 1,
+      "referenceVideoIndex": 1,
+      "meanHammingDistance": 0,
+      "similarityPercentage": 100,
+      "inference": "Exact Match"
+    },
+    {
+      "inspectedVideoIndex": 1,
+      "referenceVideoIndex": 2,
+      "meanHammingDistance": 1.692,
+      "similarityPercentage": 73,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 1,
+      "referenceVideoIndex": 3,
+      "meanHammingDistance": 1.77,
+      "similarityPercentage": 72,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 1,
+      "referenceVideoIndex": 4,
+      "meanHammingDistance": 1.654,
+      "similarityPercentage": 75,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 1,
+      "referenceVideoIndex": 5,
+      "meanHammingDistance": 1.77,
+      "similarityPercentage": 72,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 2,
+      "referenceVideoIndex": 0,
+      "meanHammingDistance": 1.037,
+      "similarityPercentage": 82,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 2,
+      "referenceVideoIndex": 1,
+      "meanHammingDistance": 1.692,
+      "similarityPercentage": 73,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 2,
+      "referenceVideoIndex": 2,
+      "meanHammingDistance": 0,
+      "similarityPercentage": 100,
+      "inference": "Exact Match"
+    },
+    {
+      "inspectedVideoIndex": 2,
+      "referenceVideoIndex": 3,
+      "meanHammingDistance": 0.817,
+      "similarityPercentage": 84,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 2,
+      "referenceVideoIndex": 4,
+      "meanHammingDistance": 1.078,
+      "similarityPercentage": 82,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 2,
+      "referenceVideoIndex": 5,
+      "meanHammingDistance": 0.817,
+      "similarityPercentage": 84,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 3,
+      "referenceVideoIndex": 0,
+      "meanHammingDistance": 1.057,
+      "similarityPercentage": 81,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 3,
+      "referenceVideoIndex": 1,
+      "meanHammingDistance": 1.77,
+      "similarityPercentage": 72,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 3,
+      "referenceVideoIndex": 2,
+      "meanHammingDistance": 0.817,
+      "similarityPercentage": 84,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 3,
+      "referenceVideoIndex": 3,
+      "meanHammingDistance": 0,
+      "similarityPercentage": 100,
+      "inference": "Exact Match"
+    },
+    {
+      "inspectedVideoIndex": 3,
+      "referenceVideoIndex": 4,
+      "meanHammingDistance": 1.13,
+      "similarityPercentage": 81,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 3,
+      "referenceVideoIndex": 5,
+      "meanHammingDistance": 0.0,
+      "similarityPercentage": 100,
+      "inference": "Exact Match"
+    },
+    {
+      "inspectedVideoIndex": 4,
+      "referenceVideoIndex": 0,
+      "meanHammingDistance": 1.008,
+      "similarityPercentage": 82,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 4,
+      "referenceVideoIndex": 1,
+      "meanHammingDistance": 1.654,
+      "similarityPercentage": 75,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 4,
+      "referenceVideoIndex": 2,
+      "meanHammingDistance": 1.078,
+      "similarityPercentage": 82,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 4,
+      "referenceVideoIndex": 3,
+      "meanHammingDistance": 1.13,
+      "similarityPercentage": 81,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 4,
+      "referenceVideoIndex": 4,
+      "meanHammingDistance": 0,
+      "similarityPercentage": 100,
+      "inference": "Exact Match"
+    },
+    {
+      "inspectedVideoIndex": 4,
+      "referenceVideoIndex": 5,
+      "meanHammingDistance": 1.13,
+      "similarityPercentage": 81,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 5,
+      "referenceVideoIndex": 0,
+      "meanHammingDistance": 1.057,
+      "similarityPercentage": 81,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 5,
+      "referenceVideoIndex": 1,
+      "meanHammingDistance": 1.77,
+      "similarityPercentage": 72,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 5,
+      "referenceVideoIndex": 2,
+      "meanHammingDistance": 0.817,
+      "similarityPercentage": 84,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 5,
+      "referenceVideoIndex": 3,
+      "meanHammingDistance": 0.0,
+      "similarityPercentage": 100,
+      "inference": "Exact Match"
+    },
+    {
+      "inspectedVideoIndex": 5,
+      "referenceVideoIndex": 4,
+      "meanHammingDistance": 1.13,
+      "similarityPercentage": 81,
+      "inference": "Very Close Perceptibility"
+    },
+    {
+      "inspectedVideoIndex": 5,
+      "referenceVideoIndex": 5,
+      "meanHammingDistance": 0,
+      "similarityPercentage": 100,
+      "inference": "Exact Match"
+    }
+  ]
+}

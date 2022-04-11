@@ -1,0 +1,40 @@
+<mat-card class="my-4">
+  <mat-card-content>
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <div class="d-flex align-items-center my-4">
+          <div class="d-flex align-items-center mr-1">
+            <button mat-icon-button
+                    (click)="triggerNavigate()"
+                    matTooltip="Back to Bucket Selection"
+                    #tooltip="matTooltip">
+              <mat-icon>chevron_left</mat-icon>
+            </button>
+            <a mat-icon-button
+               color="accent"
+               type="button"
+               [href]="bucketLocation"
+               target="_blank"
+               matTooltip="Go to Bucket"
+               matTooltipShowDelay="500"
+               #tooltip="matTooltip">
+              <mat-icon>cloud</mat-icon>
+            </a>
+          </div>
+          <div class="ml-1 w-100">
+            <p class="h5 m-0 ia-result-metadata-bucket">{{ bucketLocation }}</p>
+          </div>
+        </div>
+      </div>
+
+      <ng-container *ngIf="!!sampleCount">
+        <div class="col-lg-4">
+          <div class="d-flex justify-content-end align-items-center">
+            <p class="h5 m-0">Sample Size: {{ sampleCount }}</p>
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+  </mat-card-content>
+</mat-card>

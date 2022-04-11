@@ -1,0 +1,80 @@
+[
+  {
+    "vid_id": "VID_V14LD",
+    "title": "Avengers-BlankVideoatEnd.mp4",
+    "track": "Drop",
+    "format": "AVC",
+    "encoding_format": "video/H264",
+    "bit_rate": "984440",
+    "sample_rate": "44.1",
+    "timecode_location": "144.686,176.009",
+    "duration": "176.05",
+    "video_url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/final_videos/Avengers-BlankVideoatEnd.mp4",
+    "video_type": "video/mp4"
+  },
+  {
+    "vid_id": "VID_U62YP",
+    "title": "JungleBookTrailer-10SecBlankScreenatStartNend.mp4",
+    "track": "Drop",
+    "format": "AVC",
+    "encoding_format": "video/H264",
+    "bit_rate": "751278",
+    "sample_rate": "44.1",
+    "timecode_location": "0.023,11.0869,145.638,156.653",
+    "duration": "156.72",
+    "video_url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/final_videos/JungleBookTrailer-10SecBlankScreenatStartNend.mp4",
+    "video_type": "video/mp4"
+  },
+  {
+    "vid_id": "VID_H100RQ",
+    "title": "ThorTrailer-10SecBlankScreenatStartNEnd.mp4",
+    "track": "Drop",
+    "format": "AVC",
+    "encoding_format": "video/H264",
+    "bit_rate": "1164572",
+    "sample_rate": "44.1",
+    "timecode_location": "0.023,10.5864,162.733,173.253",
+    "duration": "173.32",
+    "video_url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/final_videos/ThorTrailer-10SecBlankScreenatStartNEnd.mp4",
+    "video_type": "video/mp4"
+  },
+  {
+    "vid_id": "VID_H97JT",
+    "title": "ThorTrailer-10secBlankScreenatStart.mp4",
+    "track": "Drop",
+    "format": "AVC",
+    "encoding_format": "video/H264",
+    "bit_rate": "1239538",
+    "sample_rate": "44.1",
+    "timecode_location": "0.023,10.5864",
+    "duration": "162.77",
+    "video_url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/final_videos/ThorTrailer-10secBlankScreenatStart.mp4",
+    "video_type": "video/mp4"
+  },
+  {
+    "vid_id": "VID_H61SB",
+    "title": "ThorTrailerOFFICIAL-BlankScreenatEnd.mp4",
+    "track": "Drop",
+    "format": "AVC",
+    "encoding_format": "video/H264",
+    "bit_rate": "1239486",
+    "sample_rate": "44.1",
+    "timecode_location": "152.172,162.692",
+    "duration": "162.76",
+    "video_url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/final_videos/ThorTrailerOFFICIAL-BlankScreenatEnd.mp4",
+    "video_type": "video/mp4"
+  },
+  {
+    "vid_id": "VID_I93NF",
+    "title": "Titanic - Official Trailer (HD)-480p.mp4",
+    "track": "Drop",
+    "format": "AVC",
+    "encoding_format": "video/H264",
+    "bit_rate": "665251",
+    "sample_rate": "44.1",
+    "timecode_location": "0.023,10.5864",
+    "duration": "116.54",
+    "video_url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/final_videos/Titanic%20-%20Official%20Trailer%20(HD)-480p.mp4",
+    "video_type": "video/mp4"
+  }
+]

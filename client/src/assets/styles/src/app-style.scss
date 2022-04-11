@@ -1,0 +1,20 @@
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+button {
+  &:focus {
+    outline: 0px #00000000;
+    border: 0px solid #00000000;
+  }
+}
+
+div.app-backdrop-gray {
+  background-color: #000000c8;
+}

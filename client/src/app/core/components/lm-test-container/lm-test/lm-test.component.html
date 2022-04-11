@@ -1,0 +1,466 @@
+<div class="container">
+  <div class="d-flex justify-content-center align-items center">
+    <p class="h3 my-2">Test backend APIs here</p>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="row my-4">
+        <div class="col-sm-12">
+          <span class="h4 my-4">Setup Request</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <form [formGroup]="testForm"
+                (ngSubmit)="submitForm($event)">
+
+            <div class="row">
+              <div class="col-sm-12">
+                <mat-vertical-stepper #stepper>
+                  <mat-step>
+                    <ng-template matStepLabel>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <span>Application</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <span>{{ testForm.get('app').value }}</span>
+                        </div>
+                      </div>
+                    </ng-template>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <mat-form-field>
+                          <mat-label>Select Application</mat-label>
+                          <mat-select [formControlName]="'app'"
+                                      (selectionChange)="populateAPI($event)">
+                            <mat-option *ngFor="let _ of apps"
+                                        [value]="_.value">{{ _.viewValue }}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 offset-6">
+                        <button mat-mini-fab
+                                color="primary"
+                                type="button"
+                                matStepperNext>
+                          <mat-icon>arrow_forward</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </mat-step>
+                  <mat-step>
+                    <ng-template matStepLabel>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <span>Authorization</span>
+                        </div>
+                      </div>
+                    </ng-template>
+
+                    <div class="row"
+                         [formGroupName]="'auth'">
+                      <div class="col-sm-12">
+                        <mat-form-field>
+                          <mat-label>Username</mat-label>
+                          <input matInput
+                                 [formControlName]="'username'"
+                                 type="text">
+                        </mat-form-field>
+                      </div>
+                      <div class="col-sm-12">
+                        <mat-form-field>
+                          <mat-label>Password</mat-label>
+                          <input matInput
+                                 [formControlName]="'password'"
+                                 type="password">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 text-right">
+                        <button mat-mini-fab
+                                color="primary"
+                                type="button"
+                                matStepperPrevious>
+                          <mat-icon>arrow_back</mat-icon>
+                        </button>
+                      </div>
+                      <div class="col-6">
+                        <button mat-mini-fab
+                                color="primary"
+                                type="button"
+                                matStepperNext>
+                          <mat-icon>arrow_forward</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </mat-step>
+                  <mat-step>
+                    <ng-template matStepLabel>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <span>API</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <span>{{ testForm.get('api').value }}</span>
+                        </div>
+                      </div>
+                    </ng-template>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <mat-form-field>
+                          <mat-label>Select API</mat-label>
+                          <mat-select [formControlName]="'api'"
+                                      (selectionChange)="setupRequest($event)">
+                            <mat-option *ngFor="let _ of apis"
+                                        [value]="_.value">{{ _.viewValue }}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 text-right">
+                        <button mat-mini-fab
+                                color="primary"
+                                type="button"
+                                matStepperPrevious>
+                          <mat-icon>arrow_back</mat-icon>
+                        </button>
+                      </div>
+                      <div class="col-6">
+                        <button mat-mini-fab
+                                color="primary"
+                                type="button"
+                                matStepperNext>
+                          <mat-icon>arrow_forward</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </mat-step>
+                  <mat-step>
+                    <ng-template matStepLabel>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <span>Headers</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <span>Headers count: {{ testForm.get('headers').value.length }}</span>
+                        </div>
+                      </div>
+                    </ng-template>
+
+                    <div class="row mb-3">
+                      <div class="col-sm-2">
+                        <button mat-mini-fab
+                                color="accent"
+                                type="button"
+                                class="mb-3 text-sm-center"
+                                (click)="addHeader()">
+                          <mat-icon>add</mat-icon>
+                        </button>
+                      </div>
+                      <div class="col-sm-10">
+                        <ng-container formArrayName="headers"
+                                      *ngFor="let _ of headers.controls; let index = index;">
+                          <div class="row align-items-center"
+                               [formGroupName]="index">
+                            <div class="col-10">
+                              <div class="row">
+                                <div class="col-sm-6">
+                                  <mat-form-field class="w-100">
+                                    <mat-label>Key</mat-label>
+                                    <input matInput
+                                           [formControlName]="'key'"
+                                           type="text">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-sm-6">
+                                  <mat-form-field class="w-100">
+                                    <mat-label>Value</mat-label>
+                                    <input matInput
+                                           [formControlName]="'value'"
+                                           type="text">
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-2">
+                              <button mat-mini-fab
+                                      color="warn"
+                                      type="button"
+                                      (click)="removeHeader(index)">
+                                <mat-icon>remove</mat-icon>
+                              </button>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-6 text-right">
+                        <button mat-mini-fab
+                                color="primary"
+                                type="button"
+                                matStepperPrevious>
+                          <mat-icon>arrow_back</mat-icon>
+                        </button>
+                      </div>
+                      <div class="col-6">
+                        <button mat-mini-fab
+                                color="primary"
+                                type="button"
+                                matStepperNext>
+                          <mat-icon>arrow_forward</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </mat-step>
+                  <mat-step>
+                    <ng-template matStepLabel>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <span>Param</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <span>Params Count: {{ testForm.get('params').value.length }}</span>
+                        </div>
+                      </div>
+                    </ng-template>
+
+                    <div class="row mb-3">
+                      <div class="col-sm-2">
+                        <button mat-mini-fab
+                                color="accent"
+                                type="button"
+                                class="mb-3 text-sm-center"
+                                (click)="addParam()">
+                          <mat-icon>add</mat-icon>
+                        </button>
+                      </div>
+                      <div class="col-sm-10">
+                        <ng-container formArrayName="params"
+                                      *ngFor="let _ of params.controls; let index = index;">
+                          <div class="row align-items-center"
+                               [formGroupName]="index">
+                            <div class="col-10">
+                              <div class="row align-items-center">
+                                <div class="col-sm-6">
+                                  <mat-form-field class="w-100">
+                                    <mat-label>Key</mat-label>
+                                    <input matInput
+                                           [formControlName]="'key'"
+                                           type="text">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-sm-6">
+                                  <mat-form-field class="w-100">
+                                    <mat-label>Value</mat-label>
+                                    <input matInput
+                                           [formControlName]="'value'"
+                                           type="text">
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-2">
+                              <button mat-mini-fab
+                                      color="warn"
+                                      type="button"
+                                      (click)="removeParam(index)">
+                                <mat-icon>remove</mat-icon>
+                              </button>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-6 text-right">
+                        <button mat-mini-fab
+                                color="primary"
+                                type="button"
+                                matStepperPrevious>
+                          <mat-icon>arrow_back</mat-icon>
+                        </button>
+                      </div>
+                      <div class="col-6">
+                        <button mat-mini-fab
+                                color="primary"
+                                type="button"
+                                matStepperNext>
+                          <mat-icon>arrow_forward</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </mat-step>
+                  <mat-step>
+                    <ng-template matStepLabel>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <span>Data</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <span>{{ testForm.get('data').value.length }} set</span>
+                        </div>
+                      </div>
+                    </ng-template>
+
+                    <div class="row mb-3">
+                      <div class="col-sm-2">
+                        <button mat-mini-fab
+                                color="accent"
+                                type="button"
+                                class="mb-3 text-sm-center"
+                                (click)="addData()">
+                          <mat-icon>add</mat-icon>
+                        </button>
+                      </div>
+                      <div class="col-sm-10">
+                        <ng-container formArrayName="data"
+                                      *ngFor="let _ of data.controls; let index = index;">
+                          <div class="row align-items-center"
+                               [formGroupName]="index">
+                            <div class="col-10">
+                              <div class="row align-items-center">
+                                <div class="col-sm-6">
+                                  <mat-form-field class="w-100">
+                                    <mat-label>Key</mat-label>
+                                    <input matInput
+                                           [formControlName]="'key'"
+                                           type="text">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-sm-6">
+                                  <mat-form-field class="w-100">
+                                    <mat-label>Value</mat-label>
+                                    <input matInput
+                                           [formControlName]="'value'"
+                                           type="text">
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-2">
+                              <button mat-mini-fab
+                                      color="warn"
+                                      type="button"
+                                      (click)="removeData(index)">
+                                <mat-icon>remove</mat-icon>
+                              </button>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-6 text-right">
+                        <button mat-mini-fab
+                                color="primary"
+                                type="button"
+                                matStepperPrevious>
+                          <mat-icon>arrow_back</mat-icon>
+                        </button>
+                      </div>
+                      <!-- <div class="col-6">
+                        <button mat-mini-fab
+                                color="primary"
+                                type="button"
+                                matStepperNext>
+                          <mat-icon>arrow_forward</mat-icon>
+                        </button>
+                      </div> -->
+                    </div>
+                  </mat-step>
+                  <!-- Additional payload in request -->
+                  <!-- 
+                  <mat-step>
+                    <ng-template matStepLabel>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <span>Route</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <span>{{ testForm.get('route').value }}</span>
+                        </div>
+                      </div>
+                    </ng-template>
+    
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <mat-form-field>
+                          <mat-label>Route</mat-label>
+                          <input matInput
+                                 type="text">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 text-right">
+                        <button mat-mini-fab
+                                color="primary"
+                                type="button"
+                                matStepperPrevious>
+                          <mat-icon>arrow_back</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </mat-step> 
+                  -->
+                </mat-vertical-stepper>
+              </div>
+            </div>
+            <div class="row my-4">
+              <div class="col-sm-12">
+                <button mat-flat-button
+                        color="primary"
+                        class="w-100"
+                        type="submit">Fetch</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4 
+                lm-response-holder">
+      <div class="row my-4">
+        <div class="col-sm-12">
+          <span class="h4">Review Response</span>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-sm-12 justify-content-center align-items-center">
+          <pre class="p-2 m-0
+                      lm-response-text"
+               *ngIf="!bIsPending">{{ response | json }}</pre>
+          <span class="p-2 m-0 text-center overflow-hidden
+                      lm-response-text"
+                *ngIf="bIsPending">
+            <mat-spinner color="accent"
+                         diameter="64"
+                         strokeWidth="3"></mat-spinner>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

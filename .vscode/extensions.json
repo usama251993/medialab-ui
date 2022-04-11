@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "aaron-bond.better-comments",
+    "Angular.ng-template",
+    "eamodio.gitlens",
+    "googlecloudtools.cloudcode",
+    "ms-azuretools.vscode-docker",
+    "PKief.material-icon-theme",
+    "sibiraj-s.vscode-scss-formatter",
+    "wix.vscode-import-cost",
+    "yzhang.markdown-all-in-one"
+  ]
+}

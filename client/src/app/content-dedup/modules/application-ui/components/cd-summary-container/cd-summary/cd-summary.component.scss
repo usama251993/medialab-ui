@@ -1,0 +1,10 @@
+// @import '../../cd-app-shell/cd-app-shell.component.scss';
+
+mat-card.cd-summary-card {
+  width: 320px;
+  mat-card-content {
+    mat-form-field {
+      max-width: 320px;
+    }
+  }
+}

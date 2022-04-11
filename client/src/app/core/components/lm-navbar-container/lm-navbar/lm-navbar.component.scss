@@ -1,0 +1,33 @@
+div.lm-navbar-logo {
+  cursor: pointer;
+
+  img.lm-navbar-logo {
+    height: 56px;
+  }
+}
+
+button.lm-menu-item-button {
+  background-color: #00000000;
+  font-weight: bold;
+  transition: 250ms;
+  font-size: 16px;
+
+  &.lm-menu-active {
+    background-color: #3f51b5;
+    color: #fafafa;
+  }
+
+  &:hover {
+    background-color: #3f51b5;
+    color: #fafafa;
+
+    &[mat-menu-item] {
+      background-color: #3f51b5;
+      color: #fafafa;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

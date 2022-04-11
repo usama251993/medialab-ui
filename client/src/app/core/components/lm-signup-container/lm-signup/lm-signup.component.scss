@@ -1,0 +1,10 @@
+div.lm-signup-container {
+  display: grid;
+  align-items: center;
+
+  mat-list.lm-password-policy-list {
+    mat-list-item {
+      font-size: 10pt;
+    }
+  }
+}

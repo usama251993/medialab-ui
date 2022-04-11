@@ -1,0 +1,23 @@
+{
+  "summary": {
+    "client_details": "Conde Nast",
+    "bucket_location": "https://console.cloud.google.com/storage/browser/medialabs_contentdedup_devbucket/conde_nast",
+    "sample_count": 160,
+    "sample_size": "26 MB",
+    "bags": 77,
+    "logos": 148,
+    "others": 83
+  },
+  "analysis": [
+    {
+      "value": "object",
+      "viewValue": "Detect an Object (bag/backpack) within a Sample",
+      "count": 77
+    },
+    {
+      "value": "logo",
+      "viewValue": "Detect an Object with a Logo",
+      "count": 148
+    }
+  ]
+}

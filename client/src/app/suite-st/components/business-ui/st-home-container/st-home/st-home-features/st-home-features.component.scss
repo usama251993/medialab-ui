@@ -1,0 +1,15 @@
+// @import '../../../st-app-shell/st-app-shell.component.scss';
+
+div.st-features-card {
+  min-height: 28vh;
+
+  div.st-features-title {
+    p {
+      color: #000078;
+      // font-family: "BwModelicaSS02-Bold", sans-serif;
+      font-size: 28px;
+      font-family: LTIMediaLabs;
+      line-height: normal;
+    }
+  }
+}

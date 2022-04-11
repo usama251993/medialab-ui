@@ -1,0 +1,11 @@
+div.st-footer-section {
+  p {
+    cursor: pointer;
+  }
+
+  &.st-footer-copyright {
+    p {
+      cursor: default;
+    }
+  }
+}
