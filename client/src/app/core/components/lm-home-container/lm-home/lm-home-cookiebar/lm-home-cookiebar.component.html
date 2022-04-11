@@ -1,0 +1,22 @@
+<div class="container 
+                lm-cookie-bar-container">
+  <div class="row justify-content-center 
+                  lm-cookie-bar-content-holder">
+    <div class="col-md-8 col-sm-12 d-flex align-items-center 
+                    mat-app-background mat-elevation-z6 
+                    lm-cookie-bar-content lm-dark">
+      <div class="d-flex flex-grow-1 m-2 
+                      lm-cookie-bar-message">
+        <span>{{ cookiebar.assets.message }}</span>
+      </div>
+      <div class="lm-cookie-bar-button-holder">
+        <ng-container *ngFor="let _ of cookiebar.assets.buttons">
+          <button mat-icon-button
+                  (click)="triggerDismissCookiebar()">
+            <mat-icon>{{ _.text }}</mat-icon>
+          </button>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

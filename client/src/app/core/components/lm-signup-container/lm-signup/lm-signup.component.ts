@@ -2,14 +2,11 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core'
 import { FormGroup } from '@angular/forms'
 import { BehaviorSubject, Observable } from 'rxjs'
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
+import { Dictionary } from '@ngrx/entity'
 
 import * as fromUtil from '@shared/util/app-form.util'
-import { AppFormFieldModel, INITIAL_FORM_GROUP } from '@shared/models/app-form.model'
-import { AppOptionModel } from '@shared/models/app-assets.model'
-import { LmSignupRequestModel } from '@lm-core/models/common/auth/lm-auth-signup.model'
-import { INITIAL_SIGNUP_PAGE_ASSETS, LmSignupPageAssetsModel } from '@lm-core/models/lm-signup/lm-signup-assets.model'
-import { INITIAL_SIGNUP_FORM_ASSETS, LmSignupFormAssetsModel } from '@lm-core/models/lm-signup/lm-signup.model'
-import { INITIAL_WSO2_ERROR, LmWSO2ErrorResponseModel } from '@lm-core/models/lm-wso2-error.model'
+import { LmSignupRequestModel } from '@shared/models/lm-auth.model'
+import { LmSignupAssetsModel } from '@lm-core/models/lm-signup.model'
 
 @Component({
   selector: 'app-lm-signup',
@@ -18,99 +15,151 @@ import { INITIAL_WSO2_ERROR, LmWSO2ErrorResponseModel } from '@lm-core/models/lm
 })
 export class LmSignupComponent implements OnInit {
 
-  private _assets$: BehaviorSubject<LmSignupPageAssetsModel> = new BehaviorSubject<LmSignupPageAssetsModel>(INITIAL_SIGNUP_PAGE_ASSETS)
-  private _form$: BehaviorSubject<LmSignupFormAssetsModel> = new BehaviorSubject<LmSignupFormAssetsModel>(INITIAL_SIGNUP_FORM_ASSETS)
-  private _formGroup$: BehaviorSubject<FormGroup> = new BehaviorSubject<FormGroup>(INITIAL_FORM_GROUP)
-  private _organizations$: BehaviorSubject<AppOptionModel[]> = new BehaviorSubject<AppOptionModel[]>([])
-  private _countries$: BehaviorSubject<AppOptionModel[]> = new BehaviorSubject<AppOptionModel[]>([])
-  private _bIsProcessing$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true)
-  private _error$: BehaviorSubject<LmWSO2ErrorResponseModel> = new BehaviorSubject<LmWSO2ErrorResponseModel>(INITIAL_WSO2_ERROR)
+  assets$: BehaviorSubject<Dictionary<LmSignupAssetsModel>>
+  form$: BehaviorSubject<Dictionary<LmSignupAssetsModel>>
+  formGroup$: BehaviorSubject<FormGroup>
 
   @Input()
-  set assets(value: LmSignupPageAssetsModel) { this._assets$.next(value) };
-  get assets(): LmSignupPageAssetsModel { return this._assets$.getValue() };
+  set assetsDict(value: Dictionary<LmSignupAssetsModel>) { this.assets$.next(value) };
+  get assetsDict(): Dictionary<LmSignupAssetsModel> { return this.assets$.getValue() };
 
   @Input()
-  set form(value: LmSignupFormAssetsModel) { this._form$.next(value) };
-  get form(): LmSignupFormAssetsModel { return this._form$.getValue() };
+  set formDict(value: Dictionary<LmSignupAssetsModel>) { this.form$.next(value) };
+  get formDict(): Dictionary<LmSignupAssetsModel> { return this.form$.getValue() };
 
   @Input()
-  set formGroup(value: FormGroup) { this._formGroup$.next(value) };
-  get formGroup(): FormGroup { return this._formGroup$.getValue() };
+  set formGroup(value: FormGroup) { this.formGroup$.next(value) };
+  get formGroup(): FormGroup { return this.formGroup$.getValue() };
 
-  @Input()
-  set organizations(value: AppOptionModel[]) { this._organizations$.next(value) };
-  get organizations(): AppOptionModel[] { return this._organizations$.getValue() };
+  @Input() assetsEntityID: string
+  @Input() formEntityID: string
+  @Input() contextEntityID: string
 
-  @Input()
-  set countries(value: AppOptionModel[]) { this._countries$.next(value) };
-  get countries(): AppOptionModel[] { return this._countries$.getValue() };
+  @Input() organizations: { value: string, viewValue: string }[]
 
-  @Input()
-  set bIsProcessing(value: boolean) { this._bIsProcessing$.next(value) };
-  get bIsProcessing(): boolean { return this._bIsProcessing$.getValue() };
+  @Output() triggerSignup$: EventEmitter<LmSignupRequestModel>
+  @Output() triggerValidate$: EventEmitter<{ form: LmSignupAssetsModel; input: string }>
+  @Output() gotoLogin$: EventEmitter<void>
 
-  @Input()
-  set error(value: LmWSO2ErrorResponseModel) { this._error$.next(value) };
-  get error(): LmWSO2ErrorResponseModel { return this._error$.getValue() };
-
-  @Output() triggerSignup$: EventEmitter<LmSignupRequestModel> = new EventEmitter<LmSignupRequestModel>()
-  @Output() gotoLogin$: EventEmitter<void> = new EventEmitter<void>()
-
-  constructor() { }
+  constructor() {
+    this.assets$ = new BehaviorSubject<Dictionary<LmSignupAssetsModel>>(null)
+    this.form$ = new BehaviorSubject<Dictionary<LmSignupAssetsModel>>(null)
+    this.formGroup$ = new BehaviorSubject<FormGroup>(null)
+    this.triggerSignup$ = new EventEmitter<LmSignupRequestModel>()
+    this.triggerValidate$ = new EventEmitter<{ form: LmSignupAssetsModel; input: string }>()
+    this.gotoLogin$ = new EventEmitter<void>()
+  }
 
   ngOnInit(): void {
     this.enableValidations()
   }
 
   enableValidations(): void {
-    this.enablePasswordValidation(this.formGroup.get(this.form.password.name).valueChanges)
-    this.enablePasswordValidation(this.formGroup.get(this.form.confirm.name).valueChanges)
+    this.enablePasswordValidation(this.formGroup
+      .get(this.formDict[this.formEntityID].form.password.name).valueChanges)
+    this.enablePasswordValidation(this.formGroup
+      .get(this.formDict[this.formEntityID].form.confirm.name).valueChanges)
+
+    this.formGroup
+      .get(this.formDict[this.formEntityID].form.password.name).valueChanges
+      .pipe(debounceTime(150))
+      .subscribe((input: string) => {
+        this.triggerValidate$.emit({ form: this.formDict[this.formEntityID], input })
+      })
   }
 
-  enablePasswordValidation(_$: Observable<string>): void {
-    _$.pipe(debounceTime(500), distinctUntilChanged()).subscribe(() => this.validateConfirm())
+  enablePasswordValidation(dataStream$: Observable<string>): void {
+    dataStream$.pipe(
+      debounceTime(500),
+      distinctUntilChanged()
+    ).subscribe(() => this.validateConfirm())
   }
 
   validateConfirm(): void {
     const formPassword: string = fromUtil.getFormControlValue({
       formGroup: this.formGroup,
-      formControlName: this.form.password.name
+      formControlName: this.formDict[this.formEntityID].form.password.name
     })
     const confirmPassword: string = fromUtil.getFormControlValue({
       formGroup: this.formGroup,
-      formControlName: this.form.confirm.name
+      formControlName: this.formDict[this.formEntityID].form.confirm.name
     })
 
-    if (!confirmPassword) this.formGroup.get(this.form.confirm.name).setErrors({ required: true })
-    else {
-      if (formPassword === confirmPassword) this.formGroup.get(this.form.confirm.name).setErrors(null)
-      else {
-        this.formGroup.get(this.form.confirm.name).setErrors({
-          passwordMismatch: {
-            required: `(base64 encrypted) => ${btoa(formPassword)}`,
-            entered: `(base64 encrypted) => ${btoa(confirmPassword)}`
-          }
+    return (!!confirmPassword)
+      ? (formPassword === confirmPassword)
+        ? this.formGroup
+          .get(this.formDict[this.formEntityID].form.confirm.name).setErrors(null)
+        : this.formGroup
+          .get(this.formDict[this.formEntityID].form.confirm.name).setErrors({
+            passwordMismatch: {
+              required: `(base64 encrypted) => ${btoa(formPassword)}`,
+              entered: `(base64 encrypted) => ${btoa(confirmPassword)}`
+            }
+          })
+      : this.formGroup
+        .get(this.formDict[this.formEntityID].form.confirm.name).setErrors({
+          required: true
+        })
+
+  }
+
+  submitForm(event: Event): void {
+    if (event['submitter'].type === 'submit') {
+      let userModel: LmSignupRequestModel = {
+        id: this.contextEntityID,
+        givenname: fromUtil.getFormControlValue({
+          formGroup: this.formGroup,
+          formControlName: this.formDict[this.formEntityID].form.givenname.name
+        }),
+        lastname: fromUtil.getFormControlValue({
+          formGroup: this.formGroup,
+          formControlName: this.formDict[this.formEntityID].form.lastname.name
+
+        }),
+        username: fromUtil.getFormControlValue({
+          formGroup: this.formGroup,
+          formControlName: this.formDict[this.formEntityID].form.email.name
+
+        }),
+        password: fromUtil.getFormControlValue({
+          formGroup: this.formGroup,
+          formControlName: this.formDict[this.formEntityID].form.password.name
+
+        }),
+        country: fromUtil.getFormControlValue({
+          formGroup: this.formGroup,
+          formControlName: this.formDict[this.formEntityID].form.country.name
+
+        }),
+        organization: fromUtil.getFormControlValue({
+          formGroup: this.formGroup,
+          formControlName: this.formDict[this.formEntityID].form.organization.name
+        }),
+        designation: fromUtil.getFormControlValue({
+          formGroup: this.formGroup,
+          formControlName: this.formDict[this.formEntityID].form.designation.name
         })
       }
+      this.triggerSignup$.emit(userModel)
     }
-
   }
 
-  submitForm($: Event): void {
-    if ($['submitter'].type === 'submit') this.triggerSignup$.emit(<LmSignupRequestModel>this.formGroup.value)
-  }
+  // toggleVisibility(payload: { formField: LmFormFieldModel, bVisibility: boolean }): void {
+  // if (payload.bVisibility) {
+  //   payload.formField.type = 'text'
+  // } else {
+  //   payload.formField.type = 'password'
+  // }
 
-  toggleVisibility(_: { formField: AppFormFieldModel, bVisibility: boolean }): void {
-    !!_.bVisibility ? _.formField.type = 'text' : _.formField.type = 'password'
-  }
+  // return (payload.bVisibility) 
+  //   ? payload.formField.type = 'text'
+  //   : payload.formField.type = 'password'
+  // }
 
   gotoLogin() {
     this.gotoLogin$.emit()
   }
 
-  dismissErrorMessage() {
-    this.error = null
-  }
-}
+  displayPolicy(): void { }
 
+}

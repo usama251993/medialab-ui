@@ -1,18 +1,29 @@
-## Docker Compose Version
+# Docker compose version
 version: "3.7"
 
-## Services Definition
+# Define the services to be run
 services:
-  ## `ui` Service
-  ui:
-    ## `ui` Service Build context and target name
+
+  client: # name of the first service
+    build: 
+      context: ../client
+      target: build
+    image: gcr.io/viacom-poc/medialabs/client
+    
+
+  nginx:
     build:
-      context: ./
-      target: ui
-
-    ## `ui` Service Target to Google Container Registry
-    image: gcr.io/viacom-poc/medialabs/ui
-
-    ## `ui` Service Exposing ports
+      context: ../client
+      target: nginx
+    image: gcr.io/viacom-poc/medialabs/nginx
     ports:
-      - "3000:3000"
+      - "80:80"
+    restart: unless-stopped
+
+  server: # name of the second service
+    build: 
+      context: ../server
+      target: server
+    image: gcr.io/viacom-poc/medialabs/server # specify the directory of the Dockerfile
+    ports:
+      - "3000:3000" #specify ports mapping

@@ -2,35 +2,28 @@
             lm-home-container">
 
   <!-- carousel-->
-  <div>
-    <app-lm-home-carousel [assets]="assets.carousel"
-                          (triggerNavigate$)="triggerNavigate()">
-    </app-lm-home-carousel>
-  </div>
+  <app-lm-home-carousel [assets]="assetsDict[assetsEntityID].assets.carousel">
+  </app-lm-home-carousel>
 
   <!-- offerings -->
-  <div class="lm-home-section-holder">
-    <app-lm-home-offerings [assets]="assets.offerings"
-                           (triggerNavigate$)="triggerNavigate()">
-    </app-lm-home-offerings>
-  </div>
+  <app-lm-home-offerings [assets]="assetsDict[assetsEntityID].assets.offerings">
+  </app-lm-home-offerings>
 
   <!-- about -->
-  <div class="lm-home-section-holder">
-    <app-lm-home-about [assets]="assets.about"></app-lm-home-about>
+  <app-lm-home-about [assets]="assetsDict[assetsEntityID].assets.about"></app-lm-home-about>
 
-  </div>
   <!-- solution -->
-  <div class="lm-home-section-holder">
-    <app-lm-home-solutions [assets]="assets.solution"
-                           (triggerNavigate$)="triggerNavigate()">
-    </app-lm-home-solutions>
-  </div>
+  <app-lm-home-solutions [assets]="assetsDict[assetsEntityID].assets.solution">
+  </app-lm-home-solutions>
 
   <!-- customers -->
-  <div class="lm-home-section-holder">
-    <app-lm-home-customers [assets]="assets.customers">
-    </app-lm-home-customers>
-  </div>
+  <app-lm-home-customers [assets]="assetsDict[assetsEntityID].assets.customers">
+  </app-lm-home-customers>
+
+  <!-- cookie bar -->
+  <app-lm-home-cookiebar *ngIf="!cookiebarDict[cookiebarEntityID].cookiebar.state.bIsDismissed"
+                         [cookiebar]="cookiebarDict[cookiebarEntityID].cookiebar"
+                         (triggerDismissCookiebar$)="triggerDismissCookiebar()">
+  </app-lm-home-cookiebar>
 
 </div>

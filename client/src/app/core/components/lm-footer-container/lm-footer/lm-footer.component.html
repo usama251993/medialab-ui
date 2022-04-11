@@ -1,51 +1,43 @@
-<div class="container-fluid d-flex flex-column
+<div class="container-fluid d-flex flex-column 
             mat-app-background app-dark
-            lm-footer-container">
+            lm-footer-container"
+     *ngIf="!!assetsDict[assetsEntityID]; else noFooterData">
 
   <div class="d-flex justify-content-between flex-wrap">
-
-    <!-- Navigation -->
     <div class="my-2 
-                lm-footer-section">
-      <ng-container *ngFor="let _ of assets.navigations">
+                lm-footer-navigation-holder">
+      <ng-container *ngFor="let _ of assetsDict[assetsEntityID].assets.navigations">
         <a mat-button
            (click)="navigate(_.route)">{{ _.label }}</a>
       </ng-container>
     </div>
-
-    <!-- Terms -->
-    <div class="my-2
-                lm-footer-section">
-      <ng-container *ngFor="let _ of assets.terms">
+    <div class="my-2 
+                lm-footer-terms-holder">
+      <ng-container *ngFor="let _ of assetsDict[assetsEntityID].assets.terms">
         <a mat-button
            (click)="navigate(_.route)">{{ _.label }}</a>
       </ng-container>
     </div>
   </div>
-
   <div class="d-flex justify-content-between align-items-center flex-wrap">
-
-    <!-- Copyright -->
-    <div class="my-2 text-center
-                lm-footer-section lm-footer-copyright">
-      <p mat-button
-         class="m-0 text-muted"
-         *ngIf="!!assets.copyright.to; else simpleCopyright">&copy;
-        {{ assets.copyright.from }} -
-        {{ assets.copyright.to }}. &nbsp;
-        {{ assets.copyright.statement }}</p>
+    <div class="my-2 text-center 
+                lm-footer-copyright">
+      <button mat-button
+              disabled="true"
+              *ngIf="!!assetsDict[assetsEntityID].assets.copyright.to; else simpleCopyright">&copy;
+        {{ assetsDict[assetsEntityID].assets.copyright.from }} -
+        {{ assetsDict[assetsEntityID].assets.copyright.to }}. &nbsp;
+        {{ assetsDict[assetsEntityID].assets.copyright.statement }}</button>
       <ng-template #simpleCopyright>
-        <p mat-button
-           class="m-0 text-muted">&copy;
-          {{ assets.copyright.from }}. &nbsp;
-          {{ assets.copyright.statement }}</p>
+        <button mat-button
+                disabled="true">&copy;
+          {{ assetsDict[assetsEntityID].assets.copyright.from }}. &nbsp;
+          {{ assetsDict[assetsEntityID].assets.copyright.statement }}</button>
       </ng-template>
     </div>
-
-    <!-- Social -->
     <div class="my-2
-                lm-footer-section">
-      <ng-container *ngFor="let _ of assets.socials">
+                lm-footer-socials-holder">
+      <ng-container *ngFor="let _ of assetsDict[assetsEntityID].assets.socials">
         <button mat-icon-button
                 class="m-1">
           <mat-icon>{{ _.icon }}</mat-icon>
@@ -55,3 +47,9 @@
   </div>
 
 </div>
+
+<ng-template #noFooterData>
+  <div class="lm-footer-container">
+    <p>footer does not work, check console</p>
+  </div>
+</ng-template>

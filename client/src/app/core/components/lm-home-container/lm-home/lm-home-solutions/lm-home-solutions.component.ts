@@ -1,9 +1,7 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core'
-
+import { Component, OnInit, Input } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
 
-import { LmHomeAssetsSolutionModel } from '@lm-core/models/assets/lm-home.model'
-import { NavigationExtras } from '@angular/router'
+import { LmHomeAssetsSolutionModel } from '@lm-core/models/lm-home.model'
 
 @Component({
   selector: 'app-lm-home-solutions',
@@ -11,23 +9,16 @@ import { NavigationExtras } from '@angular/router'
   styleUrls: ['./lm-home-solutions.component.scss']
 })
 export class LmHomeSolutionsComponent implements OnInit {
-
-  private _assets$: BehaviorSubject<LmHomeAssetsSolutionModel>
+  assets$: BehaviorSubject<LmHomeAssetsSolutionModel>
 
   @Input()
-  set assets(value: LmHomeAssetsSolutionModel) { this._assets$.next(value) };
-  get assets(): LmHomeAssetsSolutionModel { return this._assets$.getValue() };
-
-  @Output() triggerNavigate$: EventEmitter<{ path: string[], extras: NavigationExtras }> = new EventEmitter<{ path: string[], extras: NavigationExtras }>()
+  set assets(value: LmHomeAssetsSolutionModel) { this.assets$.next(value) };
+  get assets(): LmHomeAssetsSolutionModel { return this.assets$.getValue() };
 
   constructor() {
-    this._assets$ = new BehaviorSubject<LmHomeAssetsSolutionModel>(null)
+    this.assets$ = new BehaviorSubject<LmHomeAssetsSolutionModel>(null)
   }
 
   ngOnInit(): void { }
-
-  navigate() {
-    this.triggerNavigate$.emit({ path: [], extras: {} })
-  }
 
 }

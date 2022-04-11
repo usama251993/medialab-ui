@@ -4,57 +4,70 @@
 - [LTI Medialabs UI](#lti-medialabs-ui)
   - [Table of Contents](#table-of-contents)
   - [Project Structure](#project-structure)
+  - [Authentication Workflow](#authentication-workflow)
   - [Git Workflow](#git-workflow)
-    - [1. Create a new branch for development of each feature](#1-create-a-new-branch-for-development-of-each-feature)
+    - [1. Fetch indexes for any updates in remote](#1-fetch-indexes-for-any-updates-in-remote)
+    - [2. Create a new branch for development of each feature](#2-create-a-new-branch-for-development-of-each-feature)
     - [3. Commit code to newly created branch](#3-commit-code-to-newly-created-branch)
     - [4. Merge code in `develop` branch](#4-merge-code-in-develop-branch)
-  - [A note on `CHANGELOG.md`](#a-note-on-changelogmd)
+  - [IDE Details](#ide-details)
+  - [A note on `CHANGELOG.md` Update](#a-note-on-changelogmd-update)
 
 ## Project Structure
 
 ```
 server
-╠═ config ---------------------------------- | Various configurations for express
+╠═ config ---------------------------------------- | Various configurations for express
 ║  ╠═ server
 ║  ╠═ killbill
 ║  ╚═ wso2
 ║
-╠═ database -------------------------------- | Temporary
+╠═ database -------------------------------------- | Temporary
 ║
 ╠═ routes
 ║  ╠═ killbill
-║  ║  ╠═ controller ------------------------ | Handles express routes
-║  ║  ╚═ service --------------------------- | Makes axios call to remote server
+║  ║  ╠═ controller ------------------------------ | Handles express routes
+║  ║  ╚═ service --------------------------------- | Makes axios call to remote server
 ║  ╠═ wso2
-║  ║  ╠═ controller ------------------------ | Handles express routes
-║  ║  ╚═ service --------------------------- | Makes axios call to remote server
-║  ╚═ test --------------------------------- | 
+║  ║  ╠═ controller ------------------------------ | Handles express routes
+║  ║  ╚═ service --------------------------------- | Makes axios call to remote server
+║  ╚═ test --------------------------------------- | 
 ║
-╠═ index.html ------------------------------ | This file is served when empty route is fetched
+╠═ index.html ------------------------------------ | This file is served when empty route is fetched
 ║
-╠═ index.js -------------------------------- | The express entry point
+╠═ index.js -------------------------------------- | The express entry point
 ║
-║ ------------------------------------------ | Deployment specific files - Do not make changes
+║ ------------------------------------------------ | Deployment specific files - Do not make changes
 ╠═ Dockerfile
 ╚═ .dockerignore
 ```
 
 ##  Git Workflow
 
-### 1. Create a new branch for development of each feature
+### 1. Fetch indexes for any updates in remote
 
-- Create a new branch from `develop` and set upstream to [GitHub](https://github.com/LTIMedialab/medialab-ui/)
 ```
 git fetch
-git checkout -b <branch_name> develop
+```
+
+### 2. Create a new branch for development of each feature
+
+- Create a new branch from `develop` from [GitHub](https://github.com/LTIMedialab/medialab-ui/)
+```
+git fetch
+git checkout -b <branch_name>
+```
+**OR**
+- Create a new branch and set upstream to [GitHub](https://github.com/LTIMedialab/medialab-ui/)
+```
+git checkout -b <branch_name>
 git push -u origin <branch_name>
 ```
 
 ### 3. Commit code to newly created branch
 
 - Develop the code
-- Modify `CHANGELOG.md` accordingly
-- Commit to the local branch
+- Ready to commit
 ```
 git commit -m <commit_message>
 ```
@@ -79,13 +92,14 @@ git push
 ### 4. Merge code in `develop` branch
 
 1. Creating Pull Request
+   - Update `CHANGELOG.md` each time
    - `New Pull Request` from [here](https://github.com/LTIMedialab/medialab-ui/pulls)
    - Verify code changes
    - Mention Reviewers
    - Leave a suitable message
    - Done
 
-Merging the code directly into develop *(not recommended)*
+ Merging the code directly into develop *(not recommended)*
 ```
 git checkout develop
 git merge origin/<branch_name>
@@ -94,20 +108,16 @@ git push
 
 All hail [Linus Torvald](https://github.com/torvalds)!!
 
-## A note on `CHANGELOG.md`
+## A note on `CHANGELOG.md` Update
 
-- Update `CHANGELOG.md` of the monthly folder before committing any changes
+- Update `CHANGELOG.md` before committing any changes
 - Nomenclature of commit shall be as follows: 
 ```
-<emoji>: <github-username>-medialab-<commit-number>-<branch-name>
+LT<PSNumber>-medialab-<commit-number>-<branch-name>
 ```
-- ~~Create a heading in `CHANGELOG.md` for each commit~~
-  - ~~Heading does not have an emoji~~
-  - ~~Specify the emoji on the next line following `Type: <emoji>`~~
-- Increase the commit number sequentially for each branch
-- Provide a detailed description of all the files committed in [Trello Board](https://trello.com/b/MJPUu1mT)
+- Create a heading in `CHANGELOG.MD` for each commit
+- Increase the commit number sequentially
+- Provide a detailed description of all the files committed
   - If several files perform single action, describe the action in detail
-- Provide separate front-end and back-end descriptions in a commit
+- Separate front-end and back-end descriptions in a commit
 - Update workflow diagram if any
-- Follow the [Github convention](https://gist.github.com/parmentf/035de27d6ed1dce0b36a) for commit type emojis
-- Remember to attach commit to the weekly CHANGELOG card in Trello

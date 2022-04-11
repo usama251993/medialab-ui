@@ -1,196 +1,182 @@
-import { Injectable, isDevMode } from '@angular/core'
-import { Observable, BehaviorSubject } from 'rxjs'
+import { Injectable } from '@angular/core'
+import { Store, select } from '@ngrx/store'
+import { Observable, of } from 'rxjs'
+import { Dictionary } from '@ngrx/entity'
+import { MatSidenav } from '@angular/material/sidenav'
 
-import { APP_ROUTES } from 'src/app/app.routes'
+import { environment } from 'src/environments/environment'
+import { LmRouterService } from '@lm-core/services/lm-router/lm-router.service'
 
-import { AppRouterService } from '@shared/services/app-router/app-router.service'
-import { AppSnackbarModel } from '@shared/models/app-snackbar.model'
+import { State } from '@lm-core/state'
+import * as fromActions from '@lm-core/state/actions/lm-navbar.action'
+import { selectAssets } from '@lm-core/state/selectors/lm-navbar.selector'
+import { ENTITY_ID } from '@lm-core/state/types'
 
-import { LmNavbarAssetsModel } from '@lm-core/models/assets/lm-navbar.model'
-import { LmUserModel } from '@lm-core/models/common/auth/lm-auth-user.model'
-import { CORE_ROUTES } from '@lm-core/lm-core.routes'
+import { LmNavbarAssetsModel } from '@lm-core/models/lm-navbar.model'
 
-import { LmCoreService } from '../lm-core.service'
+import { LmAuthService } from '../lm-auth/lm-auth.service'
+import * as fromAuthSelector from '@lm-core/state/selectors/lm-auth.selector'
+import { LmAuthResponseModel, LmUserModel } from '@shared/models/lm-auth.model'
 
 @Injectable({
   providedIn: 'root'
 })
 export class LmNavbarService {
 
-  private _user$: BehaviorSubject<LmUserModel>
-  private _assets$: BehaviorSubject<LmNavbarAssetsModel>
   assetsModel: LmNavbarAssetsModel
 
   constructor(
-    private _routerService: AppRouterService,
-    private _coreService: LmCoreService
+    private _store$: Store<State>,
+    private authService: LmAuthService,
+    private routerService: LmRouterService
   ) {
 
     this.assetsModel = {
-      logo: {
-        src: 'assets/images/logo/medialab/medialab-blue.svg',
-        alt: 'MediaLabs Logo'
-      },
-      items: {
-        common: [
-          {
-            label: 'Services',
-            route: '',
-            name: 'services',
-            children: [
-              {
-                label: 'Automation Testing Suite',
-                route: APP_ROUTES.TESTSUITE,
-                name: 'automationTestingSuite',
-                children: []
-              }
-            ]
-          }, {
-            label: 'Solutions and PoC\'s',
-            route: '',
-            name: 'solutions',
-            children: [
-              {
-                label: 'Content-aware Deduplication',
-                route: APP_ROUTES.DEDUPLICATION,
-                name: 'deduplication',
-                children: [],
-              },
-              {
-                label: 'Perceptual Hashing',
-                route: APP_ROUTES.PERCEPTUAL_HASH,
-                name: 'phash',
-                children: [],
-              },
-              {
-                label: 'Image Analytics',
-                route: APP_ROUTES.IMAGE_ANALYTCS,
-                name: 'image',
-                children: [],
-              }
-            ]
-          }, {
-            label: 'Insights',
-            route: '',
-            name: 'insights',
-            children: [
-              {
-                label: 'White Papers',
-                route: '',
-                name: '',
-                children: []
-              }, {
-                label: 'News Letter',
-                route: '',
-                name: '',
-                children: []
-              }, {
-                label: 'Our Clients',
-                route: '',
-                name: '',
-                children: []
-              }, {
-                label: 'Use Cases',
-                route: '',
-                name: '',
-                children: []
-              }
-            ]
-          }, {
-            label: 'Platforms',
-            route: '',
-            name: 'platforms',
-            children: [
+      id: '',
+      assets: {
+        logo: {
+          src: '../../../../../assets/images/logo/medialab-transparent-sm.png',
+          alt: 'MediaLabs Logo'
+        },
+        items: {
+          common: [
+            {
+              label: 'Services',
+              route: '',
+              name: 'services',
+              children: [
+                {
+                  label: 'Automation Testing Suite',
+                  route: '',
+                  name: 'automationTestingSuite',
+                  children: []
+                }
+              ]
+            }, {
+              label: 'Solutions and PoC\'s',
+              route: '',
+              name: 'solutions',
+              children: [
+                {
+                  label: 'Content-aware Deduplication',
+                  route: '',
+                  name: 'deduplication',
+                  children: [],
+                }
+              ]
+            }, {
+              label: 'Insights',
+              route: '',
+              name: 'insights',
+              children: [
+                {
+                  label: 'White Papers',
+                  route: '',
+                  name: '',
+                  children: []
+                }, {
+                  label: 'News Letter',
+                  route: '',
+                  name: '',
+                  children: []
+                }, {
+                  label: 'Our Clients',
+                  route: '',
+                  name: '',
+                  children: []
+                }, {
+                  label: 'Use Cases',
+                  route: '',
+                  name: '',
+                  children: []
+                }
+              ]
+            }, {
+              label: 'Platforms',
+              route: '',
+              name: 'platforms',
+              children: [
 
-              {
-                label: 'Cognitive++',
-                route: '',
-                name: '',
-                children: []
-              }, {
-                label: 'Advanced Advertising',
-                route: '',
-                name: '',
-                children: []
-              }, {
-                label: 'Rights Management',
-                route: '',
-                name: '',
-                children: []
-              }, {
-                label: 'Realtime Pricing Engine',
-                route: '',
-                name: '',
-                children: []
-              }, {
-                label: 'SRT Management',
-                route: '',
-                name: '',
-                children: []
-              }
-            ]
-          }, {
-            label: 'About',
-            route: '',
-            name: 'about',
-            children: [
-              {
-                label: 'Mission Statement',
-                route: '',
-                name: '',
-                children: []
-              }, {
-                label: 'Feedback',
-                route: CORE_ROUTES.FEEDBACK,
-                name: '',
-                children: []
-              }, {
-                label: 'About LTI',
-                route: '',
-                name: '',
-                children: []
-              }
-            ]
-          }
-        ],
-        anonymous: [
-          {
-            label: 'Login',
-            route: CORE_ROUTES.LOGIN,
-            name: 'login',
-            children: []
-          }, {
-            label: 'Sign Up',
-            route: CORE_ROUTES.SIGNUP,
-            name: 'signup',
-            children: []
-          }
-        ],
-        authenticated: [
-          {
-            label: 'Profile',
-            route: '',
-            name: 'profile',
-            children: [
-              {
-                label: 'Settings',
-                route: CORE_ROUTES.SETTINGS,
-                name: '',
-                children: []
-              }, {
-                label: 'Logout',
-                route: CORE_ROUTES.LOGOUT,
-                name: '',
-                children: []
-              }
-            ]
-          }
-        ]
-      }
+                {
+                  label: 'Cognitive++',
+                  route: '',
+                  name: '',
+                  children: []
+                }, {
+                  label: 'Advanced Advertising Rights Management',
+                  route: '',
+                  name: '',
+                  children: []
+                }, {
+                  label: 'Realtime Practice Engine',
+                  route: '',
+                  name: '',
+                  children: []
+                }, {
+                  label: 'SRT Management',
+                  route: '',
+                  name: '',
+                  children: []
+                }
+              ]
+            }, {
+              label: 'About',
+              route: '',
+              name: 'about',
+              children: [
+                {
+                  label: 'Mission Statement',
+                  route: '',
+                  name: '',
+                  children: []
+                }, {
+                  label: 'About LTI',
+                  route: '',
+                  name: '',
+                  children: []
+                }
+              ]
+            }
+          ],
+          anonymous: [
+            {
+              label: 'Login',
+              route: 'login',
+              name: 'login',
+              children: []
+            }, {
+              label: 'Sign Up',
+              route: 'signup',
+              name: 'signup',
+              children: []
+            }
+          ],
+          authenticated: [
+            {
+              label: 'Profile',
+              route: '',
+              name: 'profile',
+              children: [
+                {
+                  label: 'Settings',
+                  route: '',
+                  name: '',
+                  children: []
+                }, {
+                  label: 'Logout',
+                  route: 'logout',
+                  name: '',
+                  children: []
+                }
+              ]
+            }
+          ]
+        }
+      }, error: null
     }
 
-    if (isDevMode()) {
-      this.assetsModel.items.common
+    if (!environment.production) {
+      this.assetsModel.assets.items.common
         .find(_ => _.name === 'services').children
         .push({
           label: 'Test APIs',
@@ -200,39 +186,39 @@ export class LmNavbarService {
         })
     }
 
-    this._user$ = new BehaviorSubject<LmUserModel>(null)
-    this._assets$ = new BehaviorSubject<LmNavbarAssetsModel>(null)
-
-    this._coreService.watchUser$()
-      .subscribe(_ => { this._user$.next(_) })
   }
 
-  fetchAssets(): void {
-    this._assets$.next({ ...this.assetsModel })
+  getNavbarAssetsDict(): Observable<Dictionary<LmNavbarAssetsModel>> {
+    this._store$.dispatch(new fromActions.LmLoadNavbarAssets({ id: ENTITY_ID.ASSETS }))
+    return this._store$.pipe(select(selectAssets))
   }
 
-  watchAssets(): Observable<LmNavbarAssetsModel> {
-    return this._assets$.asObservable()
+  getNavEntityID(): Observable<string> {
+    return of(ENTITY_ID.ASSETS)
   }
 
-  fetchUser() {
-    this._coreService.getUser()
+  getUserContextDict(): Observable<Dictionary<LmAuthResponseModel>> {
+    return this._store$.pipe(select(fromAuthSelector.selectUserDict))
   }
 
-  watchUser(): Observable<LmUserModel> {
-    return this._user$.asObservable()
+  getUserEntityIDs(): Observable<string[]> {
+    return <Observable<string[]>>this._store$.pipe(select(fromAuthSelector.selectUserID))
   }
 
-  navigate(_: { path: string[] }): void {
-    this._routerService.navigate({ path: [..._.path], extras: {} })
+  fetchAssets(id: string): Observable<LmNavbarAssetsModel> {
+    return of({ ...this.assetsModel, id })
   }
 
-  logout(): void {
-    this._coreService.logout()
+  navigate(_: { path: string }): void {
+    this.routerService.triggerNavigate(_)
   }
 
-  showSnackbar(_: AppSnackbarModel) {
-    this._coreService.showSnackbar(_)
+  logout(_: LmUserModel) {
+    this.authService.logout(_)
   }
+
+  triggerSidenavToggle(_: MatSidenav): void {
+    this._store$.dispatch(new fromActions.LmToggleSidenav(_))
+  }
+
 }
-

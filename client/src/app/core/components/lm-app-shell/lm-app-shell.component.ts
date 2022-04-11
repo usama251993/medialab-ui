@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core'
-import { LmCoreService } from '@lm-core/services/lm-core.service'
+// import { MatSidenav } from '@angular/material/sidenav'
+
+// import { LmAuthService } from '@lm-core/services/lm-auth/lm-auth.service'
 
 @Component({
   selector: 'app-lm-app-shell',
@@ -8,8 +10,18 @@ import { LmCoreService } from '@lm-core/services/lm-core.service'
 })
 export class LmAppShellComponent implements OnInit {
 
-  constructor() {
+  // @ViewChild('lmSidenav', { static: true }) sidenavRef: MatSidenav
+
+  constructor(
+    // private authService: LmAuthService
+  ) { }
+
+  ngOnInit(): void {
+    // this.authService.getUserContext()
   }
 
-  ngOnInit(): void { }
+  // closeSidenav(_: any) {
+  //   console.log(_)
+  // }
+
 }

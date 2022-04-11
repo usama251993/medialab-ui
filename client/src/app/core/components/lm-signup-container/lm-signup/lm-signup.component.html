@@ -1,279 +1,249 @@
-<div class="container h-100
-            lm-signup-container">
-
-  <ng-container *ngIf="!bIsProcessing; else registerProcessing;">
-    <div class="row justify-content-center align-items-center">
-      <div class="col-lg-8">
-
-        <ng-container *ngIf="!!error">
-          <div class="my-4">
-            <mat-card>
-              <mat-card-content>
-                <div class="d-flex justify-content-between align-items-center">
-                  <p class="m-0">{{ error.code }} - {{ error.description }}</p>
-                  <button mat-icon-button
-                          (click)="dismissErrorMessage()">
-                    <mat-icon>close</mat-icon>
-                  </button>
-                </div>
-              </mat-card-content>
-            </mat-card>
-          </div>
-        </ng-container>
-
-        <form (ngSubmit)="submitForm($event)"
-              [formGroup]="formGroup"
-              class="my-4">
-          <mat-card class="mat-elevation-z4">
-            <mat-card-header>
-              <mat-card-title>{{ assets.title }}</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-
-              <!-- given name -->
-              <div class="row my-1">
-                <div class="col-12">
-                  <mat-form-field class="w-100">
-                    <mat-label>{{ form.givenname.label }}</mat-label>
-                    <input matInput
-                           [formControlName]="form.givenname.name"
-                           [type]="form.givenname.type"
-                           [placeholder]="form.givenname.placeholder"
-                           [required]="form.givenname.validation.bIsMandatory"
-                           autofocus="true">
-                    <mat-error *ngIf="formGroup
-                               .get(form.givenname.name)
-                               .hasError('required')">
-                      <p class="m-0">{{ form.givenname.label }} is
-                        required</p>
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <!-- last name -->
-              <div class="row my-1">
-                <div class="col-12">
-                  <mat-form-field class="w-100">
-                    <mat-label>{{ form.lastname.label }}</mat-label>
-                    <input matInput
-                           [formControlName]="form.lastname.name"
-                           [type]="form.lastname.type"
-                           [placeholder]="form.lastname.placeholder"
-                           [required]="form.lastname.validation.bIsMandatory"
-                           autofocus="true">
-                    <mat-error *ngIf="formGroup
-                               .get(form.lastname.name)
-                               .hasError('required')">
-                      <p class="m-0">{{ form.lastname.label }} is
-                        required</p>
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <!-- email -->
-              <div class="row my-1">
-                <div class="col-12">
-                  <mat-form-field class="w-100">
-                    <mat-label>{{ form.email.label }}</mat-label>
-                    <input matInput
-                           [formControlName]="form.email.name"
-                           [type]="form.email.type"
-                           [placeholder]="form.email.placeholder"
-                           [required]="form.email.validation.bIsMandatory">
-                    <mat-error *ngIf="formGroup
-                               .get(form.email.name)
-                               .hasError('required')">
-                      <p class="m-0">{{ form.email.label }} is required</p>
-                    </mat-error>
-                    <mat-error *ngIf="formGroup
-                               .get(form.email.name)
-                               .hasError('email')">
-                      <p class="m-0">{{ form.email.label }} is invalid</p>
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <!-- password -->
-              <div class="row my-1">
-                <div class="col-sm-10 d-flex flex-column">
-                  <mat-form-field class="w-100">
-                    <mat-label>{{ form.password.label }}</mat-label>
-                    <input matInput
-                           [formControlName]="form.password.name"
-                           [type]="form.password.type"
-                           [placeholder]="form.password.placeholder"
-                           [required]="form.password.validation.bIsMandatory">
-
-                    <!-- toggle password visibility -->
-                    <button *ngIf="!!formGroup
-                            .get(form.password.name).value"
-                            mat-icon-button
-                            matSuffix
-                            (mousedown)="toggleVisibility({formField: form.password, bVisibility: true})"
-                            (mouseup)="toggleVisibility({formField: form.password, bVisibility: false})"
-                            type="button">
-                      <mat-icon>visibility</mat-icon>
-                    </button>
-                    <mat-error *ngIf="formGroup
-                               .get(form.password.name)
-                               .hasError('required')">
-                      <p class="m-0">{{ form.password.label }} is
-                        required</p>
-                    </mat-error>
-                    <mat-error *ngIf="formGroup
-                               .get(form.password.name)
-                               .hasError('pattern')">
-                      <p class="m-0">Password does not match the Password Policy</p>
-                    </mat-error>
-                  </mat-form-field>
-                  <mat-form-field class="w-100">
-                    <mat-label>{{ form.confirm.label }}</mat-label>
-                    <input matInput
-                           [formControlName]="form.confirm.name"
-                           [type]="form.confirm.type"
-                           [placeholder]="form.confirm.placeholder"
-                           [required]="form.confirm.validation.bIsMandatory">
-
-                    <!-- toggle password visibility -->
-                    <button *ngIf="!!formGroup
-                           .get(form.confirm.name).value"
-                            mat-icon-button
-                            matSuffix
-                            (mousedown)="toggleVisibility({formField: form.confirm, bVisibility: true})"
-                            (mouseup)="toggleVisibility({formField: form.confirm, bVisibility: false})"
-                            type="button">
-                      <mat-icon>visibility</mat-icon>
-                    </button>
-                    <mat-error *ngIf="formGroup
-                               .get(form.confirm.name)
-                               .hasError('required')">
-                      <p class="m-0">{{ form.confirm.label }} is required</p>
-                    </mat-error>
-                    <mat-error *ngIf="!!formGroup
-                               .get(form.confirm.name).errors && !!formGroup
-                               .get(form.confirm.name).errors['passwordMismatch']">
-                      <p class="m-0">Mismatch with {{ form.password.label }}
-                        entered</p>
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-                <div class="col-sm-2 d-flex justify-content-center align-items-center">
-                  <button mat-icon-button
-                          type="button"
-                          [matMenuTriggerFor]="policyMenu">
-                    <mat-icon>info</mat-icon>
-                  </button>
-                </div>
-              </div>
-
-              <!-- country -->
-              <div class="row my-1">
-                <div class="col-12">
-                  <mat-form-field class="w-100">
-                    <mat-label>{{ form.country.label }}</mat-label>
-                    <mat-select [formControlName]="form.country.name"
-                                required>
-                      <mat-option *ngFor="let _ of countries"
-                                  [value]="_.value">{{ _.viewValue }}</mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="formGroup
-                               .get(form.country.name)
-                               .hasError('required')">
-                      <p class="m-0">{{ form.country.label }} is
-                        required</p>
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-              <!-- organization -->
-              <div class="row my-1">
-                <div class="col-12">
-                  <mat-form-field class="w-100">
-                    <mat-label>{{ form.organization.label }}</mat-label>
-                    <mat-select [formControlName]="form.organization.name"
-                                required>
-                      <mat-option *ngFor="let _ of organizations"
-                                  [value]="_.value">{{ _.viewValue }}</mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="formGroup
-                               .get(form.organization.name)
-                               .hasError('required')">
-                      <p class="m-0">{{ form.organization.label }} is
-                        required</p>
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-
-            </mat-card-content>
-            <mat-card-actions>
-              <div class="mb-2">
-                <div class="d-flex justify-content-center align-items-center">
-                  <!-- <button type="submit"
-                          mat-stroked-button
-                          [disabled]="formGroup.invalid"
-                          color="primary">{{ assets.signup }}</button> -->
-                  <app-button-container *ngIf="!!assets.signup"
-                                        [disabled]="formGroup.invalid"
-                                        [assets]="assets.signup"></app-button-container>
-                </div>
-              </div>
-              <div class="mt-2">
-                <div class="d-flex justify-content-center align-items-center">
-                  <span class="m-0">Already have an account?</span>
-                  <!-- <a mat-button
-                     color="accent"
-                     type="button"
-                     (click)="gotoLogin()">{{ assets.login }}</a> -->
-                  <app-button-container *ngIf="!!assets.login"
-                                        [disabled]="assets.login.disabled"
-                                        [assets]="assets.login"
-                                        (triggerButton$)="gotoLogin()"></app-button-container>
-                </div>
-              </div>
-            </mat-card-actions>
-          </mat-card>
-        </form>
-      </div>
-
-      <!-- password policy -->
-      <div class="d-flex">
-        <mat-menu #policyMenu="matMenu"
-                  xPosition="before">
-          <mat-list class="lm-password-policy-list">
-            <div mat-subheader>
-              <p class="m-0">Password Policy</p>
-            </div>
-            <mat-list-item *ngFor="let _ of assets.passwordPolicy.conditions">
-              <code class="text-monospace">{{ _.statement }}</code>
-            </mat-list-item>
-          </mat-list>
-        </mat-menu>
-      </div>
-    </div>
-  </ng-container>
-
-  <ng-template #registerProcessing>
-    <div class="row justify-content-center align-items-center">
-      <div class="col-lg-6 col-sm-12">
-        <mat-card class="my-4">
+<div class="container lm-signup-container">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-lg-6 col-md-8 col-sm-12">
+      <form (ngSubmit)="submitForm($event)"
+            [formGroup]="formGroup">
+        <mat-card class="my-4 mat-elevation-z4">
+          <mat-card-header>
+            <mat-card-title>{{ assetsDict[assetsEntityID].assets.title }}</mat-card-title>
+          </mat-card-header>
           <mat-card-content>
-            <div class="d-flex align-items-center">
-              <div class="mr-2">
-                <app-loader-container></app-loader-container>
+
+            <!-- given name -->
+            <div class="row my-1">
+              <div class="col-md-12">
+                <mat-form-field class="w-100">
+                  <mat-label>{{ formDict[formEntityID].form.givenname.label }}</mat-label>
+                  <input matInput
+                         [formControlName]="formDict[formEntityID].form.givenname.name"
+                         [type]="formDict[formEntityID].form.givenname.type"
+                         [placeholder]="formDict[formEntityID].form.givenname.placeholder"
+                         [required]="formDict[formEntityID].form.givenname.validation.bIsMandatory"
+                         autofocus="true">
+                  <mat-error *ngIf="formGroup
+                             .get(formDict[formEntityID].form.givenname.name)
+                             .hasError('required')">
+                    <span>{{ formDict[formEntityID].form.givenname.label }} is
+                      required</span>
+                  </mat-error>
+                </mat-form-field>
               </div>
-              <div class="ml-2">
-                <p class="m-0">Registrating you with LTI MediaLabs</p>
+            </div>
+
+            <!-- last name -->
+            <div class="row my-1">
+              <div class="col-md-12">
+                <mat-form-field class="w-100">
+                  <mat-label>{{ formDict[formEntityID].form.lastname.label }}</mat-label>
+                  <input matInput
+                         [formControlName]="formDict[formEntityID].form.lastname.name"
+                         [type]="formDict[formEntityID].form.lastname.type"
+                         [placeholder]="formDict[formEntityID].form.lastname.placeholder"
+                         [required]="formDict[formEntityID].form.lastname.validation.bIsMandatory"
+                         autofocus="true">
+                  <mat-error *ngIf="formGroup
+                             .get(formDict[formEntityID].form.lastname.name)
+                             .hasError('required')">
+                    <span>{{ formDict[formEntityID].form.lastname.label }} is
+                      required</span>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- email -->
+            <div class="row my-1">
+              <div class="col-md-12">
+                <mat-form-field class="w-100">
+                  <mat-label>{{ formDict[formEntityID].form.email.label }}</mat-label>
+                  <input matInput
+                         [formControlName]="formDict[formEntityID].form.email.name"
+                         [type]="formDict[formEntityID].form.email.type"
+                         [placeholder]="formDict[formEntityID].form.email.placeholder"
+                         [required]="formDict[formEntityID].form.email.validation.bIsMandatory">
+                  <mat-error *ngIf="formGroup
+                             .get(formDict[formEntityID].form.email.name)
+                             .hasError('required')">
+                    <span>{{ formDict[formEntityID].form.email.label }} is required</span>
+                  </mat-error>
+                  <mat-error *ngIf="formGroup
+                             .get(formDict[formEntityID].form.email.name)
+                             .hasError('email')">
+                    <span>{{ formDict[formEntityID].form.email.label }} is invalid</span>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- password -->
+            <div class="row my-1">
+              <div class="col-sm-10 d-flex flex-column">
+                <mat-form-field class="w-100">
+                  <mat-label>{{ formDict[formEntityID].form.password.label }}</mat-label>
+                  <input matInput
+                         [formControlName]="formDict[formEntityID].form.password.name"
+                         [type]="formDict[formEntityID].form.password.type"
+                         [placeholder]="formDict[formEntityID].form.password.placeholder"
+                         [required]="formDict[formEntityID].form.password.validation.bIsMandatory">
+                  <!-- toggle password visibility -->
+                  <!-- <button *ngIf="!!formGroup
+                          .get(formDict[formEntityID].form.password.name).value"
+                          mat-button
+                          matSuffix
+                          (mousedown)="toggleVisibility({formField: formDict[formEntityID].form.password, bVisibility: true})"
+                          (mouseup)="toggleVisibility({formField: formDict[formEntityID].form.password, bVisibility: false})"
+                          type="button">
+                    <mat-icon>visibility</mat-icon>
+                  </button> -->
+                  <mat-error *ngIf="formGroup
+                             .get(formDict[formEntityID].form.password.name)
+                             .hasError('required')">
+                    <span>{{ formDict[formEntityID].form.password.label }} is
+                      required</span>
+                  </mat-error>
+                  <mat-error *ngIf="formGroup
+                             .get(formDict[formEntityID].form.password.name)
+                             .hasError('pattern')">
+                    <span>Password does not match the Password Policy</span>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <mat-label>{{ formDict[formEntityID].form.confirm.label }}</mat-label>
+                  <input matInput
+                         [formControlName]="formDict[formEntityID].form.confirm.name"
+                         [type]="formDict[formEntityID].form.confirm.type"
+                         [placeholder]="formDict[formEntityID].form.confirm.placeholder"
+                         [required]="formDict[formEntityID].form.confirm.validation.bIsMandatory">
+                  <!-- toggle password visibility -->
+                  <!-- <button *ngIf="!!formGroup
+                         .get(formDict[formEntityID].form.confirm.name).value"
+                          mat-button
+                          matSuffix
+                          (mousedown)="toggleVisibility({formField: formDict[formEntityID].form.password, bVisibility: true})"
+                          (mouseup)="toggleVisibility({formField: formDict[formEntityID].form.password, bVisibility: false})"
+                          type="button">
+                    <mat-icon>visibility</mat-icon>
+                  </button> -->
+                  <mat-error *ngIf="formGroup
+                             .get(formDict[formEntityID].form.confirm.name)
+                             .hasError('required')">
+                    <span>{{ formDict[formEntityID].form.confirm.label }} is required</span>
+                  </mat-error>
+                  <mat-error
+                             *ngIf="!!formGroup
+                             .get(formDict[formEntityID].form.confirm.name).errors && !!formGroup
+                             .get(formDict[formEntityID].form.confirm.name).errors['passwordMismatch']">
+                    <span>Mismatch with {{ formDict[formEntityID].form.password.label }}
+                      entered</span>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-sm-2 d-flex justify-content-center align-items-center">
+                <button mat-icon-button
+                        type="button"
+                        [matMenuTriggerFor]="policyMenu">
+                  <mat-icon>info</mat-icon>
+                </button>
+              </div>
+            </div>
+
+            <!-- country -->
+            <div class="row my-1">
+              <div class="col-md-12">
+                <mat-form-field class="w-100">
+                  <mat-label>{{ formDict[formEntityID].form.country.label }}</mat-label>
+                  <input matInput
+                         [formControlName]="formDict[formEntityID].form.country.name"
+                         [type]="formDict[formEntityID].form.country.type"
+                         [placeholder]="formDict[formEntityID].form.country.placeholder"
+                         [required]="formDict[formEntityID].form.country.validation.bIsMandatory">
+                  <mat-error *ngIf="formGroup
+                             .get(formDict[formEntityID].form.country.name)
+                             .hasError('required')">
+                    <span>{{ formDict[formEntityID].form.country.label }} is required</span>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- organization -->
+            <div class="row my-1">
+              <div class="col-md-12">
+                <mat-form-field class="w-100">
+                  <mat-label>{{ formDict[formEntityID].form.organization.label }}</mat-label>
+                  <mat-select [formControlName]="formDict[formEntityID].form.organization.name"
+                              required>
+                    <mat-option *ngFor="let _ of organizations"
+                                [value]="_.value">{{ _.viewValue }}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="formGroup
+                             .get(formDict[formEntityID].form.organization.name)
+                             .hasError('required')">
+                    <span>{{ formDict[formEntityID].form.organization.label }} is
+                      required</span>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- designation -->
+            <div class="row my-1">
+              <div class="col-md-12">
+                <mat-form-field class="w-100">
+                  <mat-label>{{ formDict[formEntityID].form.designation.label }}</mat-label>
+                  <input matInput
+                         [formControlName]="formDict[formEntityID].form.designation.name"
+                         [type]="formDict[formEntityID].form.designation.type"
+                         [placeholder]="formDict[formEntityID].form.designation.placeholder"
+                         [required]="formDict[formEntityID].form.designation.validation.bIsMandatory">
+                  <mat-error *ngIf="formGroup
+                             .get(formDict[formEntityID].form.designation.name)
+                             .hasError('required')">
+                    <span>{{ formDict[formEntityID].form.designation.label }} is
+                      required</span>
+                  </mat-error>
+                </mat-form-field>
               </div>
             </div>
           </mat-card-content>
+          <mat-card-actions>
+            <div class="row my-1">
+              <div class="col-md-12 text-center">
+                <button type="submit"
+                        mat-stroked-button
+                        [disabled]="formGroup.invalid"
+                        color="primary">{{ assetsDict[assetsEntityID].assets.signup }}</button>
+              </div>
+            </div>
+            <div class="row my-1">
+              <div class="col-md-12 text-center">
+                <span>Already have an account?</span>
+                <a mat-button
+                   color="accent"
+                   type="button"
+                   (click)="gotoLogin()">{{ assetsDict[assetsEntityID].assets.login }}</a>
+              </div>
+            </div>
+          </mat-card-actions>
         </mat-card>
-      </div>
+      </form>
     </div>
-  </ng-template>
 
+    <!-- password policy -->
+    <div class="d-flex lm-password-policy-holder">
+      <mat-menu #policyMenu="matMenu"
+                xPosition="before">
+        <mat-list class="lm-password-policy-list">
+          <div class="lm-password-policy-title"
+               mat-subheader>
+            <span>Password Policy</span>
+          </div>
+          <mat-list-item
+                         *ngFor="let _ of assetsDict[assetsEntityID].assets.passwordPolicy.conditions">
+            <span style="font-family: monospace;">{{ _.statement }}</span>
+          </mat-list-item>
+        </mat-list>
+      </mat-menu>
+    </div>
+  </div>
 </div>

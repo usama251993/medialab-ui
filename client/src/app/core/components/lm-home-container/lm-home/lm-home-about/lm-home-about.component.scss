@@ -1,1 +1,7 @@
 @import '../lm-home.component.scss';
+
+div.lm-about-container {
+  display: grid;
+  place-content: center;
+  min-height: 75vh;
+}

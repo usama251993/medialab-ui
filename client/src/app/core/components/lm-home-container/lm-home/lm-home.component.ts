@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core'
-
 import { BehaviorSubject } from 'rxjs'
+import { Dictionary } from '@ngrx/entity'
 
-import { LmHomeAssetsModel } from '@lm-core/models/assets/lm-home.model'
-import { NavigationExtras } from '@angular/router'
+import { LmHomeAssetsModel } from '@lm-core/models/lm-home.model'
 
 @Component({
   selector: 'app-lm-home',
@@ -12,21 +11,31 @@ import { NavigationExtras } from '@angular/router'
 })
 export class LmHomeComponent implements OnInit {
 
-  private _assets$: BehaviorSubject<LmHomeAssetsModel>
+  data$: BehaviorSubject<Dictionary<LmHomeAssetsModel>>
+  cookiebar$: BehaviorSubject<Dictionary<LmHomeAssetsModel>>
 
   @Input()
-  set assets(value: LmHomeAssetsModel) { this._assets$.next(value) };
-  get assets(): LmHomeAssetsModel { return this._assets$.getValue() };
+  set assetsDict(value: Dictionary<LmHomeAssetsModel>) { this.data$.next(value) };
+  get assetsDict(): Dictionary<LmHomeAssetsModel> { return this.data$.getValue() };
 
-  @Output() triggerNavigate$: EventEmitter<{ path: string[], extras: NavigationExtras }> = new EventEmitter<{ path: string[], extras: NavigationExtras }>()
+  @Input()
+  set cookiebarDict(value: Dictionary<LmHomeAssetsModel>) { this.cookiebar$.next(value) };
+  get cookiebarDict(): Dictionary<LmHomeAssetsModel> { return this.cookiebar$.getValue() };
+
+  @Input() cookiebarEntityID: string
+  @Input() assetsEntityID: string
+
+  @Output() triggerDissmissCookiebar$: EventEmitter<LmHomeAssetsModel>
 
   constructor() {
-    this._assets$ = new BehaviorSubject<LmHomeAssetsModel>(null)
+    this.data$ = new BehaviorSubject<Dictionary<LmHomeAssetsModel>>(null)
+    this.cookiebar$ = new BehaviorSubject<Dictionary<LmHomeAssetsModel>>(null)
+    this.triggerDissmissCookiebar$ = new EventEmitter<LmHomeAssetsModel>()
   }
 
   ngOnInit(): void { }
 
-  triggerNavigate() {
-    this.triggerNavigate$.emit({ path: [], extras: {} })
+  triggerDismissCookiebar(): void {
+    this.triggerDissmissCookiebar$.emit(this.cookiebarDict[this.cookiebarEntityID])
   }
 }

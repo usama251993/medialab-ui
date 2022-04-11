@@ -1,16 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
 import { FormGroup } from '@angular/forms'
-
-import { BehaviorSubject, Observable } from 'rxjs'
+import { BehaviorSubject } from 'rxjs'
+import { Dictionary } from '@ngrx/entity'
 
 import * as fromUtil from '@shared/util/app-form.util'
-import { AppFormFieldModel, INITIAL_FORM_GROUP } from '@shared/models/app-form.model'
-
-import { LmLoginRequestModel } from '@lm-core/models/common/auth/lm-auth-login.model'
-import { LmWSO2ErrorResponseModel, INITIAL_WSO2_ERROR } from '@lm-core/models/lm-wso2-error.model'
-import { INITIAL_COMPONENT_FLAGS, INITIAL_LOGIN_PAGE_ASSETS, LmLoginComponentFlags, LmLoginPageAssetsModel } from '@lm-core/models/lm-login/lm-login-assets.model'
-import { INITIAL_LOGIN_FORM_ASSETS, LmLoginFormAssetsModel } from '@lm-core/models/lm-login/lm-login.model'
-import { AppButton2Model } from '@shared/models/app-assets.model'
+import { LmLoginRequestModel } from '@shared/models/lm-auth.model'
+import { LmLoginAssetsModel } from '@lm-core/models/lm-login.model'
 
 @Component({
   selector: 'app-lm-login',
@@ -19,77 +14,56 @@ import { AppButton2Model } from '@shared/models/app-assets.model'
 })
 export class LmLoginComponent implements OnInit {
 
-  private _assets$: BehaviorSubject<LmLoginPageAssetsModel> = new BehaviorSubject<LmLoginPageAssetsModel>(INITIAL_LOGIN_PAGE_ASSETS)
-  private _form$: BehaviorSubject<LmLoginFormAssetsModel> = new BehaviorSubject<LmLoginFormAssetsModel>(INITIAL_LOGIN_FORM_ASSETS)
-  private _formGroup$: BehaviorSubject<FormGroup> = new BehaviorSubject<FormGroup>(INITIAL_FORM_GROUP)
-  private _error$: BehaviorSubject<LmWSO2ErrorResponseModel> = new BehaviorSubject<LmWSO2ErrorResponseModel>(INITIAL_WSO2_ERROR)
-  loginAssets$: Observable<AppButton2Model>
-
-  private _componentFlags$: BehaviorSubject<LmLoginComponentFlags> = new BehaviorSubject<LmLoginComponentFlags>(INITIAL_COMPONENT_FLAGS)
+  assets$: BehaviorSubject<Dictionary<LmLoginAssetsModel>>
+  form$: BehaviorSubject<Dictionary<LmLoginAssetsModel>>
+  formGroup$: BehaviorSubject<FormGroup>
 
   @Input()
-  set assets(value: LmLoginPageAssetsModel) { this._assets$.next(value) }
-  get assets(): LmLoginPageAssetsModel { return this._assets$.getValue() }
+  set assetsDict(value: Dictionary<LmLoginAssetsModel>) { this.assets$.next(value) };
+  get assetsDict(): Dictionary<LmLoginAssetsModel> { return this.assets$.getValue() };
 
   @Input()
-  set form(value: LmLoginFormAssetsModel) { this._form$.next(value) }
-  get form(): LmLoginFormAssetsModel { return this._form$.getValue() }
+  set formDict(value: Dictionary<LmLoginAssetsModel>) { this.form$.next(value) };
+  get formDict(): Dictionary<LmLoginAssetsModel> { return this.form$.getValue() };
 
   @Input()
-  set formGroup(value: FormGroup) { this._formGroup$.next(value) }
-  get formGroup(): FormGroup { return this._formGroup$.getValue() }
+  set formGroup(value: FormGroup) { this.formGroup$.next(value) };
+  get formGroup(): FormGroup { return this.formGroup$.getValue() };
 
-  @Input()
-  set error(value: LmWSO2ErrorResponseModel) { this._error$.next(value) }
-  get error(): LmWSO2ErrorResponseModel { return this._error$.getValue() }
+  @Input() assetsEntityID: string
+  @Input() formEntityID: string
+  @Input() contextEntityID: string
 
-  @Input()
-  set componentFlags(value: LmLoginComponentFlags) { this._componentFlags$.next(value) }
-  get componentFlags(): LmLoginComponentFlags { return this._componentFlags$.getValue() }
+  @Output() triggerLogin$: EventEmitter<LmLoginRequestModel>
+  @Output() gotoSignup$: EventEmitter<void>
 
-  @Output() triggerLogin$: EventEmitter<LmLoginRequestModel> = new EventEmitter<LmLoginRequestModel>()
-  @Output() gotoSignup$: EventEmitter<void> = new EventEmitter<void>()
-  @Output() triggerResend$: EventEmitter<{ username: string }> = new EventEmitter<{ username: string }>()
-  @Output() triggerResendVisibility$: EventEmitter<boolean> = new EventEmitter<boolean>()
-
-  constructor() { }
-
-  ngOnInit(): void {
-    this._error$.subscribe(_ => { if (!!_?.resend) this.toggleResendVisibility(true) })
+  constructor(
+  ) {
+    this.assets$ = new BehaviorSubject<Dictionary<LmLoginAssetsModel>>(null)
+    this.form$ = new BehaviorSubject<Dictionary<LmLoginAssetsModel>>(null)
+    this.formGroup$ = new BehaviorSubject<FormGroup>(null)
+    this.triggerLogin$ = new EventEmitter<LmLoginRequestModel>()
+    this.gotoSignup$ = new EventEmitter<void>()
   }
+
+  ngOnInit(): void { }
 
   submitForm(event: Event): void {
     if (event['submitter'].type === 'submit') {
-      this.triggerLogin$.emit(<LmLoginRequestModel>{
-        ...this.formGroup.value,
+      let data: LmLoginRequestModel = {
+        id: this.contextEntityID,
         username: fromUtil.getFormControlValue({
           formGroup: this.formGroup,
-          formControlName: this.form.username.name
-        }).toString().split('@').join('-'),
+          formControlName: this.formDict[this.formEntityID].form.username.name
+        }).toString(),
         password: btoa(fromUtil.getFormControlValue({
           formGroup: this.formGroup,
-          formControlName: this.form.password.name
+          formControlName: this.formDict[this.formEntityID].form.password.name
         }).toString())
-      })
-    }
-  }
-
-  toggleVisibility(_: { formField: AppFormFieldModel, bVisibility: boolean }): void {
-    if (!!_.bVisibility) _.formField.type = 'text'
-    else _.formField.type = 'password'
-  }
-
-  toggleResendVisibility(_: boolean) {
-    this.triggerResendVisibility$.emit(_)
-  }
-
-  triggerResend(_: { username: string }) {
-    this.toggleResendVisibility(false)
-    this.triggerResend$.emit(_)
-  }
-
-  dismissErrorMessage() {
-    this.error = null
+      }
+      data.username = data.username.split('@').join('-')
+      this.triggerLogin$.emit(data)
+    } else { }
   }
 
   gotoSignup() {

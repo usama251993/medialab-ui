@@ -1,9 +1,8 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core'
-
+import { Component, OnInit, Input } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
+import { Dictionary } from '@ngrx/entity'
 
-import { LmFooterAssetsModel } from '@lm-core/models/assets/lm-footer.model'
-import { NavigationExtras } from '@angular/router'
+import { LmFooterAssetsModel } from '@lm-core/models/lm-footer.model'
 
 @Component({
   selector: 'app-lm-footer',
@@ -12,22 +11,21 @@ import { NavigationExtras } from '@angular/router'
 })
 export class LmFooterComponent implements OnInit {
 
-  private _assets$: BehaviorSubject<LmFooterAssetsModel>
+  data$: BehaviorSubject<Dictionary<LmFooterAssetsModel>>
 
   @Input()
-  set assets(value: LmFooterAssetsModel) { this._assets$.next(value) };
-  get assets(): LmFooterAssetsModel { return this._assets$.getValue() };
+  set assetsDict(value: Dictionary<LmFooterAssetsModel>) { this.data$.next(value) };
+  get assetsDict(): Dictionary<LmFooterAssetsModel> { return this.data$.getValue() };
 
-  @Output() triggerNavigate$: EventEmitter<{ path: string[], extras: NavigationExtras }> = new EventEmitter<{ path: string[], extras: NavigationExtras }>()
+  @Input()
+  assetsEntityID: string
 
   constructor() {
-    this._assets$ = new BehaviorSubject<LmFooterAssetsModel>(null)
+    this.data$ = new BehaviorSubject<Dictionary<LmFooterAssetsModel>>(null)
   }
 
   ngOnInit(): void { }
 
-  navigate(route: string) {
-    this.triggerNavigate$.emit({ path: [route], extras: {} })
-  }
+  navigate(route: string) { }
 
 }

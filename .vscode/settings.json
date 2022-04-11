@@ -19,6 +19,7 @@
   "editor.renderWhitespace": "all",
   "editor.smoothScrolling": true,
   "editor.suggest.insertMode": "replace",
+  "editor.suggest.maxVisibleSuggestions": 8,
   "editor.suggest.statusBar.visible": true,
   "editor.tabSize": 2,
   // workbench
@@ -85,11 +86,4 @@
   "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
   "files.eol": "\r\n",
   "terminal.integrated.fontWeightBold": "normal",
-  "bracket-pair-colorizer-2.colors": [
-    "Gold",
-    "Orchid",
-    "LightSkyBlue",
-    "#00e676"
-  ],
-  "svg.preview.background": "transparent",
 }

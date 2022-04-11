@@ -1,11 +1,11 @@
-// div.app-shell-grid {
-//   display: grid;
-//   grid-template-columns: 1fr 1fr;
+div.app-shell-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 
-//   div.app-module-image-holder {
-//     img.app-module-logo {
-//       height: 96px;
-//       filter: brightness(2);
-//     }
-//   }
-// }
+  div.app-module-image-holder {
+    img.app-module-logo {
+      height: 96px;
+      filter: brightness(2);
+    }
+  }
+}

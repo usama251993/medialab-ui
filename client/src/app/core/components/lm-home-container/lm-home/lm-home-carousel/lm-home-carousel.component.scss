@@ -1,0 +1,13 @@
+div.lm-carousel {
+  background-color: #000000d0;
+
+  div.lm-carousel-item {
+    min-height: 300px;
+    max-height: 80vh;
+
+    span.lm-carousel-caption-text {
+      background-color: #00000040;
+      border-radius: 4px;
+    }
+  }
+}

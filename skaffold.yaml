@@ -1,0 +1,21 @@
+apiVersion: skaffold/v2beta5
+kind: Config
+metadata:
+  name: medialab-ui
+build:
+  artifacts:
+  # - image: gcr.io/viacom-poc/medialabs/client
+  #   context: client
+  - image: gcr.io/viacom-poc/medialabs/nginx
+    context: client
+  # - image: gcr.io/viacom-poc/medialabs/server
+  #   context: server
+deploy:
+  kubectl:
+    manifests:
+    # - client-deployment.yaml
+    # - client-service.yaml
+    - nginx-deployment.yaml
+    - nginx-service.yaml
+    # - server-deployment.yaml
+    # - server-service.yaml

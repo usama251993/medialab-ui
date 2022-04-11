@@ -1,22 +1,18 @@
 import { Injectable } from '@angular/core'
-import { Observable } from 'rxjs'
+import { Observable, of } from 'rxjs'
+import { Store, select } from '@ngrx/store'
+import { Dictionary } from '@ngrx/entity'
 
-import { share } from 'rxjs/operators'
+import { State } from '@lm-core/state'
+import * as fromActions from '@lm-core/state/actions/lm-auth.action'
+import { selectUserDict } from '@lm-core/state/selectors/lm-auth.selector'
+import { ENTITY_ID } from '@lm-core/state/types'
 
-import { AppEndpointRequestModel, AppEndpointResponseModel } from '@shared/models/app-endpoint.model'
-import { AppEndpointService } from '@shared/services/app-endpoint/app-endpoint.service'
-import { COMMON_ENDPOINT_CONSTANTS } from '@shared/constants/app-endpoint.constants'
+import { LmRouterService } from '@lm-core/services/lm-router/lm-router.service'
 
-import { LmLoginRequestModel } from '@lm-core/models/common/auth/lm-auth-login.model'
-import { LmSignupRequestModel } from '@lm-core/models/common/auth/lm-auth-signup.model'
-
-const STRING_CONSTANTS = {
-  DEFAULT_ORGANIZATION: 'lntinfotech.com',
-  SALES: 'SALES',
-  CLIENT: 'CLIENT',
-  AT: '@',
-  DASH: '-'
-}
+import * as fromAuthModels from '@shared/models/lm-auth.model'
+import * as fromEndpointModels from '@shared/models/app-endpoint.model'
+import { AppEndpointService } from '@shared/facade/services/app-endpoint/app-endpoint.service'
 
 @Injectable({
   providedIn: 'root'
@@ -24,81 +20,97 @@ const STRING_CONSTANTS = {
 export class LmAuthService {
 
   constructor(
+    private _store$: Store<State>,
+    private _routerService: LmRouterService,
     private _endpointService: AppEndpointService
   ) { }
 
-  login(_: LmLoginRequestModel): Observable<AppEndpointResponseModel<any>> {
-    const reqBody: AppEndpointRequestModel = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': "*"
-      },
-      auth: { ..._ },
-      params: null,
-      data: null,
-      route: null
-    }
+  login(reqBody: fromEndpointModels.AppEndpointRequestModel): Observable<fromEndpointModels.AppEndpointResponseModel> {
     const endpointConfig = {
-      context: COMMON_ENDPOINT_CONSTANTS.CONTEXT.WSO2,
-      endpoint: COMMON_ENDPOINT_CONSTANTS.ENDPOINT.WSO2.LOGIN
+      context: this._endpointService.EXPRESS.CONTEXT.WSO2,
+      endpoint: this._endpointService.EXPRESS.ENDPOINT.WSO2.LOGIN
     }
-    const endpoint: string = this._endpointService.getEndpoint(endpointConfig)
-    return this._endpointService.triggerPostRequest<any>({ endpoint, reqBody })
+    let endpoint: string = this._endpointService.getEndpoint(endpointConfig)
+    return this._endpointService.triggerPostRequest({ endpoint, reqBody })
   }
 
-  signup(_: LmSignupRequestModel): Observable<AppEndpointResponseModel<any>> {
-    const reqBody: AppEndpointRequestModel = {
-      headers: { 'Content-Type': 'application/json' },
-      auth: { username: 'admin', password: btoa('admin') },
-      params: null,
-      data: { ..._ },
-      route: null
-    }
+  signup(reqBody: fromEndpointModels.AppEndpointRequestModel): Observable<fromEndpointModels.AppEndpointResponseModel> {
     const endpointConfig = {
-      context: COMMON_ENDPOINT_CONSTANTS.CONTEXT.WSO2,
-      endpoint: COMMON_ENDPOINT_CONSTANTS.ENDPOINT.WSO2.REGISTER
+      context: this._endpointService.EXPRESS.CONTEXT.WSO2,
+      endpoint: this._endpointService.EXPRESS.ENDPOINT.WSO2.REGISTER
     }
-    const endpoint: string = this._endpointService.getEndpoint(endpointConfig)
-    return this._endpointService.triggerPostRequest<any>({ endpoint, reqBody })
+    let endpoint = this._endpointService.getEndpoint(endpointConfig)
+    return this._endpointService.triggerPostRequest({ endpoint, reqBody })
   }
 
-  verify(_: { token: string }): Observable<AppEndpointResponseModel<any>> {
-    const reqBody: AppEndpointRequestModel = {
-      headers: { 'Content-Type': 'application/json' },
-      auth: { username: 'admin', password: btoa('admin') },
-      params: null,
-      data: { ..._ },
-      route: null
-    }
+  logout(_: fromAuthModels.LmUserModel) {
+    this._store$.dispatch(new fromActions.LmAuthLogout(_))
+  }
+
+  // createKillbillAccount(): Observable<{ status: number }> {
+  //   return this._http.post<{ status: number }>('http://localhost:3000/api/killbill/createAccount', {})
+  // }
+
+  // retrieveKBAccountID({ email, password }: fromAuthModels.LmLoginRequestModel): Observable<fromEndpointModels.AppEndpointResponseModel> {
+  //   const endpoint: string = this.endpointService.getEndpoint({
+  //     context: this.endpointService.EXPRESS.CONTEXT.KB,
+  //     endpoint: this.endpointService.EXPRESS.ENDPOINT.KB.RETRIEVEID
+  //   })
+  //   const payload: LmKBRequestModel = {
+  //     headers: {
+  //       externalKey: 'Walt'
+  //     },
+  //     auth: {
+  //       username: email,
+  //       password: password
+  //     },
+  //     params: {}
+  //   }
+  //   return this._http.post<fromEndpointModels.AppEndpointResponseModel>(endpoint, payload)
+  // }
+
+  // retrieveKBTenantID(): Observable<any> {
+  //   return this._http.post<any>('http://localhost:3000/api/killbill/getTenantID', {
+  //     apiKey: 'Viacom',
+  //     credentials: {
+  //       username: 'admin',
+  //       password: 'password'
+  //     }
+  //   })
+  // }
+
+  getUserContext(reqBody: fromEndpointModels.AppEndpointRequestModel): Observable<fromEndpointModels.AppEndpointResponseModel> {
     const endpointConfig = {
-      context: COMMON_ENDPOINT_CONSTANTS.CONTEXT.WSO2,
-      endpoint: COMMON_ENDPOINT_CONSTANTS.ENDPOINT.WSO2.VERIFY
+      context: this._endpointService.EXPRESS.CONTEXT.WSO2,
+      endpoint: this._endpointService.EXPRESS.ENDPOINT.WSO2.USER
     }
-    const endpoint: string = this._endpointService.getEndpoint(endpointConfig)
-    return this._endpointService.triggerPostRequest<any>({ endpoint, reqBody })
+    let endpoint = this._endpointService.getEndpoint(endpointConfig)
+    return this._endpointService.triggerPostRequest({ endpoint, reqBody })
   }
 
-  resendCode(_: { username: string, realm: string }): Observable<AppEndpointResponseModel<any>> {
-    const reqBody: AppEndpointRequestModel = {
-      headers: { 'Content-Type': 'application/json' },
-      auth: { username: 'admin', password: btoa('admin') },
-      params: null,
-      data: { ..._ },
-      route: null
-    }
-    const endpointConfig = {
-      context: COMMON_ENDPOINT_CONSTANTS.CONTEXT.WSO2,
-      endpoint: COMMON_ENDPOINT_CONSTANTS.ENDPOINT.WSO2.RESEND
-    }
-    const endpoint: string = this._endpointService.getEndpoint(endpointConfig)
-    return this._endpointService.triggerPostRequest<any>({ endpoint, reqBody }).pipe(share())
+  getLoginEntityID(): Observable<string> {
+    return of(ENTITY_ID.LOGIN)
   }
 
-  getUserName(_: { email: string }): string {
-    return _.email.split(STRING_CONSTANTS.AT).join(STRING_CONSTANTS.DASH)
+  getSignupEntityID(): Observable<string> {
+    return of(ENTITY_ID.SIGNUP)
   }
 
-  getRealm(_: { email: string }): string {
-    return _.email.endsWith(STRING_CONSTANTS.DEFAULT_ORGANIZATION) ? STRING_CONSTANTS.SALES : STRING_CONSTANTS.CLIENT
+  gotoLogin() {
+    this._routerService.triggerNavigate({ path: 'login' })
+  }
+
+  gotoSignup() {
+    this._routerService.triggerNavigate({ path: 'signup' })
+  }
+
+  triggerLogin(_: fromAuthModels.LmLoginRequestModel): Observable<Dictionary<fromAuthModels.LmAuthResponseModel>> {
+    this._store$.dispatch(new fromActions.LmAuthLogin(_))
+    return this._store$.pipe(select(selectUserDict))
+  }
+
+  triggerSignup(_: fromAuthModels.LmSignupRequestModel): Observable<Dictionary<fromAuthModels.LmAuthResponseModel>> {
+    this._store$.dispatch(new fromActions.LmAuthSignup(_))
+    return this._store$.pipe(select(selectUserDict))
   }
 }

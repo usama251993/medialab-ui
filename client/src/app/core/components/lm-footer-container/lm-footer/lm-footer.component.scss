@@ -1,11 +1,8 @@
-div.lm-footer-section {
-  p {
-    cursor: pointer;
-  }
+// div.lm-footer-container {
+//   background-color: #303030;
+//   color: #fafafa;
+// }
 
-  &.lm-footer-copyright {
-    p {
-      cursor: default;
-    }
-  }
+div[class*='lm-footer-'] span {
+  cursor: pointer;
 }

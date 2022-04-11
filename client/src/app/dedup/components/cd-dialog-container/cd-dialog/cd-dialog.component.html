@@ -1,0 +1,44 @@
+<div class="container p-0">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <p class="h5 m-0">{{ result.title }}</p>
+    <button mat-icon-button
+            (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="d-flex justify-content-center align-items-center">
+    <app-cd-theoplayer-container [result]="result"></app-cd-theoplayer-container>
+  </div>
+</div>
+
+<!--
+<mat-card class="mt-4">
+  <mat-card-content>
+    <div class="d-flex my-2">
+      <p class="h5">{{ result.title }}</p>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="mb-1">
+          <span>Video ID: </span>
+          <span class="cd-light-font">{{ result.vid_id }}</span>
+        </div>
+        <div class="mt-1">
+          <span>Bit Rate: </span>
+          <span class="cd-light-font">{{ result.bit_rate }}</span>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-1">
+          <span>Sample Rate: </span>
+          <span class="cd-light-font">{{ result.sample_rate }}</span>
+        </div>
+        <div class="mt-1">
+          <span>Format: </span>
+          <span class="cd-light-font">{{ result.format }}</span>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+-->

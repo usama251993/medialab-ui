@@ -1,0 +1,26 @@
+[
+  {
+    "vid_id": "VID_H100RQ",
+    "title": "ThorTrailer-10SecBlankScreenatStartNEnd.mp4",
+    "track": "Drop",
+    "format": "AVC",
+    "encoding_format": "video/H264",
+    "bit_rate": "1164572",
+    "sample_rate": "44.1",
+    "timecode_location": "0.023,10.5864,162.733,173.253",
+    "duration": "173.32",
+    "video_url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/final_videos/ThorTrailer-10SecBlankScreenatStartNEnd.mp4"
+  },
+  {
+    "vid_id": "VID_H97JT",
+    "title": "ThorTrailer-10secBlankScreenatStart.mp4",
+    "track": "Drop",
+    "format": "AVC",
+    "encoding_format": "video/H264",
+    "bit_rate": "1239538",
+    "sample_rate": "44.1",
+    "timecode_location": "0.023,10.5864",
+    "duration": "162.77",
+    "video_url": "https://storage.cloud.google.com/medialabs_contentdedup_devbucket/final_videos/ThorTrailer-10secBlankScreenatStart.mp4"
+  }
+]

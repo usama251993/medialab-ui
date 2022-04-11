@@ -1,11 +1,10 @@
-import { Component, OnInit, Input, EventEmitter, Output, ViewChildren, QueryList, ElementRef, Renderer2 } from '@angular/core'
-import { MatMenuTrigger } from '@angular/material/menu'
-
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
+import { Dictionary } from '@ngrx/entity'
+import { MatSidenav } from '@angular/material/sidenav'
 
-import { LmUserModel } from '@lm-core/models/common/auth/lm-auth-user.model'
-import { LmNavbarAssetsModel, LmNavbarItemAssetsModel } from '@lm-core/models/assets/lm-navbar.model'
-import { CORE_ROUTES } from '@lm-core/lm-core.routes'
+import { LmUserModel } from '@shared/models/lm-auth.model'
+import * as fromNavbar from '@lm-core/models/lm-navbar.model'
 
 @Component({
   selector: 'app-lm-navbar',
@@ -14,45 +13,41 @@ import { CORE_ROUTES } from '@lm-core/lm-core.routes'
 })
 export class LmNavbarComponent implements OnInit {
 
-  private _assets$: BehaviorSubject<LmNavbarAssetsModel> = new BehaviorSubject<LmNavbarAssetsModel>(null)
-  private _user$: BehaviorSubject<LmUserModel> = new BehaviorSubject<LmUserModel>(null)
-  private _menuTriggers$: BehaviorSubject<MatMenuTrigger[] | any[]> = new BehaviorSubject<MatMenuTrigger[] | any[]>([])
+  data$: BehaviorSubject<Dictionary<fromNavbar.LmNavbarAssetsModel>>
+  user$: BehaviorSubject<Dictionary<LmUserModel>>
 
   @Input()
-  set assets(value: LmNavbarAssetsModel) { this._assets$.next(value) }
-  get assets(): LmNavbarAssetsModel { return this._assets$.getValue() }
+  set assetsDict(value: Dictionary<fromNavbar.LmNavbarAssetsModel>) { this.data$.next(value) };
+  get assetsDict(): Dictionary<fromNavbar.LmNavbarAssetsModel> { return this.data$.getValue() };
 
   @Input()
-  set user(value: LmUserModel) { this._user$.next(value) }
-  get user(): LmUserModel { return this._user$.getValue() }
+  set userContextDict(value: Dictionary<LmUserModel>) { this.user$.next(value) };
+  get userContextDict(): Dictionary<LmUserModel> { return this.user$.getValue() };
 
-  @ViewChildren(MatMenuTrigger) private set menuTrigger(_: QueryList<MatMenuTrigger | any>) { this._menuTriggers$.next(_.toArray()) }
+  @Input() assetsEntityID: string
+  @Input() userEntityIDs: string[]
 
-  @Output() triggerNavigate$: EventEmitter<{ path: string[] }> = new EventEmitter<{ path: string[] }>()
-  @Output() triggerLogout$: EventEmitter<void> = new EventEmitter<void>()
+  @Output() triggerNavigate$: EventEmitter<{ path: string }>
+  @Output() toggleSidenav$: EventEmitter<MatSidenav>
+  @Output() triggerLogout$: EventEmitter<LmUserModel>
 
-  constructor(
-    private _renderer: Renderer2
-  ) { }
-
-  ngOnInit(): void {
-    this.handleMenuTrigger()
+  constructor() {
+    this.data$ = new BehaviorSubject<Dictionary<fromNavbar.LmNavbarAssetsModel>>(null)
+    this.user$ = new BehaviorSubject<Dictionary<LmUserModel>>(null)
+    this.triggerNavigate$ = new EventEmitter<{ path: string }>()
+    this.toggleSidenav$ = new EventEmitter<MatSidenav>()
+    this.triggerLogout$ = new EventEmitter<LmUserModel>()
   }
 
-  handleMenuTrigger(): void {
-    this._menuTriggers$.subscribe(__ => {
-      const triggeredEl: MatMenuTrigger | any = __.find(_find => !!_find.menuOpen)
-      if (!!triggeredEl) this._renderer.addClass(<HTMLButtonElement>(<ElementRef>triggeredEl._element).nativeElement, 'lm-menu-active')
-      else __.forEach(_forEach => { this._renderer.removeClass(<HTMLButtonElement>(<ElementRef>_forEach._element).nativeElement, 'lm-menu-active') })
-    })
+  ngOnInit(): void { }
+
+  navigate(navbarItem?: fromNavbar.LmNavbarItemAssetsModel): void {
+    (!!navbarItem)
+      ? (navbarItem.route === 'logout')
+        ? this.triggerLogout$.emit(this.userContextDict[this.userEntityIDs[0]])
+        : this.triggerNavigate$.emit({ path: navbarItem.route })
+      : this.triggerNavigate$.emit({ path: 'home' })
   }
 
-  navigate(navbarItem?: LmNavbarItemAssetsModel): void {
-    if (!!navbarItem) {
-      if (navbarItem.route === CORE_ROUTES.LOGOUT) this.triggerLogout$.emit()
-      else this.triggerNavigate$.emit({ path: [navbarItem.route] })
-    } else {
-      this.triggerNavigate$.emit({ path: [CORE_ROUTES.EMPTY] })
-    }
-  }
+
 }

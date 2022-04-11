@@ -44,7 +44,7 @@ export class LmTestComponent implements OnInit {
   data: FormArray
   params: FormArray
 
-  response$: BehaviorSubject<AppEndpointResponseModel<any>>
+  response$: BehaviorSubject<AppEndpointResponseModel>
   pending$: BehaviorSubject<boolean>
 
   @Output() submitForm$: EventEmitter<FormGroup>
@@ -56,8 +56,8 @@ export class LmTestComponent implements OnInit {
   reqData: LmReqDataModel[]
 
   @Input()
-  set response(value: AppEndpointResponseModel<any>) { this.response$.next(value) };
-  get response(): AppEndpointResponseModel<any> { return this.response$.getValue() };
+  set response(value: AppEndpointResponseModel) { this.response$.next(value) };
+  get response(): AppEndpointResponseModel { return this.response$.getValue() };
 
   @Input()
   set bIsPending(value: boolean) { this.pending$.next(value) };
@@ -66,7 +66,7 @@ export class LmTestComponent implements OnInit {
   constructor(
     private _fb: FormBuilder
   ) {
-    this.response$ = new BehaviorSubject<AppEndpointResponseModel<any>>({
+    this.response$ = new BehaviorSubject<AppEndpointResponseModel>({
       data: null,
       error: null,
       status: 0

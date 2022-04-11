@@ -9,7 +9,18 @@
   <div class="lm-footer-holder">
     <app-lm-footer-container></app-lm-footer-container>
   </div>
-  <!-- <div class="lm-cookiebar-holder">
-    <app-lm-cookiebar-container></app-lm-cookiebar-container>
-  </div> -->
+  <!-- <mat-sidenav-container (backdropClick)="closeSidenav($event)">
+    <mat-sidenav opened
+                 #lmSidenav>
+      <div class="lm-navbar-holder">
+        <app-lm-navbar-container [sideNav]="lmSidenav"></app-lm-navbar-container>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="lm-navbar-holder">
+        <app-lm-navbar-container [sideNav]="lmSidenav"></app-lm-navbar-container>
+      </div>
+      
+    </mat-sidenav-content>
+  </mat-sidenav-container> -->
 </div>

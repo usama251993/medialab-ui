@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
 import { tap } from 'rxjs/operators'
 
-import { AppEndpointRequestModel, AppEndpointResponseModel } from '@shared/models/app-endpoint.model'
-import { AppEndpointService } from '@shared/services/app-endpoint/app-endpoint.service'
+import * as fromEndpoint from '@shared/models/app-endpoint.model'
+import { AppEndpointService } from '@shared/facade/services/app-endpoint/app-endpoint.service'
 
 @Component({
   selector: 'app-lm-test-container',
@@ -15,7 +15,7 @@ export class LmTestContainerComponent implements OnInit {
 
   bIsPending: boolean
 
-  response$: Observable<AppEndpointResponseModel<any>>
+  response$: Observable<fromEndpoint.AppEndpointResponseModel>
 
   constructor(
     private _endpoint: AppEndpointService
@@ -30,7 +30,7 @@ export class LmTestContainerComponent implements OnInit {
 
     this.bIsPending = true
     let endpoint = `http://localhost:3000/api/${formData['app']}/${formData['api']}`
-    let reqBody: AppEndpointRequestModel = {
+    let reqBody: fromEndpoint.AppEndpointRequestModel = {
       auth: { username: '', password: '' },
       headers: {},
       params: {},
@@ -47,7 +47,7 @@ export class LmTestContainerComponent implements OnInit {
       return parameterList.reduce((_, $) => ({ ..._, [$.key]: $.value }), {})
     }
 
-    this.response$ = this._endpoint.triggerPostRequest<any>({ endpoint, reqBody })
+    this.response$ = this._endpoint.triggerPostRequest({ endpoint, reqBody })
     this.response$.pipe(
       tap(_ => console.log(_))
     ).subscribe(

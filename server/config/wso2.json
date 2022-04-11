@@ -1,0 +1,38 @@
+{
+  "METHOD": {
+    "GET": "get",
+    "POST": "post"
+  },
+  "PROTOCOL": "https",
+  "DOMAIN": {
+    "HOSTNAME": "34.71.215.40",
+    "PORT": "9443"
+  },
+  "IDENTITY": {
+    "API": "api",
+    "IDENTITY": "identity"
+  },
+  "CONTEXT": {
+    "REGISTER": "user",
+    "LOGIN": "auth"
+  },
+  "VERSION": {
+    "v1.0": "v1.0",
+    "v1.1": "v1.1",
+    "v1.2": "v1.2"
+  },
+  "ENDPOINT": {
+    "REGISTER": "me",
+    "LOGIN": "authenticate"
+  },
+  "REALM": {
+    "PRIMARY": "PRIMARY"
+  },
+  "CLAIMS": {
+    "GIVENNAME": "http://wso2.org/claims/givenname",
+    "LASTNAME": "http://wso2.org/claims/lastname",
+    "EMAIL": "http://wso2.org/claims/emailaddress",
+    "ORGANIZATION": "http://wso2.org/claims/organization",
+    "COUNTRY": "http://wso2.org/claims/country"
+  }
+}

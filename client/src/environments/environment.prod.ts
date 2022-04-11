@@ -1,46 +1,23 @@
 export const environment = {
   production: true,
   EXPRESS: {
-    // PROTOCOL: 'https',
     PROTOCOL: 'http',
-    // DOMAIN: '34.96.111.37',
-    DOMAIN: 'localhost:3000',
+    // DOMAIN: '34.71.93.171:3000',
+    DOMAIN: 'localhost:8001/api/v1/namespaces/medialab/services/http:server:3000/proxy',
     CONTEXT: {
       ROOT: 'api',
       WSO2: 'wso2',
-      DEDUP: 'dedup',
-      KB: 'kb',
-      STRIPE: 'stripe',
-      MAIL: 'mail'
+      KB: 'kb'
     },
     ENDPOINT: {
       WSO2: {
         LOGIN: 'login',
         REGISTER: 'register',
-        USERDETAILS: 'getUserDetails',
-        VERIFY: 'validate-code',
-        RESEND: 'resend-code'
+        USER: 'getUserDetails'
       },
       KB: {
         CREATEACCOUNT: 'createAccount',
-        ACCOUNT: 'getAccountDetails',
-        PLANS: 'fetchBasePlans',
-        CREATESUBSCRIPTION: 'createSubscription',
-        CREATEACCOUNTTAGS: 'createAccountTags',
-        FETCHPAYMENTMETHOD: 'getPaymentMethodsForAccount',
-        ADDPAYMENTMETHOD: 'addPaymentMethod',
-        INVOICES: 'getInvoicesForAccount'
-      },
-      DEDUP: {
-        PROCESSBUCKET: 'processBucket',
-        FETCHRESULT: 'fetchResult'
-      },
-      STRIPE: {
-        ADDCARD: 'addCardToStripe'
-      },
-      MAIL: {
-        SUBMITCONTACT: 'submitContact',
-        SUBMITFEEDBACK: 'submitFeedback'
+        ACCOUNT: 'getAccountDetails'
       }
     }
   }

@@ -2,12 +2,30 @@
 
 div.lm-offerings-container {
   div.lm-offering {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
     div.lm-offering-video {
       div.lm-video-placeholder {
         height: 150px;
         background-color: #00000040;
         width: 300px;
       }
+    }
+
+    &:nth-child(even) {
+      div.lm-offering-right {
+        grid-area: 1;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  div.lm-offerings-container {
+    div.lm-offering {
+      display: flex;
+      flex-direction: column;
     }
   }
 }

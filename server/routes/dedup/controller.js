@@ -1,19 +1,10 @@
 const router = require('express').Router()
-const fromService = require('./service')
+const dedupService = require('./service')
 
 router.post('/processBucket', processBucket)
-router.post('/fetchResult', getResult)
+router.post('/getResult', getResult)
 
 module.exports = router
-
-function requestFailed(_, res) {
-  console.log(`[Express Service] : Request Failed`)
-  return res.status(500).json({
-    status: 500,
-    data: { ..._ },
-    error: _.message
-  })
-}
 
 function invalidBucketProcessRequest(res, error) {
   console.log(`[Dedup Controller] : Invalid trigger Process request`)
@@ -34,15 +25,10 @@ function processBucketSuccess(_, res) {
 function processBucket(req, res, next) {
   let payload = null
   try { payload = { ...req.body } } catch (error) { invalidBucketProcessRequest(res) }
-  const axiosPromise = fromService.processBucket(payload)
+  const axiosPromise = dedupService.processBucket(payload)
   axiosPromise
-    .then(_ => {
-      processBucketSuccess(_, res)
-    })
-    .catch(_ => {
-      if (!!_.response) processBucketFail(_.response, res)
-      else requestFailed(_, res)
-    })
+    .then(_ => { processBucketSuccess(_, res) })
+    .catch(_ => { processBucketFail(_.response, res) })
 }
 
 function invalidResultRequest(res, error) {
@@ -64,11 +50,8 @@ function getResultSuccess(_, res) {
 function getResult(req, res, next) {
   let payload = null
   try { payload = { ...req.body } } catch (error) { invalidResultRequest(res) }
-  const axiosPromise = fromService.fetchResult(payload)
+  const axiosPromise = dedupService.fetchResult(payload)
   axiosPromise
     .then(_ => { getResultSuccess(_, res) })
-    .catch(_ => {
-      if (!!_.response) getResultFail(_.response, res)
-      else requestFailed(_, res)
-    })
+    .catch(_ => { getResultFail(_.response, res) })
 }

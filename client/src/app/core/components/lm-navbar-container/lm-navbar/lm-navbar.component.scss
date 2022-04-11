@@ -3,30 +3,12 @@ div.lm-navbar-logo {
 
   img.lm-navbar-logo {
     height: 56px;
+    filter: invert(1) saturate(2) contrast(0.8) brightness(1.3);
   }
 }
 
 button.lm-menu-item-button {
   background-color: #00000000;
-  font-weight: bold;
-  transition: 250ms;
-  font-size: 16px;
-
-  &.lm-menu-active {
-    background-color: #3f51b5;
-    color: #fafafa;
-  }
-
-  &:hover {
-    background-color: #3f51b5;
-    color: #fafafa;
-
-    &[mat-menu-item] {
-      background-color: #3f51b5;
-      color: #fafafa;
-    }
-  }
-
   &:focus {
     outline: none;
   }

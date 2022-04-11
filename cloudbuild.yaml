@@ -1,8 +1,6 @@
 steps:
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/viacom-poc/medialabs/ui:2.3.2", "."]
-    timeout: 1800s
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/viacom-poc/medialabs/ui:2.3.2"]
-    timeout: 1800s
-timeout: 1800s
+  - name: gcr.io/k8s-skaffold/skaffold-buildpacks@sha256:bc161439e3f145e3cd93fa3566a91a7f389cf2b460581b5461e0aed7d43f1384
+    args: ["run", "-f=skaffold.yaml"]
+    env:
+      - "CLOUDSDK_COMPUTE_ZONE=us-central1-c"
+      - "CLOUDSDK_CONTAINER_CLUSTER=medialab-cluster-1"

@@ -5,29 +5,21 @@ import { NgModule } from '@angular/core'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 
-import { AppSharedModule } from '@shared/app-shared.module'
-
-const DECLARATIONS = [
-  AppComponent
-]
-
-const IMPORTS = [
-  BrowserModule,
-  AppRoutingModule,
-  BrowserAnimationsModule,
-  AppSharedModule
-]
-
-const PROVIDERS = []
-
-const BOOTSTRAP = [
-  AppComponent
-]
+import { SharedModule } from '@shared/shared.module'
+import { AppStateModule } from '@shared/state/app-state.module'
 
 @NgModule({
-  declarations: [...DECLARATIONS],
-  imports: [...IMPORTS],
-  providers: [...PROVIDERS],
-  bootstrap: [...BOOTSTRAP]
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    SharedModule,
+    AppStateModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

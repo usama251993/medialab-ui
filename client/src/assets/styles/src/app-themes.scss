@@ -1,4 +1,4 @@
-@import "~@angular/material/theming";
+@import '~@angular/material/theming';
 
 @include mat-core();
 
@@ -22,7 +22,7 @@
 // Theme      : Light       #FAFAFA
 // Text color : Dark        #000000DE
 // Primary    : Indigo 500  #3F51B5
-// Accent     : Green  800  #2e7d32
+// Secondary  : Green  800  #2e7d32
 // Warning    : Red    500  #F44336
 
 $app-light-primary: mat-palette($mat-indigo);
@@ -44,8 +44,8 @@ $app-light-theme: mat-light-theme(
 // Dark theme
 // Theme      : Dark            #303030
 // Text color : Light           #FFFFFF
-// Primary    : Yellow     700  #2979FF
 // Accent     : Green      A400 #00e676
+// Primary    : Yellow     700  #2979FF
 // Warning    : Deeporange A200 #FF6E40
 
 $app-dark-primary: mat-palette($mat-yellow, 700);

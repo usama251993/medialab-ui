@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core'
-
 import { BehaviorSubject } from 'rxjs'
 
-import { LmHomeAssetsCustomerModel } from '@lm-core/models/assets/lm-home.model'
+import { LmHomeAssetsCustomerModel } from '@lm-core/models/lm-home.model'
 
 @Component({
   selector: 'app-lm-home-customers',
@@ -11,14 +10,14 @@ import { LmHomeAssetsCustomerModel } from '@lm-core/models/assets/lm-home.model'
 })
 export class LmHomeCustomersComponent implements OnInit {
 
-  private _assets$: BehaviorSubject<LmHomeAssetsCustomerModel>
+  assets$: BehaviorSubject<LmHomeAssetsCustomerModel>
 
   @Input()
-  set assets(value: LmHomeAssetsCustomerModel) { this._assets$.next(value) };
-  get assets(): LmHomeAssetsCustomerModel { return this._assets$.getValue() };
+  set assets(value: LmHomeAssetsCustomerModel) { this.assets$.next(value) };
+  get assets(): LmHomeAssetsCustomerModel { return this.assets$.getValue() };
 
   constructor() {
-    this._assets$ = new BehaviorSubject<LmHomeAssetsCustomerModel>(null)
+    this.assets$ = new BehaviorSubject<LmHomeAssetsCustomerModel>(null)
   }
 
   ngOnInit(): void { }

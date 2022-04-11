@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core'
-
 import { BehaviorSubject } from 'rxjs'
 
-import { LmHomeAssetsAboutModel } from '@lm-core/models/assets/lm-home.model'
+import { LmHomeAssetsAboutModel } from '@lm-core/models/lm-home.model'
 
 @Component({
   selector: 'app-lm-home-about',
@@ -11,14 +10,14 @@ import { LmHomeAssetsAboutModel } from '@lm-core/models/assets/lm-home.model'
 })
 export class LmHomeAboutComponent implements OnInit {
 
-  private _assets$: BehaviorSubject<LmHomeAssetsAboutModel>
+  assets$: BehaviorSubject<LmHomeAssetsAboutModel>
 
   @Input()
-  set assets(value: LmHomeAssetsAboutModel) { this._assets$.next(value) };
-  get assets(): LmHomeAssetsAboutModel { return this._assets$.getValue() };
+  set assets(value: LmHomeAssetsAboutModel) { this.assets$.next(value) };
+  get assets(): LmHomeAssetsAboutModel { return this.assets$.getValue() };
 
   constructor() {
-    this._assets$ = new BehaviorSubject<LmHomeAssetsAboutModel>(null)
+    this.assets$ = new BehaviorSubject<LmHomeAssetsAboutModel>(null)
   }
 
   ngOnInit(): void { }

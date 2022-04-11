@@ -1,36 +1,26 @@
-div.lm-home-container {
-  display: grid;
+mat-card.lm-mat-card {
+  width: 320px;
+  cursor: pointer;
+  border-radius: 16px;
+}
 
-  div.lm-home-section-holder {
-    min-height: 75vh;
+div.lm-separator {
+  padding: 2px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #e37f27 0%, #eeb832 100%);
+  &.lm-separator-small {
+    width: 96px;
   }
+}
 
-  div.lm-separator {
-    padding: 2px;
-    border-radius: 4px;
-    background: linear-gradient(90deg, #e37f27 0%, #eeb832 100%);
-
-    &.lm-separator-small {
-      width: 96px;
-    }
-  }
-
-  mat-card.lm-mat-card {
-    width: 320px;
-    cursor: pointer;
-    border-radius: 16px;
-  }
-
-  mat-list.lm-mat-list {
-    mat-list-item.lm-mat-list-item {
-      height: unset;
-      margin: 8px 0px;
-      cursor: default;
-      font-size: 14px;
-
-      mat-icon {
-        color: #ffc107;
-      }
+mat-list {
+  mat-list-item.lm-mat-list-item {
+    height: unset;
+    margin: 8px 0px;
+    cursor: default;
+    font-size: 14px;
+    mat-icon {
+      color: #ffc107;
     }
   }
 }
